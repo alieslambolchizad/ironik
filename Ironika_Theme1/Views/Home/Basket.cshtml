@@ -1,0 +1,320 @@
+﻿<title>سبد خرید</title>
+@{
+    ViewBag.Title = "Basket";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+}
+@using Ironika_Theme1.Models;
+@using System.ComponentModel.DataAnnotations;
+@model Ironika_Theme1.Models.Main
+@functions
+{
+    public static string NumberFormat(string Text)
+    {
+        int Length = Text.Length;
+        string MyText = "";
+        int i = Length - 3;
+        int j = 3;
+        while (Length > 3)
+        {
+            MyText = Text.Substring(i, j) + "," + MyText;
+            i = i - 3;
+            Length = Length - 3;
+        }
+        if (Length > 0)
+            MyText = Text.Substring(0, Length) + "," + MyText;
+        MyText = MyText.Substring(0, MyText.Length - 1);
+        return MyText;
+    }
+
+}
+<script>
+    function DeleteRow(obj) {
+        debugger;
+        $("#MyTable").html("");
+        $.ajax({
+            type: 'Get',
+            url: '/Home/DeleteRow/',
+            data: { "TempId": obj },
+            dataType: 'json',
+            success: function (data) {
+                if (data != null) {
+                    for (var i = 0; i < data.length; i++) {
+                        $("#MyTable").append("<tr>" +
+                            "<td><span class='td-name visible-xs'>Total</span>" + data[i].RowTotal + "ریال</td>" +
+                            "<td><span class='td-name visible-xs'>Quantity</span><div class='input-group quantity-control'><span class='input-group-addon' onclick='CallChangefunc(" + "0" + " , " + data[i].Id + ");' >&minus;</span><input type='text' class='form-control' name='txtCount' value=" + data[i].Number + "><span class='input-group-addon' onclick='CallChangefunc(" + "1" + " , " + data[i].Id + ");' >+</span></div></td>" +
+                            "<td><span class='td-name visible-xs'>Price</span>" + data[i].Price + "ریال</td>" +
+                            "<td><span class='td-name visible-xs'>Product</span><a href='#'>" + data[i].Name + "</a></td>" +
+                            "<td><a href='#' class='remove-button visible-xs'><span class='icon-cancel-2 '></span></a><a href=''><img class='preview' src=../Content/ImageSite/" + data[i].Image + "></a></td>" +
+                            "</tr>");
+                    }
+                    $("#MyPrice").html("");
+                    if (data.length > 0) {
+                        $("#MyPrice").html(data[((data.length) - 1)].AllPrice + "ریال");
+                        $("#MyPrice1").html(data[((data.length) - 1)].AllPrice + "ریال");
+                        $("#MyPrice2").html(data[((data.length) - 1)].AllPrice + "ریال");
+                    }
+                    else {
+                        $("#MyPrice").html("0 ریال");
+                        $("#MyPrice1").html("0 ریال");
+                        $("#MyPrice2").html("0 ریال");
+                    }
+                }
+            }
+        });
+    }
+    function CallChangefunc(Id, ProductId) {
+        $("#MyTable").html("");
+        $.ajax({
+            type: 'Get',
+            url: '/Home/CallChangefunc/',
+            data: { "TempId": Id, "ProductId": ProductId },
+            dataType: 'json',
+            success: function (data) {
+                if (data != null) {
+                    for (var i = 0; i < data.length; i++) {
+                        $("#MyTable").append("<tr>" +
+                            "<td><span class='td-name visible-xs'>Total</span>" + data[i].RowTotal + "ریال</td>" +
+                            "<td><span class='td-name visible-xs'>Quantity</span><div class='input-group quantity-control'><span class='input-group-addon' onclick='CallChangefunc(" + "1" + " , " + data[i].Id + ");' >+</span><input type='text' class='form-control' name='txtCount' value=" + data[i].Number + "><span class='input-group-addon' onclick='CallChangefunc(" + "0" + " , " + data[i].Id + ");' >&minus;</span></div></td>" +
+                            "<td><span class='td-name visible-xs'>Price</span>" + data[i].Price + "ریال</td>" +
+                            "<td><span class='td-name visible-xs'>Product</span><a href='#'>" + data[i].Name + "</a></td>" +
+                            "<td><a href='#' class='remove-button visible-xs'><span class='icon-cancel-2 '></span></a><a href=''><img class='preview' src=../Content/ImageSite/" + data[i].Image + "></a></td>" +
+                            "<td><a href='#' onclick='DeleteRow(" + data[i].Id + ");' class='remove-button hidden-xs'><span class='icon-cancel-2 '></span></a></td>" +
+                            "</tr>");
+
+                    }
+                    $("#MyPrice").html("");
+                    if (data.length > 0) {
+                        $("#MyPrice").html(data[((data.length) - 1)].AllPrice + "ریال");
+                        $("#MyPrice1").html(data[((data.length) - 1)].AllPrice + "ریال");
+                        $("#MyPrice2").html(data[((data.length) - 1)].AllPrice + "ریال");
+                    }
+                    else {
+                        $("#MyPrice").html("0 ریال");
+                        $("#MyPrice1").html("0 ریال");
+                        $("#MyPrice2").html("0 ریال");
+                    }
+                }
+            }
+        });
+    }
+    function AllCity(obj) {
+        debugger;
+        $("#DivProvince").empty();
+
+
+        $.ajax({
+            type: 'Get',
+            url: '/Home/AllCitys/',
+            data: { "TempId": obj },
+            dataType: 'json',
+            success: function (data) {
+                debugger;
+                if (data != null) {
+                    for (var i = 0; i < data.length; i++) {
+                        /**/
+                        $("#DivCitys").append("<div class='col-md-12' style='margin-top:5px;margin-bottom:5px;border-bottom: solid #cfcfcf'><a><label onclick='location.href = '/Namespace/YourController/YourAction'><input style='margin-right:8px'  width='20px' height='20px' type='radio' value='true'>" + data[i].Name + "</label></a></div>");
+
+                    }
+                    $("#MyPrice").html("");
+                    if (data.length > 0) {
+                        $("#ModalTitle").html("Choice City");
+
+                    }
+                    debugger;
+                }
+            }
+        });
+    }
+</script>
+
+<section id="slider">
+    <div class="tp-banner-container">
+        <div class="tp-banner4" style="background-image: url('../../Content/ImgSite/No_Photo.jpg'); ">
+        </div>
+    </div>
+</section>
+<section class="container">
+    <nav class="breadcrumbs"> <a href="/">خانه</a> <span class="divider">›</span> سبد خرید </nav>
+</section>
+<section class="container">
+    <div class="row">
+        <section class="col-md-8 col-lg-8">
+            <!-- Shopping cart -->
+            <section class="content-box">
+                <div class="shopping_cart">
+                    <img class="back img-responsive" src="~/Content/images/shopping-cart-back.png" alt="">
+                    <div class="box">
+                        <h3>سبد خرید</h3>
+                        <table>
+                            <thead>
+                                <tr class="hidden-xs">
+                                    <th>جمع کل</th>
+                                    <th>تعداد</th>
+                                    <th>قیمت</th>
+                                    <th>محصول</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="MyTable">
+                                @{
+                                    int TotalPrice = 0;
+                                    int CountBasket = 0;
+                                    var model = Session["MyClientOrder"] as List<Ironika_Theme1.Models.ClientOrder_Manager>;
+                                    if (model != null)
+                                    {
+                                        if (model.Any())
+                                        {
+                                            foreach (var item in model)
+                                            {
+                                                <tr>
+                                                    <td><span class="td-name visible-xs">Total</span>@item.RowTotal ریال</td>
+                                                    <td>
+                                                        <center>
+                                                            <span class="td-name visible-xs">Quantity</span>
+                                                            <div class="input-group quantity-control">
+                                                                <span class="input-group-addon" onclick="CallChangefunc(1,@item.Id)">+</span>
+                                                                <input type="text" class="form-control" name="txtCount" value="@item.Number">
+
+                                                                <span class="input-group-addon" onclick="CallChangefunc(0,@item.Id)">&minus;</span>
+                                                            </div>
+                                                        </center></td>
+                                                    <td><span class="td-name visible-xs">Price</span>@item.Price ریال</td>
+                                                    <td><span class="td-name visible-xs">Product</span><a href="#">@item.Name</a></td>
+                                                    <td><a href="#" class="remove-button visible-xs"><span class="icon-cancel-2 "></span></a><a href=""><img class="preview" src="~/Content/ImageSite/@item.Image"></a></td>
+                                                    <td><a href="#" onclick="DeleteRow(@item.Id);" class="remove-button hidden-xs"><span class="icon-cancel-2 "></span></a></td>
+                                                </tr>
+                                                TotalPrice += int.Parse(item.RowTotal1.ToString());
+                                                CountBasket++;
+                                            }
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="pull-left"> <b class="title">هزینه حمل:</b> رایگان </div>
+                        <div class="pull-right">
+                            <p>
+                                <b class="title">جمع سفارش :</b> <span class="price" id="MyPrice">
+                                    @NumberFormat(TotalPrice.ToString()) ریال
+                                </span>
+
+                            </p>
+                          
+                                <button type="submit" class="btn btn-mega" style="width:120px" onclick="location.href='../../Checkout/';">پرداخت</button>
+                                
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <aside class="col-md-4 col-lg-4 shopping_cart-aside">
+
+            <!-- Coupon -->
+            <section class="container-widget">
+                <h3>خلاصه سفارش</h3>
+
+                <div class="form-group">
+                    <div class="col-md-12" style="margin-top:5px;margin-bottom:5px;border-bottom: solid #cfcfcf">
+                        <div class="col-md-6" style="text-align:left;direction:ltr">
+                            @{
+                                if (Session["AllCount"] != null)
+                                {
+                                    <label for="coupon" id="MyPrice1">@CountBasket محصول</label>
+                                }
+                                else
+                                {
+                                    <label for="coupon" id="MyPrice1">0 محصول</label>
+                                }
+                            }
+
+                        </div>
+                        <div class="col-md-6">
+                           <label for="coupon" style="font-weight:bold"> اقلام موجود در سبد</label>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-12" style="margin-top:5px;margin-bottom:5px;border-bottom: solid #cfcfcf">
+                        <div class="col-md-6" style="text-align:left;direction:ltr">
+                            <label for="coupon"> 0 ریال</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="coupon" style="font-weight:bold">حمل و نقل</label>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6" style="text-align:left;direction:ltr">
+                            <label for="coupon" id="MyPrice2">@NumberFormat(TotalPrice.ToString()) ریال</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="coupon" style="font-weight:bold">مبلغ نهایی سفارش</label>
+                        </div>
+
+                    </div>
+                </div>
+
+               
+                    <button type="submit" style="margin-top:10px;width:120px" onclick="location.href='../../Checkout/';" class="btn btn-mega">پرداخت</button>
+                    
+            </section>
+        </aside>
+    </div>
+</section>
+<div class="modal fade" style="margin-top:200px;width:350px;left:40%;overflow:hidden" id="ModalPopUp" role="dialog">
+    <div class="modal-dialog err-pop" style="">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="ModalTitle">انتخاب آدرس</h4>
+            </div>
+            <div class="modal-body" style="overflow:hidden;width:100% !important;height:100%">
+                @*@{
+                        if (Session["UserSite"] != null)
+                        {
+                            int UserId = int.Parse(Session["UserSite"].ToString());
+                            List<Address_Table> list = db.Address_Table.Where(r => r.RegisterId == UserId).ToList();
+                            foreach (var items in list)
+                            {
+                                <div class="col-md-12" style="margin-top:5px;margin-bottom:5px;border-bottom: solid #cfcfcf">
+                                    <a><label onclick="location.href= '/Namespace/YourController/YourAction'"><input style="margin-right:8px" id="Test" width="20px" height="20px" name="Test" type="radio" value="true">@items.Title</label></a>
+                                </div>
+                            }
+                            <div class="col-md-12">
+                                <a><label onclick="location.href= '../../../AddNewAddress'"><input style="margin-right:8px" id="Test" width="20px" height="20px" name="Test" type="radio" value="true">Add New Address</label></a>
+                            </div>
+
+                        }
+                        else
+                        {
+                            List<Province_Table> list = db.Province_Table.OrderBy(r => r.Title).ToList();
+                            foreach (var items in list)
+                            {
+                                <div id="DivProvince">
+                                    <div class="col-md-12" style="margin-top:5px;margin-bottom:5px;border-bottom: solid #cfcfcf">
+                                        <a><label onclick="AllCity(@items.ProvinceId)"><input style="margin-right:8px" id="Test" width="20px" height="20px" name="Test" type="radio" value="true">@items.Title</label></a>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+                    }*@
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $("#btnLink").click(function () {
+        $('#ModalPopUp').modal('show');
+    })
+</script>
+

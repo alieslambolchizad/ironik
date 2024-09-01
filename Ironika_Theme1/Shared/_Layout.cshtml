@@ -1,0 +1,479 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+
+    <meta name="description" content="Fastteb">
+    <meta name="animsamodi@gmail.com" content="">
+    <title>فروشگاه تجهیزات پزشکی فست طب</title>
+    <!-- CSS preloader -->
+    <link href="~/Content/css/loader.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/megatron-template.css" rel="stylesheet">
+    <!-- CSS modules -->
+    <link href="~/Content/css/icomoon.css" rel="stylesheet">
+    <link href="~/Content/css/fontello.css" rel="stylesheet">
+    <link href="~/Content/css/flexslider.css" rel="stylesheet">
+    <link href="~/Content/css/jcarousel.css" rel="stylesheet">
+    <link href="~/Content/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/Content/css/owl.theme.css" rel="stylesheet">
+    <link href="~/Content/css/cloudzoom.css" rel="stylesheet">
+    <link href="~/Content/css/sfmenu.css" rel="stylesheet">
+    <link href="~/Content/css/isotope.css" rel="stylesheet">
+    <link href="~/Content/css/smoothness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="~/Content/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="~/Content/css/hoverfold.css" rel="stylesheet">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="~/Content/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/rs-plugin/css/extralayers.css" media="screen" />
+    @{
+        ViewBag.Title = "Home Page";
+        Fastteb_Re_v1Entities db = new Fastteb_Re_v1Entities();
+        int ContactId = db.Contact_Table.Max(r => r.ContactId);
+        var ObjsContact = db.Contact_Table.FirstOrDefault(r => r.ContactId == ContactId);
+        string UserName = ""; int UserId = 0;string UserCode = "";
+        try
+        {
+            if (Session["UserSite"] != null)
+            {
+                UserId = int.Parse(Session["UserSite"].ToString());
+                var ObjUser = db.User_Table.FirstOrDefault(r => r.UserId == UserId);
+                if (ObjUser != null)
+                {
+                    UserName = ObjUser.Name + " " + ObjUser.LastName + " خوش آمدید! ";
+                    UserCode = ObjUser.RegisterCode;
+                }
+                else
+                {
+                    UserName = "مهمان گرامی" + " خوش آمدید! ";
+                }
+            }
+            else
+            {
+                UserName = "مهمان گرامی" + " خوش آمدید! ";
+            }
+        }
+        catch { }
+    }
+    @functions
+{
+        public static string NumberFormat(string Text)
+        {
+            int Length = Text.Length;
+            string MyText = "";
+            int i = Length - 3;
+            int j = 3;
+            while (Length > 3)
+            {
+                MyText = Text.Substring(i, j) + "," + MyText;
+                i = i - 3;
+                Length = Length - 3;
+            }
+            if (Length > 0)
+                MyText = Text.Substring(0, Length) + "," + MyText;
+            MyText = MyText.Substring(0, MyText.Length - 1);
+            return MyText + "ریال";
+        }
+
+    }
+    @using FasttebSite.Models;
+    @using System.ComponentModel.DataAnnotations;
+    @model FasttebSite.Models.Main
+</head>
+<body class="responsive">
+
+
+    <div class="loader">
+        <div class="bubblingG"> <span id="bubblingG_1"> </span> <span id="bubblingG_2"> </span> <span id="bubblingG_3"> </span> </div>
+    </div>
+    <!-- Off Canvas Menu -->
+    <nav id="off-canvas-menu">
+        <div id="off-canvas-menu-title">منو<span class="icon icon-cancel-4" id="off-canvas-menu-close"></span></div>
+        <ul class="expander-list">
+            <li>
+                <span class="name"> <a href="/">خانه</a></span>
+
+            </li>
+            <li>
+                <span class="name"> <a href="../../Products/البسه-و-ملحفه-یکبار-مصرف">البسه و ملحفه یکبار مصرف</a></span>
+
+            </li>
+            <li>
+                <span class="name"> <a href="../../Products/باند-و-گاز">باند و گاز </a></span>
+
+            </li>
+            <li>
+                <span class="name"> <a href="../../Products/پگ-های-استریل">پگ های استریل</a></span>
+
+            </li>
+            <li>
+                <span class="name"> <a href="../../Products/تجهیزات-آرایشگاهی">تجهیزات آرایشگاهی</a></span>
+
+            </li>
+            @if (UserId != 0)
+            {
+                string Address = "http://mypanel.fastteb.com/Index.aspx?sid=" + UserId + "_" + UserCode;
+                <li>
+                    <span class="name"> <a href="@Address">پنل کاربری</a></span>
+
+                </li>
+            }
+            else
+
+            {
+                <li>
+                    <span class="name"> <a href="../../../signin">پنل کاربری</a></span>
+
+                </li>
+            }
+            <li>
+                <span class="name"> <a href="../../Basket">سبد خرید</a></span>
+
+            </li>
+            <li><span class="name"><a href="../../Law">قوانین و مقررات</a></span></li>
+            <li><span class="name"><a href="../../Abut">درباره ما</a></span></li>
+            <li><span class="name"><a href="../../Contact">تماس با ما</a></span></li>
+        </ul>
+    </nav>
+    <!-- //end Off Canvas Menu -->
+
+    <div id="outer">
+        <div id="outer-canvas">
+            <!-- Navbar -->
+            <header>
+
+                <!-- Back to top -->
+                <div class="back-to-top"><span class="icon-arrow-up-4"></span></div>
+                <!-- //end Back to top -->
+
+                <section class="navbar">
+                    <div class="background">
+                        <div class="container">
+                            <div class="wrappertop">
+                                <!-- Logo -->
+                                <div class="navbar-logo pull-left"><a href="/"><img src="../../content/ImageSite/@ObjsContact.Logo" alt="@ObjsContact.Title"></a></div>
+                                <div class="navbar-welcome pull-left compact-hidden hidden-xs">@UserName </div>
+                                <div class="clearfix visible-sm"></div>
+                                <!-- //end Logo -->
+                                <!-- Secondary menu -->
+                                <div class="navbar-secondary-menu pull-right hidden-xs">
+                                    <div class="btn-group compact-hidden">
+                                        <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> پنل من  <span class="icon icon-vcard"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            @if (UserId == 0)
+                                            {
+                                                <li><a href="../../Signin">ورود</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="../../Signup">ثبت نام</a></li>
+                                            }
+                                            else
+                                            {
+                                                string Address = "http://mypanel.fastteb.com/Index.aspx?sid=" + UserId + "_" + UserCode; 
+                                                <li><a href="@Address">پنل کاربری</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="../../Exit">خروج</a></li>
+                                            }
+
+                                        </ul>
+                                    </div>
+                                    @{
+                                        int NumberTotal = 0;
+                                        int Number = 0;
+                                        int TotalPrice = 0;
+                                        try
+                                        {
+                                            NumberTotal = int.Parse(HttpContext.Current.Session["AllNumberFinal"].ToString());
+                                            Number = int.Parse(HttpContext.Current.Session["AllCount"].ToString());
+                                        }
+                                        catch { NumberTotal = 0; Number = 0; }
+                                        <div class="btn-group shoppingcart">
+                                            <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="compact-hidden">سبد خرید - <strong>@NumberTotal ریال</strong></span> <span class="icon-xcart-animate"><span class="box">@Number</span><span class="handle"></span></span> </a>
+                                            <div class="dropdown-menu pull-right shoppingcart-box" role="menu">
+                                                آخرین آیتم های سبد خرید
+                                                <ul class="list">
+                                                    @{
+
+                                                        var model = Session["MyClientOrder"] as List<FasttebSite.Models.ClientOrder_Manager>;
+                                                        if (model != null)
+                                                        {
+                                                            if (model.Any())
+                                                            {
+                                                                foreach (var item in model)
+                                                                {
+                                                                    <li class="item">
+                                                                        <a href="../../../Details/@item.Name.Trim().Replace(" ", "-")" class="preview-image"><img class="preview" src="../../Content/ImageSite/@item.Image" alt=""></a>
+                                                                        <div class="description"> <a href="#">@item.Name</a> <strong class="price">@item.Price ریال</strong> </div>
+                                                                    </li>
+                                                                    TotalPrice += int.Parse(item.RowTotal1.ToString());
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+
+                                                </ul>
+                                                <div class="total">مبلغ نهایی: <strong>@NumberTotal</strong></div>
+                                                <a href="/" class="btn btn-mega">ادامه خرید</a>
+                                                <div class="view-link"><a href="../../Basket">مشاهده سبد خرید</a></div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                            </div>
+                            <!-- Main menu -->
+                            <dl class="navbar-main-menu hidden-xs">
+                                <dt class="item compact-hidden"><a href="/" class="btn-main line">خانه</a> </dt>
+                                <dt class="item compact-hidden"><a href="../../Products/البسه-و-ملحفه-یکبار-مصرف" class="btn-main line">البسه و ملحفه یکبار مصرف</a> </dt>
+                                <dt class="item compact-hidden"><a href="../../Products/باند-و-گاز" class="btn-main line">باند و گاز</a> </dt>
+                                <dt class="item compact-hidden"><a href="../../Products/پگ-های-استریل" class="btn-main line">پگ های استریل</a> </dt>
+                                <dt class="item compact-hidden"><a href="../../Products/تجهیزات-آرایشگاهی" class="btn-main line">تجهیزات آرایشگاهی</a> </dt>
+                                @if (UserId != 0)
+                                {
+                                    string Address = "http://mypanel.fastteb.com/Index.aspx?sid=" + UserId + "_" + UserCode;
+                                    <dt class="item"> <a href="@Address" class="btn-main line">پنل کاربری</a> </dt>
+                                }
+                                else
+                                {
+                                    <dt class="item"> <a href="../../../signin" class="btn-main line">پنل کاربری</a> </dt>
+                                }
+                                <dt class="item"> <a href="../../Basket" class="btn-main line">سبد خرید</a> </dt>
+                                <dt class="item"> <a href="../../Law" class="btn-main line">قوانین و مقررات</a> </dt>
+                                <dt class="item"> <a href="../../About" class="btn-main line">درباره ما</a> </dt>
+                                <dt class="item"> <a href="../../Contact" class="btn-main line">تماس با ما</a> </dt>
+                                <dd></dd>
+                            </dl>
+                            <!-- //end Main menu -->
+
+                        </div>
+                    </div>
+                    <!-- Mobile menu -->
+                    <div class="container visible-xs">
+                        <div class="mobile-nav row">
+                            <div class="nav-item item-01"><a href="#" id="off-canvas-menu-toggle"><span class="icon icon-list-4"></span></a></div>
+                            <div class="nav-item item-02">
+                                <a href="#"><span class="icon icon-vcard"></span></a>
+                                <div class="tab-content">
+                                    <ul class="menu-list">
+                                        @if (UserId == 0)
+                                        {
+                                            <li><a href="../../Signin">ورود</a></li>
+                                            <li><a href="../../Signup">ثبت نام</a></li>
+                                        }
+                                        else
+                                        {
+                                            string Address = "http://mypanel.fastteb.com/Index.aspx?sid=" + UserId + "_" + UserCode;
+                                            <li><a href="@Address">پنل کاربری</a></li>
+                                            <li><a href="../../Exit">خروج</a></li>
+                                        }
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="nav-item item-04">
+                                <a href="#"><span class="icon-xcart-white">@Number</span></a>
+                                <div class="tab-content">
+                                    <div class="shoppingcart-box">
+                                        <div class="title">آخرین آیتم های سبد خرید</div>
+                                        <ul class="list">
+                                            @{
+
+                                                model = Session["MyClientOrder"] as List<FasttebSite.Models.ClientOrder_Manager>;
+                                                if (model != null)
+                                                {
+                                                    if (model.Any())
+                                                    {
+                                                        foreach (var item in model)
+                                                        {
+                                                            <li class="item">
+                                                                <div class="icon-product-edit"><a class="icon icon-edit" href="#"></a></div>
+                                                                <div class="icon-product-delete"><a class="icon icon-trash-2" href="#"></a></div>
+                                                                <a href="../../../Details/@item.Name.Trim().Replace(" ","-")" class="preview-image"><img class="preview" src="../../Content/ImageSite/@item.Image" alt=""></a>
+                                                                <div class="description"> <a href="#">@item.Name</a> <strong class="price">@NumberFormat(item.Price) ریال</strong> </div>
+                                                            </li>
+
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </ul>
+                                        <div class="total">مبلغ نهایی: <strong>@TotalPrice</strong></div>
+                                        <a href="/" class="btn btn-mega">ادامه خرید</a>
+                                        <div class="view-link"><a href="../../Basket">مشاهده سبد خرید</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- //end Mobile menu -->
+                    <!-- Navbar switcher -->
+                    @*<div class="navbar-switcher-container">
+
+                            <div class="navbar-switcher"> <span class="i-inactive"><img src="../../content/ImageSite/@ObjsContact.Logo" width="35" height="35" alt=""></span> <span class="i-active icon-cancel-3"></span> </div>
+                        </div>*@
+                    <!-- //end Navbar switcher -->
+
+                </section>
+                <!-- Navbar height -->
+                <div class="navbar-height-inner"></div>
+                <!-- Navbar height -->
+                <!-- Navbar height -->
+                <div class="navbar-height"></div>
+                <!-- Navbar height -->
+            </header>
+
+            @RenderBody()
+            <footer>
+                <section class="footer-navbar dark">
+                    <div class="container content nopad-xs">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-2 col-lg-2 collapsed-block">
+                                <h3>اکانت من<a class="expander visible-xs" href="#TabBlock-5">+</a></h3>
+                                <div class="tabBlock" id="TabBlock-5">
+                                    <ul class="menu">
+                                        @if (UserId != 0)
+                                        {
+                                            string Address = "http://mypanel.fastteb.com/Index.aspx?sid=" + UserId + "_" + UserCode;
+                                            <li><a href="@Address">پنل کاربری</a></li>
+                                        }
+                                        else
+
+                                        {
+                                            <li><a href="../../../signin">پنل کاربری</a></li>
+                                        }
+                                        <li><a href="../../Basket">سبد خرید</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4 col-lg-4 collapsed-block">
+                                <h3><span class="attention"><span class="attention_icon"></span></span>انتقادات و پیشنهادات<a class="expander visible-xs" href="#TabBlock-4">+</a></h3>
+                                <div class="tabBlock" id="TabBlock-4">
+                                    @using (Html.BeginForm("FrmSignIn", "Home", new { }, FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-group">
+
+                                            @Html.TextBoxFor(m => m.ValidationPeople.Name, new { @class = "form-control", placeholder = "نام" })
+                                            @Html.ValidationMessageFor(m => m.ValidationPeople.Name)
+                                        </div>
+                                        <div class="form-group">
+
+                                            @Html.TextBoxFor(m => m.ValidationPeople.Email, new { @class = "form-control", placeholder = "ایمیل" })
+                                            @Html.ValidationMessageFor(m => m.ValidationPeople.Email)
+                                        </div>
+                                        <div class="form-group">
+
+                                            @Html.TextAreaFor(m => m.ValidationPeople.Message, new { @class = "form-control", placeholder = "پیام شما" })
+                                            @Html.ValidationMessageFor(m => m.ValidationPeople.Message)
+                                        </div>
+                                        <div style="direction:rtl;text-align:right;width:100%"><button style="width:120px;" class="btn btn-mega" type="submit">ثبت</button></div>
+
+                                        <br />
+                                        if (@TempData["Status"] != null)
+                                        {
+                                            <p id="failureMsgCreate" class="failure" style="width:100%;direction:rtl;text-align:right;display:block">
+                                                @TempData["Status"].ToString()
+                                            </p>
+                                        }
+                                    }
+
+
+                                </div>
+                            </div>
+                            <div class="clearfix visible-sm"></div>
+                            <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                <h3>لینک ها<a class="expander visible-xs" href="#TabBlock-3">+</a></h3>
+                                <div class="tabBlock" id="TabBlock-3">
+                                    <ul class="menu">
+                                        <li><a href="../../about">درباره ما</a></li>
+                                        <li><a href="../../Pages/ضمانت-بازگشت-کالا">ضمانت بازگشت کالا</a></li>
+                                        <li><a href="../../Pages/پشتیبانی-24-ساعته">پشتیبانی 24 ساعته</a></li>
+                                        <li><a href="../../Contact">تماس با ما</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                <h3>تماس با ما<a class="expander visible-xs" href="#TabBlock-6">+</a></h3>
+                                <div class="tabBlock" id="TabBlock-6">
+                                    <ul class="menu">
+                                        <li><span class="icon icon-house"></span>تهران،خيابان شور اباد خيابان مدني پلاك</li>
+                                        <li><span class="icon icon-phone-4"></span><span>09121026195</span>  </li>
+                                        <li> <a href="mailto:info@fastteb.com">info@fastteb.com</a><span class="icon icon-envelop"></span></li>
+                                        <li> <a href="mailto:samsaebii@gmail.com">samsaebii@gmail.com</a><span class="icon icon-envelop"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="footer-bottom-block container">
+                    <div class="row">
+                        <div class="col-sm-5 col-md-4 copyright-text"> &copy; 2020<a href="#">Fastteb.com</a>. All Rights Reserved. </div>
+                        <div class="col-sm-3 col-md-4">
+
+                        </div>
+                        <div class="col-sm-4 col-md-4">
+                            <ul class="payment-list pull-right">
+                                <li><img src="images/icon-payment-01.png" width="36" height="22" alt=""></li>
+                                <li><img src="images/icon-payment-02.png" width="36" height="22" alt=""></li>
+                                <li><img src="images/icon-payment-03.png" width="36" height="22" alt=""></li>
+                                <li><img src="images/icon-payment-04.png" width="36" height="22" alt=""></li>
+                                <li><img src="images/icon-payment-05.png" width="36" height="22" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </footer>
+            <div id="outer-overlay"></div>
+            <!-- //end Footer -->
+        </div>
+    </div>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Scripts/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Scripts/jquery.mousewheel.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.flexslider.js"></script>
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script src="~/Scripts/jquery.jcarousel.min.js"></script>
+    <script src="~/Scripts/cloudzoom.js"></script>
+    <script src="~/Scripts/jquery.isotope.min.js"></script>
+    <script src="~/Scripts/jquery.parallax.js"></script>
+    <script src="~/Scripts/jquery.fancybox.js?v=2.1.5"></script>
+    <script src="~/Scripts/jquery.inview.js"></script>
+    <script src="~/Scripts/hoverIntent.js"></script>
+    <script src="~/Scripts/superfish.js"></script>
+    <script src="~/Scripts/supersubs.js"></script>
+    <script src="~/Scripts/jquery.plugin.js"></script>
+    <script src="~/Scripts/jquery.countdown.js"></script>
+    <script src="~/Scripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script src="~/Scripts/megatron.js"></script>
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="~/Scripts/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<title>محصولات مورد علاقه</title>
+@{
+    ViewBag.Title = "ShopList";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+    int UserId = 0;
+
+    try
+    {
+        if (Session["UserSite"] != null)
+        {
+            UserId = int.Parse(Session["UserSite"].ToString());
+        }
+
+    }
+    catch { UserId = 0; }
+
+}
+<section class="container">
+    <nav class="breadcrumbs"> <a href="/">خانه</a> <span class="divider">›</span> محصولات مورد علاقه </nav>
+</section>
+<!-- //end Breadcrumbs -->
+<!-- Two column content -->
+<section class="container">
+    <div class="row">
+        <h3>
+            لیست محصولات مورد علاقه
+        </h3>
+        <!-- Breadcrumbs -->
+        <!-- //end Breadcrumbs -->
+        <!-- Two column content -->
+        <section class="container">
+            <div class="row">
+
+                <div class="posts-isotope">
+                    @{
+                        List<Like_Table> lst = db.Like_Table.Where(r => r.State == false && r.UserId == UserId).OrderByDescending(r => r.LikeId).ToList();
+                        foreach (var item in lst)
+                        {
+                            <div class="col-sm-6 col-md-4 post">
+                                <div class="container-paper-table">
+                                    <div class="title">
+                                        <h4><a href="../../ShopList/@item.Product_Table.Name.Trim().Replace(" ","-")">@item.Product_Table.Name</a></h4>
+                                    </div>
+                                    <div class="post-container">
+                                        <a href="../../ShopList/@item.Product_Table.Name.Trim().Replace(" ","-")"><img class="img-responsive animate scale" src="~/Content/ImageSite/@item.Product_Table.Imageurl" alt=""></a>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </section>
+        <!-- //end Two columns content -->
+        <!-- Footer -->
+        <!-- Footer -->
+    </div>
+</section>
+

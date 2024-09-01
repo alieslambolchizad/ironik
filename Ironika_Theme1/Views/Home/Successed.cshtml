@@ -1,0 +1,81 @@
+﻿<title>پرداخت موفقیت آمیز</title>
+@{
+    ViewBag.Title = "Successed";
+    
+}
+
+@{
+    ViewBag.Title = "Details";
+    string UserName = "";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+    int RegisterId = 0;
+    if (Session["UserSite"] == null)
+    {
+        RegisterId = 0;
+    }
+    else
+    {
+        RegisterId = int.Parse(Session["UserSite"].ToString());
+        var Obj = db.User_Table.FirstOrDefault(r => r.UserId == RegisterId);
+        if (Obj != null)
+        {
+            UserName = Obj.Name + " " + Obj.Lastname;
+        }
+    }
+}
+
+
+<section class="container">
+    <nav class="breadcrumbs"><a href="/">خانه </a> <span class="divider">›</span>وضعیت تراکنش </nav>
+</section>
+<section class="container" style="margin-top: 50px">
+    <section class="container content-row">
+
+
+        <div class="row noGutter">
+
+            <section class="col-md-12">
+
+                <!-- Shopping cart -->
+                <section class="content-box">
+                    <div class="shopping_cart">
+                        <img alt="" src="../../../content/images/shopping-cart-back.png" class="back img-responsive">
+                        <div class="box">
+
+                            <div class="price-table">
+                                <div class="price-table-title" style="font-weight:bold;font-size:22px"> پرداخت موفقیت آمیز بود</div>
+                                <div class="price-table-price">نام کاربر</div>
+                                <div class="price-table-title" style="color: #ee3b27">@UserName</div>
+                                <div class="price-table-price">مبلغ پرداختی </div>
+                                @if (Session["AllNumber1"] != null)
+                                {
+                                    <div class="price-table-title" style="color: #ee3b27">
+                                        @Session["AllNumber1"].ToString() ریال
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="price-table-title" style="color: #ee3b27">
+                                        0 ریال
+                                    </div>
+                                }
+                                <div class="price-table-price" style="font-weight:bold;font-size:22px;color:greenyellow">پرداخت موفقیت آمیز بود</div>
+                                <a class="btn btn-mega btn-lg" href="/">بازگشت به ایرونیکا</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- //end Shopping cart -->
+
+            </section>
+
+        </div>
+
+
+    </section>
+
+</section>
+
+

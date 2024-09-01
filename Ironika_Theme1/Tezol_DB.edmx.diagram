@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e160cb41c38a41f181a35a264b66b166" Name="Diagram1">
+        <EntityTypeShape EntityType="Tezol_DBModel.Address_Table" Width="1.5" PointX="11.25" PointY="28.625" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Ads_Table" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="Tezol_DBModel.AdsShop_Table" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Baner_Table" Width="1.5" PointX="2.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.BanerApp_Table" Width="1.5" PointX="8.25" PointY="16.625" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Brands_Table" Width="1.5" PointX="11.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Category_Table" Width="1.5" PointX="3.75" PointY="25.25" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Citypost_Table" Width="1.5" PointX="11.75" PointY="4.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Contact_Table" Width="1.5" PointX="13.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Content_Table" Width="1.5" PointX="2.75" PointY="14.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Country_Table" Width="1.5" PointX="1.5" PointY="8" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Delivery_Table" Width="1.5" PointX="8.25" PointY="22.25" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Faq_Table" Width="1.5" PointX="13.75" PointY="6.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Following_Table" Width="1.5" PointX="11.25" PointY="9" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Group_Table" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="Tezol_DBModel.GroupShop_Table" Width="1.5" PointX="9" PointY="33.25" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Like_Table" Width="1.5" PointX="8.25" PointY="11.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Location_Table" Width="1.5" PointX="11.25" PointY="25.5" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Menu_Table" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Order_Table" Width="1.5" PointX="11.25" PointY="15.375" />
+        <EntityTypeShape EntityType="Tezol_DBModel.OrderDetail_Table" Width="1.5" PointX="13.5" PointY="20.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.OwenerGroup_Table" Width="1.5" PointX="8.25" PointY="9" />
+        <EntityTypeShape EntityType="Tezol_DBModel.OwnerProduct_Table" Width="1.5" PointX="11.25" PointY="11.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Payment_Table" Width="1.5" PointX="13.75" PointY="9.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.People_Table" Width="1.5" PointX="15.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Product_Table" Width="1.5" PointX="6" PointY="23" />
+        <EntityTypeShape EntityType="Tezol_DBModel.ProductShop_Table" Width="1.5" PointX="11.25" PointY="32.5" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Province_Table" Width="1.5" PointX="1.5" PointY="5" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Provincepost_Table" Width="1.5" PointX="15.75" PointY="4.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Rating_Table" Width="1.5" PointX="13.75" PointY="12.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Region_Table" Width="1.5" PointX="3.75" PointY="8" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Review_Table" Width="1.5" PointX="14.25" PointY="15.125" />
+        <EntityTypeShape EntityType="Tezol_DBModel.SlideMenu_Table" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Slider_Table" Width="1.5" PointX="15.75" PointY="7.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Story_Table" Width="1.5" PointX="15.75" PointY="10.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Supper_Table" Width="1.5" PointX="6" PointY="4.25" />
+        <EntityTypeShape EntityType="Tezol_DBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="17.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Theme_Table" Width="1.5" PointX="2.75" PointY="17.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Ticket_Table" Width="1.5" PointX="16.75" PointY="13.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.Timeing_Table" Width="1.5" PointX="10.5" PointY="22.5" />
+        <EntityTypeShape EntityType="Tezol_DBModel.User_Table" Width="1.5" PointX="9" PointY="4.125" />
+        <EntityTypeShape EntityType="Tezol_DBModel.View_Group" Width="1.5" PointX="16.75" PointY="16.875" />
+        <EntityTypeShape EntityType="Tezol_DBModel.View_Total" Width="1.5" PointX="17.75" PointY="1.875" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Address_Table_User_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Ads_Table_Group_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_BanerApp_Table_Supper_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Product_Table_Category_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Country_Table_Province_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Region_Table_Country_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Delivery_Table_Supper_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Timeing_Table_Delivery_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Following_Table_Supper_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Following_Table_User_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_OwenerGroup_Table_Group_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Product_Table_Group_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_ProductShop_Table_GroupShop_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Like_Table_Product_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Like_Table_Supper_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Location_Table_User_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_SlideMenu_Table_Menu_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Supper_Table_Menu_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Order_Table_User_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_OrderDetail_Table_Order_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_OrderDetail_Table_Product_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_OrderDetail_Table_ProductShop_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_OwenerGroup_Table_Supper_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_OwnerProduct_Table_Product_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_OwnerProduct_Table_Supper_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Review_Table_Product_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Supper_Table_Region_Table" />
+        <AssociationConnector Association="Tezol_DBModel.FK_Review_Table_User_Table" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

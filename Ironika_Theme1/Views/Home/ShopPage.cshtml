@@ -1,0 +1,210 @@
+﻿<title>معرفی فروشگاه</title>
+@using Ironika_Theme1.Models;
+@using System.ComponentModel.DataAnnotations;
+@model Ironika_Theme1.Models.Main
+@{
+    ViewBag.Title = "About";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+    string Name = ViewBag.Name;
+    int SupperId = 0;
+    List<GroupShop> lstBig_Menu = ViewBag.BigMenu;
+    List<GroupShop> lstParent_Menu = ViewBag.ParentMenu;
+    List<GroupShop> lstChild_Menu = ViewBag.ChildMenu;
+    string MenuName = ViewBag.MenuName; int MenuId = 0;
+    var ObjsMenu = db.Menu_Table.FirstOrDefault(r => r.Title == MenuName);
+    if (ObjsMenu != null)
+    {
+        MenuId = ObjsMenu.MenuId;
+    }
+    else
+    {
+        MenuId = 0;
+    }
+    var Objs = db.Supper_Table.FirstOrDefault(r => r.ShopName == Name);
+
+    List<OwnerProduct_Table> lst = new List<OwnerProduct_Table>();
+
+
+    if (Objs != null)
+    {
+        lst = db.OwnerProduct_Table.Where(r => r.SupperId == Objs.SupperId && r.State == true).OrderByDescending(r => r.OwnerProductId).ToList();
+
+
+    }
+}
+
+<section class="container">
+    <nav class="breadcrumbs"> <a href="/">خانه</a> <span class="divider">›</span> @Name </nav>
+</section>
+<section class="container">
+    <div class="row">
+        <section class="col-sm-8 col-md-9 col-lg-9 content-center">
+
+            <!-- Slider -->
+
+            <section class="owl-slider-outer slider-listing hidden-xs">
+                <a class="owl-slider-prev"></a> <a class="owl-slider-next"></a>
+                <div class="owl-slider">
+                    @{
+                        List<SlideMenu_Table> lstSlide = db.SlideMenu_Table.Where(r => r.MenuId == MenuId).ToList();
+                        foreach (var item in lstSlide)
+                        {
+                            <div class="item">
+                                <img src="~/Content/ImageSite/@item.Imageurl" alt="@item.Menu_Table.Title">
+
+                            </div>
+                        }
+                    }
+
+
+                </div>
+            </section>
+
+
+
+            <div class="products-list products-list-small row">
+
+                @{ 
+
+                    foreach (var cust in lst)
+                    {
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="../../ShopList/@cust.Product_Table.Name.Trim().Replace(" ", "-")" class="preview-image"><img class="img-responsive animate scale" src="~/Content/ImageSite/@cust.Product_Table.Imageurl" width="270" height="328" alt="@cust.Product_Table.Name"></a>
+
+                    </div>
+                    <h3 class="title"><a href="../../ShopList/@cust.Product_Table.Name.Trim().Replace(" ", "-")" class="preview-image">@cust.Product_Table.Name</a></h3>
+                    <h3>
+                        <div class="col-md-12">
+                            <div class="col-md-6"><span class="price new">@cust.Product_Table.Price.ToString()</span></div>
+                            <div class="col-md-6"><span class="price new">@cust.Product_Table.Price.ToString()</span></div>
+                        </div>
+                    </h3>
+                    <h3 class="title"><span style="font-family:pashaBold" class="price old">ریال</span></h3>
+                    <!--description-->
+                    
+                    <!--buttons-->
+                    <div class="list_buttons">
+                        <div class="col-md-9">
+                            <a class="pull-left" href="#">
+                                <div class="list_rating">
+                                    <span class="rating">
+                                        @{
+                                            switch (cust.Product_Table.Rating)
+                                            {
+                                                case 5:
+                                                    <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i>
+                                                    break;
+                                                case 4:
+                                                    <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i>
+                                                    break;
+                                                case 3:
+                                                    <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                    break;
+                                                case 2:
+                                                    <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                    break;
+                                                case 1:
+                                                    <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                    break;
+                                            }
+                                        }
+
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3"><a class="btn btn-mega pull-right" href="#"><span class="icon-basket"></span></a></div>
+
+                    </div>
+                </div>
+                                                }
+                                            }
+
+
+            </div>
+            <!-- //end Products list -->
+            <!-- Filters -->
+            <!-- //end Filters -->
+
+        </section>
+        <!-- Left column -->
+        <aside class="col-sm-4 col-md-3 col-lg-3 content-aside">
+
+            <!-- Shop by categories -->
+            <section>
+                <h3>دسته بندی ها</h3>
+                <ul class="expander-list">
+                   
+
+                        
+                            @{
+
+                                foreach (var item in lstBig_Menu)
+                                {
+                                    <li>
+                                        <span class="name">
+                                            <span class="expander">-</span>
+                                            <a href="../../Listing/@item.Name.Trim().Replace(" ", "-")">@item.Name</a>
+                                        </span>
+                                        @{
+
+                                            if (lstParent_Menu.Where(r=>r.Parent.Value==item.GroupId).Count() > 0)
+                                            {
+                                                <ul>
+                                                    @foreach (var items in lstParent_Menu.Where(r => r.Parent.Value == item.GroupId))
+                                                    {
+
+                                                        <li>
+                                                            @{
+
+                                                                if (lstChild_Menu.Where(r => r.Parent.Value == items.GroupId).Count() > 0)
+                                                                {
+                                                                    <span class="name">
+                                                                        <span class="expander">-</span>
+                                                                        <a href="../../Listing/@items.Name.Trim().Replace(" ", "-")">@items.Name</a>
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="name"><a href="../../Listing/@items.Name.Trim().Replace(" ", "-")">@items.Name</a></span>
+                                                                }
+                                                                if (lstChild_Menu.Where(r => r.Parent.Value == items.GroupId).Count() > 0)
+                                                                {
+                                                                    <ul>
+                                                                        @foreach (var itemss in lstChild_Menu.Where(r => r.Parent.Value == items.GroupId))
+                                                                        {
+                                                                            <li>
+                                                                                <span class="name">
+                                                                                    <a href="../../Listing/@itemss.Name.Trim().Replace(" ", "-")">@itemss.Name</a>
+                                                                                </span>
+                                                                            </li>
+                                                                        }
+                                                                    </ul>
+                                                                }
+                                                            }
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                            <li><span class="name"><a href="../../Listing/@item.Name.Trim().Replace(" ", "-")">@item.Name</a></span></li>
+                                        }
+                                        }
+                                </li>
+                            }
+                            }
+                        
+                       
+
+                        </ul>
+                    </section>
+
+                </aside>
+                <!-- //end Left column -->
+                <!-- Right column -->
+                <!-- //end Right column -->
+
+            </div>
+        </section>

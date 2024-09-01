@@ -1,0 +1,2942 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Tezol_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address_Table">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tele" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegionId" Type="int" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Ads_Table">
+          <Key>
+            <PropertyRef Name="AdsId" />
+          </Key>
+          <Property Name="AdsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="GroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="AdsShop_Table">
+          <Key>
+            <PropertyRef Name="AdsShopId" />
+          </Key>
+          <Property Name="AdsShopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="State" Type="bit" />
+          <Property Name="PartId" Type="int" />
+        </EntityType>
+        <EntityType Name="Baner_Table">
+          <Key>
+            <PropertyRef Name="BanerId" />
+          </Key>
+          <Property Name="BanerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="BanerApp_Table">
+          <Key>
+            <PropertyRef Name="BanerId" />
+          </Key>
+          <Property Name="BanerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="State" Type="bit" />
+          <Property Name="Position" Type="bit" />
+          <Property Name="SupeerId" Type="int" />
+        </EntityType>
+        <EntityType Name="Brands_Table">
+          <Key>
+            <PropertyRef Name="BrandsId" />
+          </Key>
+          <Property Name="BrandsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ShowIndex" Type="bit" />
+        </EntityType>
+        <EntityType Name="Category_Table">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Citypost_Table">
+          <Key>
+            <PropertyRef Name="CityPostId" />
+          </Key>
+          <Property Name="CityPostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProvincePostId" Type="int" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="pName" Type="nvarchar" MaxLength="100" />
+          <Property Name="eName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Contact_Table">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="300" />
+          <Property Name="Tele" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Map" Type="nvarchar(max)" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Whustup" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telegram" Type="nvarchar" MaxLength="100" />
+          <Property Name="Insta" Type="nvarchar" MaxLength="100" />
+          <Property Name="Twiter" Type="nvarchar" MaxLength="100" />
+          <Property Name="Facebook" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Content_Table">
+          <Key>
+            <PropertyRef Name="ContentId" />
+          </Key>
+          <Property Name="ContentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Kind" Type="int" />
+          <Property Name="SupperId" Type="int" />
+        </EntityType>
+        <EntityType Name="Country_Table">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProvinceId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Delivery_Table">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupperId" Type="int" />
+          <Property Name="Kind" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Timeing" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Faq_Table">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Name="FaqId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Following_Table">
+          <Key>
+            <PropertyRef Name="FollowingId" />
+          </Key>
+          <Property Name="FollowingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SupperId" Type="int" />
+          <Property Name="DateFollow" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Group_Table">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Parent" Type="int" />
+          <Property Name="Imageurl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Kind" Type="int" />
+        </EntityType>
+        <EntityType Name="GroupShop_Table">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupperId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Imageurl" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Like_Table">
+          <Key>
+            <PropertyRef Name="LikeId" />
+          </Key>
+          <Property Name="LikeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SupperId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Location_Table">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="MyLat" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyLot" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Menu_Table">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Parent" Type="int" />
+          <Property Name="Kind" Type="int" />
+          <Property Name="State" Type="bit" />
+          <Property Name="OrderItem" Type="int" />
+        </EntityType>
+        <EntityType Name="Order_Table">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegisterId" Type="int" />
+          <Property Name="SupperId" Type="int" />
+          <Property Name="DateSales" Type="datetime" />
+          <Property Name="FactorCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="KindOrder" Type="bit" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CopenId" Type="int" />
+          <Property Name="DeliveryId" Type="int" />
+          <Property Name="LocationId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderDetail_Table">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductShopId" Type="int" />
+          <Property Name="Price" Type="bigint" />
+          <Property Name="Number" Type="int" />
+        </EntityType>
+        <EntityType Name="OwenerGroup_Table">
+          <Key>
+            <PropertyRef Name="OwnerGroupId" />
+          </Key>
+          <Property Name="OwnerGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="SupperId" Type="int" />
+        </EntityType>
+        <EntityType Name="OwnerProduct_Table">
+          <Key>
+            <PropertyRef Name="OwnerProductId" />
+          </Key>
+          <Property Name="OwnerProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="SupperId" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Payment_Table">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="People_Table">
+          <Key>
+            <PropertyRef Name="PeopleId" />
+          </Key>
+          <Property Name="PeopleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="300" />
+          <Property Name="Tele" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="DareRequestLa" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product_Table">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Imageurl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="StateIndex" Type="bit" />
+          <Property Name="Images" Type="nvarchar(max)" />
+          <Property Name="attributes" Type="nvarchar(max)" />
+          <Property Name="EbazaarProductID" Type="int" />
+          <Property Name="StateShop" Type="int" />
+          <Property Name="Haraji" Type="bit" />
+          <Property Name="EndHaraji" Type="datetime" />
+          <Property Name="StateOff" Type="bit" />
+          <Property Name="OffPresent" Type="int" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="Kind" Type="int" />
+          <Property Name="LikePro" Type="int" />
+          <Property Name="DisLikePro" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductShop_Table">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Imageurl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Images" Type="nvarchar(max)" />
+          <Property Name="attributes" Type="nvarchar(max)" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="LikePro" Type="int" />
+          <Property Name="DisLikePro" Type="int" />
+        </EntityType>
+        <EntityType Name="Province_Table">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Provincepost_Table">
+          <Key>
+            <PropertyRef Name="ProvincePostId" />
+          </Key>
+          <Property Name="ProvincePostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="pName" Type="nvarchar" MaxLength="100" />
+          <Property Name="eName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Rating_Table">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Region_Table">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Review_Table">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SupperId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="RegisterDate" Type="datetime" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="SlideMenu_Table">
+          <Key>
+            <PropertyRef Name="SlideMenuId" />
+          </Key>
+          <Property Name="SlideMenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="Imageurl" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Slider_Table">
+          <Key>
+            <PropertyRef Name="SliderId" />
+          </Key>
+          <Property Name="SliderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="State" Type="bit" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Story_Table">
+          <Key>
+            <PropertyRef Name="StoryId" />
+          </Key>
+          <Property Name="StoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PeopleId" Type="int" />
+          <Property Name="StateUser" Type="bit" />
+          <Property Name="StateShow" Type="bit" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Supper_Table">
+          <Key>
+            <PropertyRef Name="SupperId" />
+          </Key>
+          <Property Name="SupperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="KindHaHo" Type="int" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="300" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Married" Type="bit" />
+          <Property Name="Melliat" Type="bit" />
+          <Property Name="SodorIdentyNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="MelliCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="IdentyNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="DateRegister" Type="datetime" />
+          <Property Name="RegionId" Type="int" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="ProvinceFaaliat" Type="int" />
+          <Property Name="Education" Type="int" />
+          <Property Name="Major" Type="nvarchar" MaxLength="200" />
+          <Property Name="Javaz" Type="int" />
+          <Property Name="JavazNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="200" />
+          <Property Name="SabtNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="SabtDate" Type="datetime" />
+          <Property Name="MahaleSabt" Type="nvarchar" MaxLength="200" />
+          <Property Name="ShenasehMelli" Type="nvarchar" MaxLength="100" />
+          <Property Name="CodeEghtesadi" Type="nvarchar" MaxLength="100" />
+          <Property Name="MobileCodeHaghighi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tele" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShopName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Sheba" Type="nvarchar" MaxLength="50" />
+          <Property Name="HandicraftsGroups" Type="nvarchar(max)" />
+          <Property Name="GroupsKanons" Type="nvarchar" MaxLength="50" />
+          <Property Name="AnbarState" Type="bit" />
+          <Property Name="AnbarTele" Type="nvarchar" MaxLength="50" />
+          <Property Name="AnbarAddress" Type="nvarchar(max)" />
+          <Property Name="CompanyKind" Type="int" />
+          <Property Name="KindFaaliat" Type="int" />
+          <Property Name="SahebanEmza" Type="nvarchar(max)" />
+          <Property Name="CountShop" Type="int" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Dastgah" Type="nvarchar" MaxLength="1000" />
+          <Property Name="KarmandNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Place" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsargariStatus" Type="int" />
+          <Property Name="PostOrgin" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IdentityPostOrgin" Type="nvarchar" MaxLength="50" />
+          <Property Name="VahedOrgin" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IdentityVahedOrgin" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="JobTabagheh" Type="nvarchar" MaxLength="1000" />
+          <Property Name="JobRotbeh" Type="nvarchar" MaxLength="1000" />
+          <Property Name="KhedmatDate" Type="datetime" />
+          <Property Name="SabeghehDate" Type="datetime" />
+          <Property Name="PlaceKhedmat" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CityKhedmat" Type="int" />
+          <Property Name="Mojavez1" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Mojavez2" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Mojavez3" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Mojavez4" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Mojavez5" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Mojavez6" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ManagerId" Type="int" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="300" />
+          <Property Name="NewsPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatueActive" Type="bit" />
+          <Property Name="StatusPanel" Type="bit" />
+          <Property Name="whatsup" Type="nvarchar" MaxLength="50" />
+          <Property Name="instagram" Type="nvarchar" MaxLength="50" />
+          <Property Name="telegram" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyLat" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyLot" Type="nvarchar" MaxLength="50" />
+          <Property Name="LikeId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Theme_Table">
+          <Key>
+            <PropertyRef Name="ThemeId" />
+          </Key>
+          <Property Name="ThemeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="TagId" Type="int" />
+          <Property Name="Banner1" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Banner2" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BannerGroup1" Type="int" />
+          <Property Name="BannerGroup2" Type="int" />
+          <Property Name="LayoutCat1" Type="int" />
+          <Property Name="LayoutCat2" Type="int" />
+        </EntityType>
+        <EntityType Name="Ticket_Table">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="DateRegister" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Timeing_Table">
+          <Key>
+            <PropertyRef Name="TimeingId" />
+          </Key>
+          <Property Name="TimeingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="User_Table">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="300" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegisterDate" Type="datetime" />
+          <Property Name="Tele" Type="nvarchar" MaxLength="100" />
+          <Property Name="MelliCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Tezol_DB.dbo.View_Group' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="SupperId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Tezol_DB.dbo.View_Total' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Total">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="RegisterId" Type="int" />
+          <Property Name="DateSales" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Price" Type="bigint" />
+          <Property Name="Number" Type="int" />
+          <Property Name="SupperId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Address_Table_User_Table">
+          <End Role="User_Table" Type="Self.User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address_Table" Type="Self.Address_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Address_Table">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ads_Table_Group_Table">
+          <End Role="Group_Table" Type="Self.Group_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ads_Table" Type="Self.Ads_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group_Table">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="Ads_Table">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanerApp_Table_Supper_Table">
+          <End Role="Supper_Table" Type="Self.Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BanerApp_Table" Type="Self.BanerApp_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="BanerApp_Table">
+              <PropertyRef Name="SupeerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_Table_Province_Table">
+          <End Role="Province_Table" Type="Self.Province_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Country_Table" Type="Self.Country_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province_Table">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Country_Table">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Table_Supper_Table">
+          <End Role="Supper_Table" Type="Self.Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery_Table" Type="Self.Delivery_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="Delivery_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Following_Table_Supper_Table">
+          <End Role="Supper_Table" Type="Self.Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Following_Table" Type="Self.Following_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="Following_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Following_Table_User_Table">
+          <End Role="User_Table" Type="Self.User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Following_Table" Type="Self.Following_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Following_Table">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Table_Product_Table">
+          <End Role="Product_Table" Type="Self.Product_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Like_Table" Type="Self.Like_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Like_Table">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Table_Supper_Table">
+          <End Role="Supper_Table" Type="Self.Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Like_Table" Type="Self.Like_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="Like_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Table_User_Table">
+          <End Role="User_Table" Type="Self.User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Location_Table" Type="Self.Location_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Location_Table">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Table_User_Table">
+          <End Role="User_Table" Type="Self.User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order_Table" Type="Self.Order_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order_Table">
+              <PropertyRef Name="RegisterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Table_Order_Table">
+          <End Role="Order_Table" Type="Self.Order_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderDetail_Table" Type="Self.OrderDetail_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order_Table">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetail_Table">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Table_Product_Table">
+          <End Role="Product_Table" Type="Self.Product_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderDetail_Table" Type="Self.OrderDetail_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetail_Table">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Table_ProductShop_Table">
+          <End Role="ProductShop_Table" Type="Self.ProductShop_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderDetail_Table" Type="Self.OrderDetail_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductShop_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetail_Table">
+              <PropertyRef Name="ProductShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwenerGroup_Table_Group_Table">
+          <End Role="Group_Table" Type="Self.Group_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OwenerGroup_Table" Type="Self.OwenerGroup_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group_Table">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="OwenerGroup_Table">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwenerGroup_Table_Supper_Table">
+          <End Role="Supper_Table" Type="Self.Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OwenerGroup_Table" Type="Self.OwenerGroup_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="OwenerGroup_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerProduct_Table_Product_Table">
+          <End Role="Product_Table" Type="Self.Product_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OwnerProduct_Table" Type="Self.OwnerProduct_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OwnerProduct_Table">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerProduct_Table_Supper_Table">
+          <End Role="Supper_Table" Type="Self.Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OwnerProduct_Table" Type="Self.OwnerProduct_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="OwnerProduct_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Table_Category_Table">
+          <End Role="Category_Table" Type="Self.Category_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Table" Type="Self.Product_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category_Table">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product_Table">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Table_Group_Table">
+          <End Role="Group_Table" Type="Self.Group_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Table" Type="Self.Product_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group_Table">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="Product_Table">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductShop_Table_GroupShop_Table">
+          <End Role="GroupShop_Table" Type="Self.GroupShop_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductShop_Table" Type="Self.ProductShop_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupShop_Table">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="ProductShop_Table">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region_Table_Country_Table">
+          <End Role="Country_Table" Type="Self.Country_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Region_Table" Type="Self.Region_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country_Table">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Region_Table">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Table_Product_Table">
+          <End Role="Product_Table" Type="Self.Product_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Review_Table" Type="Self.Review_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Review_Table">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Table_User_Table">
+          <End Role="User_Table" Type="Self.User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Review_Table" Type="Self.Review_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Review_Table">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SlideMenu_Table_Menu_Table">
+          <End Role="Menu_Table" Type="Self.Menu_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SlideMenu_Table" Type="Self.SlideMenu_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Table">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="SlideMenu_Table">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supper_Table_Menu_Table">
+          <End Role="Menu_Table" Type="Self.Menu_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Supper_Table" Type="Self.Supper_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Table">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="Supper_Table">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supper_Table_Region_Table">
+          <End Role="Region_Table" Type="Self.Region_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Supper_Table" Type="Self.Supper_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region_Table">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="Supper_Table">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timeing_Table_Delivery_Table">
+          <End Role="Delivery_Table" Type="Self.Delivery_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Timeing_Table" Type="Self.Timeing_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery_Table">
+              <PropertyRef Name="DeliveryId" />
+            </Principal>
+            <Dependent Role="Timeing_Table">
+              <PropertyRef Name="DeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Tezol_DBModelStoreContainer">
+          <EntitySet Name="Address_Table" EntityType="Self.Address_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ads_Table" EntityType="Self.Ads_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdsShop_Table" EntityType="Self.AdsShop_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Baner_Table" EntityType="Self.Baner_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BanerApp_Table" EntityType="Self.BanerApp_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands_Table" EntityType="Self.Brands_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category_Table" EntityType="Self.Category_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Citypost_Table" EntityType="Self.Citypost_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact_Table" EntityType="Self.Contact_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Content_Table" EntityType="Self.Content_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country_Table" EntityType="Self.Country_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delivery_Table" EntityType="Self.Delivery_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faq_Table" EntityType="Self.Faq_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Following_Table" EntityType="Self.Following_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_Table" EntityType="Self.Group_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupShop_Table" EntityType="Self.GroupShop_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Like_Table" EntityType="Self.Like_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location_Table" EntityType="Self.Location_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu_Table" EntityType="Self.Menu_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Table" EntityType="Self.Order_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail_Table" EntityType="Self.OrderDetail_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwenerGroup_Table" EntityType="Self.OwenerGroup_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerProduct_Table" EntityType="Self.OwnerProduct_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment_Table" EntityType="Self.Payment_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People_Table" EntityType="Self.People_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Table" EntityType="Self.Product_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductShop_Table" EntityType="Self.ProductShop_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province_Table" EntityType="Self.Province_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincepost_Table" EntityType="Self.Provincepost_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating_Table" EntityType="Self.Rating_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region_Table" EntityType="Self.Region_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review_Table" EntityType="Self.Review_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SlideMenu_Table" EntityType="Self.SlideMenu_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slider_Table" EntityType="Self.Slider_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Story_Table" EntityType="Self.Story_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supper_Table" EntityType="Self.Supper_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Theme_Table" EntityType="Self.Theme_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket_Table" EntityType="Self.Ticket_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timeing_Table" EntityType="Self.Timeing_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Table" EntityType="Self.User_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Group" EntityType="Self.View_Group" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Group].[Name] AS [Name], 
+    [View_Group].[GroupId] AS [GroupId], 
+    [View_Group].[SupperId] AS [SupperId]
+    FROM [dbo].[View_Group] AS [View_Group]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Total" EntityType="Self.View_Total" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Total].[OrderId] AS [OrderId], 
+    [View_Total].[RegisterId] AS [RegisterId], 
+    [View_Total].[DateSales] AS [DateSales], 
+    [View_Total].[Status] AS [Status], 
+    [View_Total].[ProductId] AS [ProductId], 
+    [View_Total].[Name] AS [Name], 
+    [View_Total].[Price] AS [Price], 
+    [View_Total].[Number] AS [Number], 
+    [View_Total].[SupperId] AS [SupperId]
+    FROM [dbo].[View_Total] AS [View_Total]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Address_Table_User_Table" Association="Self.FK_Address_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Address_Table" EntitySet="Address_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ads_Table_Group_Table" Association="Self.FK_Ads_Table_Group_Table">
+            <End Role="Group_Table" EntitySet="Group_Table" />
+            <End Role="Ads_Table" EntitySet="Ads_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanerApp_Table_Supper_Table" Association="Self.FK_BanerApp_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="BanerApp_Table" EntitySet="BanerApp_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_Table_Province_Table" Association="Self.FK_Country_Table_Province_Table">
+            <End Role="Province_Table" EntitySet="Province_Table" />
+            <End Role="Country_Table" EntitySet="Country_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Table_Supper_Table" Association="Self.FK_Delivery_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="Delivery_Table" EntitySet="Delivery_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Following_Table_Supper_Table" Association="Self.FK_Following_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="Following_Table" EntitySet="Following_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Following_Table_User_Table" Association="Self.FK_Following_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Following_Table" EntitySet="Following_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Table_Product_Table" Association="Self.FK_Like_Table_Product_Table">
+            <End Role="Product_Table" EntitySet="Product_Table" />
+            <End Role="Like_Table" EntitySet="Like_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Table_Supper_Table" Association="Self.FK_Like_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="Like_Table" EntitySet="Like_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Table_User_Table" Association="Self.FK_Location_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Location_Table" EntitySet="Location_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Table_User_Table" Association="Self.FK_Order_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Order_Table" EntitySet="Order_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Table_Order_Table" Association="Self.FK_OrderDetail_Table_Order_Table">
+            <End Role="Order_Table" EntitySet="Order_Table" />
+            <End Role="OrderDetail_Table" EntitySet="OrderDetail_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Table_Product_Table" Association="Self.FK_OrderDetail_Table_Product_Table">
+            <End Role="Product_Table" EntitySet="Product_Table" />
+            <End Role="OrderDetail_Table" EntitySet="OrderDetail_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Table_ProductShop_Table" Association="Self.FK_OrderDetail_Table_ProductShop_Table">
+            <End Role="ProductShop_Table" EntitySet="ProductShop_Table" />
+            <End Role="OrderDetail_Table" EntitySet="OrderDetail_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwenerGroup_Table_Group_Table" Association="Self.FK_OwenerGroup_Table_Group_Table">
+            <End Role="Group_Table" EntitySet="Group_Table" />
+            <End Role="OwenerGroup_Table" EntitySet="OwenerGroup_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwenerGroup_Table_Supper_Table" Association="Self.FK_OwenerGroup_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="OwenerGroup_Table" EntitySet="OwenerGroup_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerProduct_Table_Product_Table" Association="Self.FK_OwnerProduct_Table_Product_Table">
+            <End Role="Product_Table" EntitySet="Product_Table" />
+            <End Role="OwnerProduct_Table" EntitySet="OwnerProduct_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerProduct_Table_Supper_Table" Association="Self.FK_OwnerProduct_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="OwnerProduct_Table" EntitySet="OwnerProduct_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Table_Category_Table" Association="Self.FK_Product_Table_Category_Table">
+            <End Role="Category_Table" EntitySet="Category_Table" />
+            <End Role="Product_Table" EntitySet="Product_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Table_Group_Table" Association="Self.FK_Product_Table_Group_Table">
+            <End Role="Group_Table" EntitySet="Group_Table" />
+            <End Role="Product_Table" EntitySet="Product_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductShop_Table_GroupShop_Table" Association="Self.FK_ProductShop_Table_GroupShop_Table">
+            <End Role="GroupShop_Table" EntitySet="GroupShop_Table" />
+            <End Role="ProductShop_Table" EntitySet="ProductShop_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region_Table_Country_Table" Association="Self.FK_Region_Table_Country_Table">
+            <End Role="Country_Table" EntitySet="Country_Table" />
+            <End Role="Region_Table" EntitySet="Region_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Table_Product_Table" Association="Self.FK_Review_Table_Product_Table">
+            <End Role="Product_Table" EntitySet="Product_Table" />
+            <End Role="Review_Table" EntitySet="Review_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Table_User_Table" Association="Self.FK_Review_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Review_Table" EntitySet="Review_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SlideMenu_Table_Menu_Table" Association="Self.FK_SlideMenu_Table_Menu_Table">
+            <End Role="Menu_Table" EntitySet="Menu_Table" />
+            <End Role="SlideMenu_Table" EntitySet="SlideMenu_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supper_Table_Menu_Table" Association="Self.FK_Supper_Table_Menu_Table">
+            <End Role="Menu_Table" EntitySet="Menu_Table" />
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supper_Table_Region_Table" Association="Self.FK_Supper_Table_Region_Table">
+            <End Role="Region_Table" EntitySet="Region_Table" />
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timeing_Table_Delivery_Table" Association="Self.FK_Timeing_Table_Delivery_Table">
+            <End Role="Delivery_Table" EntitySet="Delivery_Table" />
+            <End Role="Timeing_Table" EntitySet="Timeing_Table" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Tezol_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Tezol_DBEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Tezol_DBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Tezol_DBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Address_Table" EntityType="Tezol_DBModel.Address_Table" />
+          <EntitySet Name="Ads_Table" EntityType="Tezol_DBModel.Ads_Table" />
+          <EntitySet Name="AdsShop_Table" EntityType="Tezol_DBModel.AdsShop_Table" />
+          <EntitySet Name="Baner_Table" EntityType="Tezol_DBModel.Baner_Table" />
+          <EntitySet Name="BanerApp_Table" EntityType="Tezol_DBModel.BanerApp_Table" />
+          <EntitySet Name="Brands_Table" EntityType="Tezol_DBModel.Brands_Table" />
+          <EntitySet Name="Category_Table" EntityType="Tezol_DBModel.Category_Table" />
+          <EntitySet Name="Citypost_Table" EntityType="Tezol_DBModel.Citypost_Table" />
+          <EntitySet Name="Contact_Table" EntityType="Tezol_DBModel.Contact_Table" />
+          <EntitySet Name="Content_Table" EntityType="Tezol_DBModel.Content_Table" />
+          <EntitySet Name="Country_Table" EntityType="Tezol_DBModel.Country_Table" />
+          <EntitySet Name="Delivery_Table" EntityType="Tezol_DBModel.Delivery_Table" />
+          <EntitySet Name="Faq_Table" EntityType="Tezol_DBModel.Faq_Table" />
+          <EntitySet Name="Following_Table" EntityType="Tezol_DBModel.Following_Table" />
+          <EntitySet Name="Group_Table" EntityType="Tezol_DBModel.Group_Table" />
+          <EntitySet Name="GroupShop_Table" EntityType="Tezol_DBModel.GroupShop_Table" />
+          <EntitySet Name="Like_Table" EntityType="Tezol_DBModel.Like_Table" />
+          <EntitySet Name="Location_Table" EntityType="Tezol_DBModel.Location_Table" />
+          <EntitySet Name="Menu_Table" EntityType="Tezol_DBModel.Menu_Table" />
+          <EntitySet Name="Order_Table" EntityType="Tezol_DBModel.Order_Table" />
+          <EntitySet Name="OrderDetail_Table" EntityType="Tezol_DBModel.OrderDetail_Table" />
+          <EntitySet Name="OwenerGroup_Table" EntityType="Tezol_DBModel.OwenerGroup_Table" />
+          <EntitySet Name="OwnerProduct_Table" EntityType="Tezol_DBModel.OwnerProduct_Table" />
+          <EntitySet Name="Payment_Table" EntityType="Tezol_DBModel.Payment_Table" />
+          <EntitySet Name="People_Table" EntityType="Tezol_DBModel.People_Table" />
+          <EntitySet Name="Product_Table" EntityType="Tezol_DBModel.Product_Table" />
+          <EntitySet Name="ProductShop_Table" EntityType="Tezol_DBModel.ProductShop_Table" />
+          <EntitySet Name="Province_Table" EntityType="Tezol_DBModel.Province_Table" />
+          <EntitySet Name="Provincepost_Table" EntityType="Tezol_DBModel.Provincepost_Table" />
+          <EntitySet Name="Rating_Table" EntityType="Tezol_DBModel.Rating_Table" />
+          <EntitySet Name="Region_Table" EntityType="Tezol_DBModel.Region_Table" />
+          <EntitySet Name="Review_Table" EntityType="Tezol_DBModel.Review_Table" />
+          <EntitySet Name="SlideMenu_Table" EntityType="Tezol_DBModel.SlideMenu_Table" />
+          <EntitySet Name="Slider_Table" EntityType="Tezol_DBModel.Slider_Table" />
+          <EntitySet Name="Story_Table" EntityType="Tezol_DBModel.Story_Table" />
+          <EntitySet Name="Supper_Table" EntityType="Tezol_DBModel.Supper_Table" />
+          <EntitySet Name="sysdiagrams" EntityType="Tezol_DBModel.sysdiagram" />
+          <EntitySet Name="Theme_Table" EntityType="Tezol_DBModel.Theme_Table" />
+          <EntitySet Name="Ticket_Table" EntityType="Tezol_DBModel.Ticket_Table" />
+          <EntitySet Name="Timeing_Table" EntityType="Tezol_DBModel.Timeing_Table" />
+          <EntitySet Name="User_Table" EntityType="Tezol_DBModel.User_Table" />
+          <EntitySet Name="View_Group" EntityType="Tezol_DBModel.View_Group" />
+          <EntitySet Name="View_Total" EntityType="Tezol_DBModel.View_Total" />
+          <AssociationSet Name="FK_Address_Table_User_Table" Association="Tezol_DBModel.FK_Address_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Address_Table" EntitySet="Address_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ads_Table_Group_Table" Association="Tezol_DBModel.FK_Ads_Table_Group_Table">
+            <End Role="Group_Table" EntitySet="Group_Table" />
+            <End Role="Ads_Table" EntitySet="Ads_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BanerApp_Table_Supper_Table" Association="Tezol_DBModel.FK_BanerApp_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="BanerApp_Table" EntitySet="BanerApp_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Table_Category_Table" Association="Tezol_DBModel.FK_Product_Table_Category_Table">
+            <End Role="Category_Table" EntitySet="Category_Table" />
+            <End Role="Product_Table" EntitySet="Product_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_Table_Province_Table" Association="Tezol_DBModel.FK_Country_Table_Province_Table">
+            <End Role="Province_Table" EntitySet="Province_Table" />
+            <End Role="Country_Table" EntitySet="Country_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region_Table_Country_Table" Association="Tezol_DBModel.FK_Region_Table_Country_Table">
+            <End Role="Country_Table" EntitySet="Country_Table" />
+            <End Role="Region_Table" EntitySet="Region_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Table_Supper_Table" Association="Tezol_DBModel.FK_Delivery_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="Delivery_Table" EntitySet="Delivery_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timeing_Table_Delivery_Table" Association="Tezol_DBModel.FK_Timeing_Table_Delivery_Table">
+            <End Role="Delivery_Table" EntitySet="Delivery_Table" />
+            <End Role="Timeing_Table" EntitySet="Timeing_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Following_Table_Supper_Table" Association="Tezol_DBModel.FK_Following_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="Following_Table" EntitySet="Following_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Following_Table_User_Table" Association="Tezol_DBModel.FK_Following_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Following_Table" EntitySet="Following_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwenerGroup_Table_Group_Table" Association="Tezol_DBModel.FK_OwenerGroup_Table_Group_Table">
+            <End Role="Group_Table" EntitySet="Group_Table" />
+            <End Role="OwenerGroup_Table" EntitySet="OwenerGroup_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Table_Group_Table" Association="Tezol_DBModel.FK_Product_Table_Group_Table">
+            <End Role="Group_Table" EntitySet="Group_Table" />
+            <End Role="Product_Table" EntitySet="Product_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductShop_Table_GroupShop_Table" Association="Tezol_DBModel.FK_ProductShop_Table_GroupShop_Table">
+            <End Role="GroupShop_Table" EntitySet="GroupShop_Table" />
+            <End Role="ProductShop_Table" EntitySet="ProductShop_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Table_Product_Table" Association="Tezol_DBModel.FK_Like_Table_Product_Table">
+            <End Role="Product_Table" EntitySet="Product_Table" />
+            <End Role="Like_Table" EntitySet="Like_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Table_Supper_Table" Association="Tezol_DBModel.FK_Like_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="Like_Table" EntitySet="Like_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Table_User_Table" Association="Tezol_DBModel.FK_Location_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Location_Table" EntitySet="Location_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SlideMenu_Table_Menu_Table" Association="Tezol_DBModel.FK_SlideMenu_Table_Menu_Table">
+            <End Role="Menu_Table" EntitySet="Menu_Table" />
+            <End Role="SlideMenu_Table" EntitySet="SlideMenu_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supper_Table_Menu_Table" Association="Tezol_DBModel.FK_Supper_Table_Menu_Table">
+            <End Role="Menu_Table" EntitySet="Menu_Table" />
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Table_User_Table" Association="Tezol_DBModel.FK_Order_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Order_Table" EntitySet="Order_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Table_Order_Table" Association="Tezol_DBModel.FK_OrderDetail_Table_Order_Table">
+            <End Role="Order_Table" EntitySet="Order_Table" />
+            <End Role="OrderDetail_Table" EntitySet="OrderDetail_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Table_Product_Table" Association="Tezol_DBModel.FK_OrderDetail_Table_Product_Table">
+            <End Role="Product_Table" EntitySet="Product_Table" />
+            <End Role="OrderDetail_Table" EntitySet="OrderDetail_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Table_ProductShop_Table" Association="Tezol_DBModel.FK_OrderDetail_Table_ProductShop_Table">
+            <End Role="ProductShop_Table" EntitySet="ProductShop_Table" />
+            <End Role="OrderDetail_Table" EntitySet="OrderDetail_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwenerGroup_Table_Supper_Table" Association="Tezol_DBModel.FK_OwenerGroup_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="OwenerGroup_Table" EntitySet="OwenerGroup_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerProduct_Table_Product_Table" Association="Tezol_DBModel.FK_OwnerProduct_Table_Product_Table">
+            <End Role="Product_Table" EntitySet="Product_Table" />
+            <End Role="OwnerProduct_Table" EntitySet="OwnerProduct_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerProduct_Table_Supper_Table" Association="Tezol_DBModel.FK_OwnerProduct_Table_Supper_Table">
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+            <End Role="OwnerProduct_Table" EntitySet="OwnerProduct_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Table_Product_Table" Association="Tezol_DBModel.FK_Review_Table_Product_Table">
+            <End Role="Product_Table" EntitySet="Product_Table" />
+            <End Role="Review_Table" EntitySet="Review_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supper_Table_Region_Table" Association="Tezol_DBModel.FK_Supper_Table_Region_Table">
+            <End Role="Region_Table" EntitySet="Region_Table" />
+            <End Role="Supper_Table" EntitySet="Supper_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Table_User_Table" Association="Tezol_DBModel.FK_Review_Table_User_Table">
+            <End Role="User_Table" EntitySet="User_Table" />
+            <End Role="Review_Table" EntitySet="Review_Table" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Address_Table">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tele" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegionId" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_Table" Relationship="Tezol_DBModel.FK_Address_Table_User_Table" FromRole="Address_Table" ToRole="User_Table" />
+        </EntityType>
+        <EntityType Name="Ads_Table">
+          <Key>
+            <PropertyRef Name="AdsId" />
+          </Key>
+          <Property Name="AdsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" />
+          <NavigationProperty Name="Group_Table" Relationship="Tezol_DBModel.FK_Ads_Table_Group_Table" FromRole="Ads_Table" ToRole="Group_Table" />
+        </EntityType>
+        <EntityType Name="AdsShop_Table">
+          <Key>
+            <PropertyRef Name="AdsShopId" />
+          </Key>
+          <Property Name="AdsShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Boolean" />
+          <Property Name="PartId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Baner_Table">
+          <Key>
+            <PropertyRef Name="BanerId" />
+          </Key>
+          <Property Name="BanerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BanerApp_Table">
+          <Key>
+            <PropertyRef Name="BanerId" />
+          </Key>
+          <Property Name="BanerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Boolean" />
+          <Property Name="Position" Type="Boolean" />
+          <Property Name="SupeerId" Type="Int32" />
+          <NavigationProperty Name="Supper_Table" Relationship="Tezol_DBModel.FK_BanerApp_Table_Supper_Table" FromRole="BanerApp_Table" ToRole="Supper_Table" />
+        </EntityType>
+        <EntityType Name="Brands_Table">
+          <Key>
+            <PropertyRef Name="BrandsId" />
+          </Key>
+          <Property Name="BrandsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ShowIndex" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Category_Table">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product_Table" Relationship="Tezol_DBModel.FK_Product_Table_Category_Table" FromRole="Category_Table" ToRole="Product_Table" />
+        </EntityType>
+        <EntityType Name="Citypost_Table">
+          <Key>
+            <PropertyRef Name="CityPostId" />
+          </Key>
+          <Property Name="CityPostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProvincePostId" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="eName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contact_Table">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Tele" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Map" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Whustup" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telegram" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Insta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Twiter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Content_Table">
+          <Key>
+            <PropertyRef Name="ContentId" />
+          </Key>
+          <Property Name="ContentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kind" Type="Int32" />
+          <Property Name="SupperId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Country_Table">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProvinceId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Province_Table" Relationship="Tezol_DBModel.FK_Country_Table_Province_Table" FromRole="Country_Table" ToRole="Province_Table" />
+          <NavigationProperty Name="Region_Table" Relationship="Tezol_DBModel.FK_Region_Table_Country_Table" FromRole="Country_Table" ToRole="Region_Table" />
+        </EntityType>
+        <EntityType Name="Delivery_Table">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupperId" Type="Int32" />
+          <Property Name="Kind" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Timeing" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Supper_Table" Relationship="Tezol_DBModel.FK_Delivery_Table_Supper_Table" FromRole="Delivery_Table" ToRole="Supper_Table" />
+          <NavigationProperty Name="Timeing_Table" Relationship="Tezol_DBModel.FK_Timeing_Table_Delivery_Table" FromRole="Delivery_Table" ToRole="Timeing_Table" />
+        </EntityType>
+        <EntityType Name="Faq_Table">
+          <Key>
+            <PropertyRef Name="FaqId" />
+          </Key>
+          <Property Name="FaqId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Following_Table">
+          <Key>
+            <PropertyRef Name="FollowingId" />
+          </Key>
+          <Property Name="FollowingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SupperId" Type="Int32" />
+          <Property Name="DateFollow" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Supper_Table" Relationship="Tezol_DBModel.FK_Following_Table_Supper_Table" FromRole="Following_Table" ToRole="Supper_Table" />
+          <NavigationProperty Name="User_Table" Relationship="Tezol_DBModel.FK_Following_Table_User_Table" FromRole="Following_Table" ToRole="User_Table" />
+        </EntityType>
+        <EntityType Name="Group_Table">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Parent" Type="Int32" />
+          <Property Name="Imageurl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Kind" Type="Int32" />
+          <NavigationProperty Name="Ads_Table" Relationship="Tezol_DBModel.FK_Ads_Table_Group_Table" FromRole="Group_Table" ToRole="Ads_Table" />
+          <NavigationProperty Name="OwenerGroup_Table" Relationship="Tezol_DBModel.FK_OwenerGroup_Table_Group_Table" FromRole="Group_Table" ToRole="OwenerGroup_Table" />
+          <NavigationProperty Name="Product_Table" Relationship="Tezol_DBModel.FK_Product_Table_Group_Table" FromRole="Group_Table" ToRole="Product_Table" />
+        </EntityType>
+        <EntityType Name="GroupShop_Table">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupperId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Imageurl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductShop_Table" Relationship="Tezol_DBModel.FK_ProductShop_Table_GroupShop_Table" FromRole="GroupShop_Table" ToRole="ProductShop_Table" />
+        </EntityType>
+        <EntityType Name="Like_Table">
+          <Key>
+            <PropertyRef Name="LikeId" />
+          </Key>
+          <Property Name="LikeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SupperId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Product_Table" Relationship="Tezol_DBModel.FK_Like_Table_Product_Table" FromRole="Like_Table" ToRole="Product_Table" />
+          <NavigationProperty Name="Supper_Table" Relationship="Tezol_DBModel.FK_Like_Table_Supper_Table" FromRole="Like_Table" ToRole="Supper_Table" />
+        </EntityType>
+        <EntityType Name="Location_Table">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MyLat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MyLot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_Table" Relationship="Tezol_DBModel.FK_Location_Table_User_Table" FromRole="Location_Table" ToRole="User_Table" />
+        </EntityType>
+        <EntityType Name="Menu_Table">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Parent" Type="Int32" />
+          <Property Name="Kind" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <Property Name="OrderItem" Type="Int32" />
+          <NavigationProperty Name="SlideMenu_Table" Relationship="Tezol_DBModel.FK_SlideMenu_Table_Menu_Table" FromRole="Menu_Table" ToRole="SlideMenu_Table" />
+          <NavigationProperty Name="Supper_Table" Relationship="Tezol_DBModel.FK_Supper_Table_Menu_Table" FromRole="Menu_Table" ToRole="Supper_Table" />
+        </EntityType>
+        <EntityType Name="Order_Table">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegisterId" Type="Int32" />
+          <Property Name="SupperId" Type="Int32" />
+          <Property Name="DateSales" Type="DateTime" Precision="3" />
+          <Property Name="FactorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KindOrder" Type="Boolean" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CopenId" Type="Int32" />
+          <Property Name="DeliveryId" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" />
+          <NavigationProperty Name="User_Table" Relationship="Tezol_DBModel.FK_Order_Table_User_Table" FromRole="Order_Table" ToRole="User_Table" />
+          <NavigationProperty Name="OrderDetail_Table" Relationship="Tezol_DBModel.FK_OrderDetail_Table_Order_Table" FromRole="Order_Table" ToRole="OrderDetail_Table" />
+        </EntityType>
+        <EntityType Name="OrderDetail_Table">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ProductShopId" Type="Int32" />
+          <Property Name="Price" Type="Int64" />
+          <Property Name="Number" Type="Int32" />
+          <NavigationProperty Name="Order_Table" Relationship="Tezol_DBModel.FK_OrderDetail_Table_Order_Table" FromRole="OrderDetail_Table" ToRole="Order_Table" />
+          <NavigationProperty Name="Product_Table" Relationship="Tezol_DBModel.FK_OrderDetail_Table_Product_Table" FromRole="OrderDetail_Table" ToRole="Product_Table" />
+          <NavigationProperty Name="ProductShop_Table" Relationship="Tezol_DBModel.FK_OrderDetail_Table_ProductShop_Table" FromRole="OrderDetail_Table" ToRole="ProductShop_Table" />
+        </EntityType>
+        <EntityType Name="OwenerGroup_Table">
+          <Key>
+            <PropertyRef Name="OwnerGroupId" />
+          </Key>
+          <Property Name="OwnerGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="SupperId" Type="Int32" />
+          <NavigationProperty Name="Group_Table" Relationship="Tezol_DBModel.FK_OwenerGroup_Table_Group_Table" FromRole="OwenerGroup_Table" ToRole="Group_Table" />
+          <NavigationProperty Name="Supper_Table" Relationship="Tezol_DBModel.FK_OwenerGroup_Table_Supper_Table" FromRole="OwenerGroup_Table" ToRole="Supper_Table" />
+        </EntityType>
+        <EntityType Name="OwnerProduct_Table">
+          <Key>
+            <PropertyRef Name="OwnerProductId" />
+          </Key>
+          <Property Name="OwnerProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="SupperId" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Product_Table" Relationship="Tezol_DBModel.FK_OwnerProduct_Table_Product_Table" FromRole="OwnerProduct_Table" ToRole="Product_Table" />
+          <NavigationProperty Name="Supper_Table" Relationship="Tezol_DBModel.FK_OwnerProduct_Table_Supper_Table" FromRole="OwnerProduct_Table" ToRole="Supper_Table" />
+        </EntityType>
+        <EntityType Name="Payment_Table">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="People_Table">
+          <Key>
+            <PropertyRef Name="PeopleId" />
+          </Key>
+          <Property Name="PeopleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Tele" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DareRequestLa" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product_Table">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Imageurl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StateIndex" Type="Boolean" />
+          <Property Name="Images" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="attributes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EbazaarProductID" Type="Int32" />
+          <Property Name="StateShop" Type="Int32" />
+          <Property Name="Haraji" Type="Boolean" />
+          <Property Name="EndHaraji" Type="DateTime" Precision="3" />
+          <Property Name="StateOff" Type="Boolean" />
+          <Property Name="OffPresent" Type="Int32" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="Kind" Type="Int32" />
+          <Property Name="LikePro" Type="Int32" />
+          <Property Name="DisLikePro" Type="Int32" />
+          <NavigationProperty Name="Category_Table" Relationship="Tezol_DBModel.FK_Product_Table_Category_Table" FromRole="Product_Table" ToRole="Category_Table" />
+          <NavigationProperty Name="Group_Table" Relationship="Tezol_DBModel.FK_Product_Table_Group_Table" FromRole="Product_Table" ToRole="Group_Table" />
+          <NavigationProperty Name="Like_Table" Relationship="Tezol_DBModel.FK_Like_Table_Product_Table" FromRole="Product_Table" ToRole="Like_Table" />
+          <NavigationProperty Name="OrderDetail_Table" Relationship="Tezol_DBModel.FK_OrderDetail_Table_Product_Table" FromRole="Product_Table" ToRole="OrderDetail_Table" />
+          <NavigationProperty Name="OwnerProduct_Table" Relationship="Tezol_DBModel.FK_OwnerProduct_Table_Product_Table" FromRole="Product_Table" ToRole="OwnerProduct_Table" />
+          <NavigationProperty Name="Review_Table" Relationship="Tezol_DBModel.FK_Review_Table_Product_Table" FromRole="Product_Table" ToRole="Review_Table" />
+        </EntityType>
+        <EntityType Name="ProductShop_Table">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Imageurl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="attributes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="LikePro" Type="Int32" />
+          <Property Name="DisLikePro" Type="Int32" />
+          <NavigationProperty Name="GroupShop_Table" Relationship="Tezol_DBModel.FK_ProductShop_Table_GroupShop_Table" FromRole="ProductShop_Table" ToRole="GroupShop_Table" />
+          <NavigationProperty Name="OrderDetail_Table" Relationship="Tezol_DBModel.FK_OrderDetail_Table_ProductShop_Table" FromRole="ProductShop_Table" ToRole="OrderDetail_Table" />
+        </EntityType>
+        <EntityType Name="Province_Table">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Country_Table" Relationship="Tezol_DBModel.FK_Country_Table_Province_Table" FromRole="Province_Table" ToRole="Country_Table" />
+        </EntityType>
+        <EntityType Name="Provincepost_Table">
+          <Key>
+            <PropertyRef Name="ProvincePostId" />
+          </Key>
+          <Property Name="ProvincePostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="eName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Rating_Table">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Region_Table">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country_Table" Relationship="Tezol_DBModel.FK_Region_Table_Country_Table" FromRole="Region_Table" ToRole="Country_Table" />
+          <NavigationProperty Name="Supper_Table" Relationship="Tezol_DBModel.FK_Supper_Table_Region_Table" FromRole="Region_Table" ToRole="Supper_Table" />
+        </EntityType>
+        <EntityType Name="Review_Table">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SupperId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Product_Table" Relationship="Tezol_DBModel.FK_Review_Table_Product_Table" FromRole="Review_Table" ToRole="Product_Table" />
+          <NavigationProperty Name="User_Table" Relationship="Tezol_DBModel.FK_Review_Table_User_Table" FromRole="Review_Table" ToRole="User_Table" />
+        </EntityType>
+        <EntityType Name="SlideMenu_Table">
+          <Key>
+            <PropertyRef Name="SlideMenuId" />
+          </Key>
+          <Property Name="SlideMenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="Imageurl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menu_Table" Relationship="Tezol_DBModel.FK_SlideMenu_Table_Menu_Table" FromRole="SlideMenu_Table" ToRole="Menu_Table" />
+        </EntityType>
+        <EntityType Name="Slider_Table">
+          <Key>
+            <PropertyRef Name="SliderId" />
+          </Key>
+          <Property Name="SliderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Story_Table">
+          <Key>
+            <PropertyRef Name="StoryId" />
+          </Key>
+          <Property Name="StoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PeopleId" Type="Int32" />
+          <Property Name="StateUser" Type="Boolean" />
+          <Property Name="StateShow" Type="Boolean" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Supper_Table">
+          <Key>
+            <PropertyRef Name="SupperId" />
+          </Key>
+          <Property Name="SupperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="Logo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="KindHaHo" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Married" Type="Boolean" />
+          <Property Name="Melliat" Type="Boolean" />
+          <Property Name="SodorIdentyNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MelliCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IdentyNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="DateRegister" Type="DateTime" Precision="3" />
+          <Property Name="RegionId" Type="Int32" />
+          <Property Name="PostalCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceFaaliat" Type="Int32" />
+          <Property Name="Education" Type="Int32" />
+          <Property Name="Major" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Javaz" Type="Int32" />
+          <Property Name="JavazNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SabtNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SabtDate" Type="DateTime" Precision="3" />
+          <Property Name="MahaleSabt" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ShenasehMelli" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CodeEghtesadi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MobileCodeHaghighi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tele" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShopName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Sheba" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HandicraftsGroups" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupsKanons" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AnbarState" Type="Boolean" />
+          <Property Name="AnbarTele" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AnbarAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyKind" Type="Int32" />
+          <Property Name="KindFaaliat" Type="Int32" />
+          <Property Name="SahebanEmza" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountShop" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dastgah" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="KarmandNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Place" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsargariStatus" Type="Int32" />
+          <Property Name="PostOrgin" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityPostOrgin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VahedOrgin" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityVahedOrgin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="JobTabagheh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="JobRotbeh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="KhedmatDate" Type="DateTime" Precision="3" />
+          <Property Name="SabeghehDate" Type="DateTime" Precision="3" />
+          <Property Name="PlaceKhedmat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CityKhedmat" Type="Int32" />
+          <Property Name="Mojavez1" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Mojavez2" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Mojavez3" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Mojavez4" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Mojavez5" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Mojavez6" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerId" Type="Int32" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="NewsPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatueActive" Type="Boolean" />
+          <Property Name="StatusPanel" Type="Boolean" />
+          <Property Name="whatsup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="instagram" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telegram" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MyLat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MyLot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LikeId" Type="Int32" />
+          <NavigationProperty Name="BanerApp_Table" Relationship="Tezol_DBModel.FK_BanerApp_Table_Supper_Table" FromRole="Supper_Table" ToRole="BanerApp_Table" />
+          <NavigationProperty Name="Delivery_Table" Relationship="Tezol_DBModel.FK_Delivery_Table_Supper_Table" FromRole="Supper_Table" ToRole="Delivery_Table" />
+          <NavigationProperty Name="Following_Table" Relationship="Tezol_DBModel.FK_Following_Table_Supper_Table" FromRole="Supper_Table" ToRole="Following_Table" />
+          <NavigationProperty Name="Like_Table" Relationship="Tezol_DBModel.FK_Like_Table_Supper_Table" FromRole="Supper_Table" ToRole="Like_Table" />
+          <NavigationProperty Name="Menu_Table" Relationship="Tezol_DBModel.FK_Supper_Table_Menu_Table" FromRole="Supper_Table" ToRole="Menu_Table" />
+          <NavigationProperty Name="OwenerGroup_Table" Relationship="Tezol_DBModel.FK_OwenerGroup_Table_Supper_Table" FromRole="Supper_Table" ToRole="OwenerGroup_Table" />
+          <NavigationProperty Name="OwnerProduct_Table" Relationship="Tezol_DBModel.FK_OwnerProduct_Table_Supper_Table" FromRole="Supper_Table" ToRole="OwnerProduct_Table" />
+          <NavigationProperty Name="Region_Table" Relationship="Tezol_DBModel.FK_Supper_Table_Region_Table" FromRole="Supper_Table" ToRole="Region_Table" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Theme_Table">
+          <Key>
+            <PropertyRef Name="ThemeId" />
+          </Key>
+          <Property Name="ThemeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TagId" Type="Int32" />
+          <Property Name="Banner1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Banner2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="BannerGroup1" Type="Int32" />
+          <Property Name="BannerGroup2" Type="Int32" />
+          <Property Name="LayoutCat1" Type="Int32" />
+          <Property Name="LayoutCat2" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Ticket_Table">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateRegister" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Timeing_Table">
+          <Key>
+            <PropertyRef Name="TimeingId" />
+          </Key>
+          <Property Name="TimeingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Delivery_Table" Relationship="Tezol_DBModel.FK_Timeing_Table_Delivery_Table" FromRole="Timeing_Table" ToRole="Delivery_Table" />
+        </EntityType>
+        <EntityType Name="User_Table">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+          <Property Name="Tele" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MelliCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address_Table" Relationship="Tezol_DBModel.FK_Address_Table_User_Table" FromRole="User_Table" ToRole="Address_Table" />
+          <NavigationProperty Name="Following_Table" Relationship="Tezol_DBModel.FK_Following_Table_User_Table" FromRole="User_Table" ToRole="Following_Table" />
+          <NavigationProperty Name="Location_Table" Relationship="Tezol_DBModel.FK_Location_Table_User_Table" FromRole="User_Table" ToRole="Location_Table" />
+          <NavigationProperty Name="Order_Table" Relationship="Tezol_DBModel.FK_Order_Table_User_Table" FromRole="User_Table" ToRole="Order_Table" />
+          <NavigationProperty Name="Review_Table" Relationship="Tezol_DBModel.FK_Review_Table_User_Table" FromRole="User_Table" ToRole="Review_Table" />
+        </EntityType>
+        <EntityType Name="View_Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="SupperId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="View_Total">
+          <Key>
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="RegisterId" Type="Int32" />
+          <Property Name="DateSales" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int64" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="SupperId" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Address_Table_User_Table">
+          <End Type="Tezol_DBModel.User_Table" Role="User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Address_Table" Role="Address_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Address_Table">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ads_Table_Group_Table">
+          <End Type="Tezol_DBModel.Group_Table" Role="Group_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Ads_Table" Role="Ads_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group_Table">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="Ads_Table">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BanerApp_Table_Supper_Table">
+          <End Type="Tezol_DBModel.Supper_Table" Role="Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.BanerApp_Table" Role="BanerApp_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="BanerApp_Table">
+              <PropertyRef Name="SupeerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Table_Category_Table">
+          <End Type="Tezol_DBModel.Category_Table" Role="Category_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Product_Table" Role="Product_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category_Table">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product_Table">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_Table_Province_Table">
+          <End Type="Tezol_DBModel.Province_Table" Role="Province_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Country_Table" Role="Country_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province_Table">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Country_Table">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region_Table_Country_Table">
+          <End Type="Tezol_DBModel.Country_Table" Role="Country_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Region_Table" Role="Region_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country_Table">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Region_Table">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Table_Supper_Table">
+          <End Type="Tezol_DBModel.Supper_Table" Role="Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Delivery_Table" Role="Delivery_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="Delivery_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timeing_Table_Delivery_Table">
+          <End Type="Tezol_DBModel.Delivery_Table" Role="Delivery_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Timeing_Table" Role="Timeing_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery_Table">
+              <PropertyRef Name="DeliveryId" />
+            </Principal>
+            <Dependent Role="Timeing_Table">
+              <PropertyRef Name="DeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Following_Table_Supper_Table">
+          <End Type="Tezol_DBModel.Supper_Table" Role="Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Following_Table" Role="Following_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="Following_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Following_Table_User_Table">
+          <End Type="Tezol_DBModel.User_Table" Role="User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Following_Table" Role="Following_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Following_Table">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwenerGroup_Table_Group_Table">
+          <End Type="Tezol_DBModel.Group_Table" Role="Group_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.OwenerGroup_Table" Role="OwenerGroup_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group_Table">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="OwenerGroup_Table">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Table_Group_Table">
+          <End Type="Tezol_DBModel.Group_Table" Role="Group_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Product_Table" Role="Product_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group_Table">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="Product_Table">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductShop_Table_GroupShop_Table">
+          <End Type="Tezol_DBModel.GroupShop_Table" Role="GroupShop_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.ProductShop_Table" Role="ProductShop_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupShop_Table">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="ProductShop_Table">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Table_Product_Table">
+          <End Type="Tezol_DBModel.Product_Table" Role="Product_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Like_Table" Role="Like_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Like_Table">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Table_Supper_Table">
+          <End Type="Tezol_DBModel.Supper_Table" Role="Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Like_Table" Role="Like_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="Like_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Table_User_Table">
+          <End Type="Tezol_DBModel.User_Table" Role="User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Location_Table" Role="Location_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Location_Table">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SlideMenu_Table_Menu_Table">
+          <End Type="Tezol_DBModel.Menu_Table" Role="Menu_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.SlideMenu_Table" Role="SlideMenu_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Table">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="SlideMenu_Table">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supper_Table_Menu_Table">
+          <End Type="Tezol_DBModel.Menu_Table" Role="Menu_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Supper_Table" Role="Supper_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu_Table">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="Supper_Table">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Table_User_Table">
+          <End Type="Tezol_DBModel.User_Table" Role="User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Order_Table" Role="Order_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order_Table">
+              <PropertyRef Name="RegisterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Table_Order_Table">
+          <End Type="Tezol_DBModel.Order_Table" Role="Order_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.OrderDetail_Table" Role="OrderDetail_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order_Table">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetail_Table">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Table_Product_Table">
+          <End Type="Tezol_DBModel.Product_Table" Role="Product_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.OrderDetail_Table" Role="OrderDetail_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetail_Table">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Table_ProductShop_Table">
+          <End Type="Tezol_DBModel.ProductShop_Table" Role="ProductShop_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.OrderDetail_Table" Role="OrderDetail_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductShop_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetail_Table">
+              <PropertyRef Name="ProductShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwenerGroup_Table_Supper_Table">
+          <End Type="Tezol_DBModel.Supper_Table" Role="Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.OwenerGroup_Table" Role="OwenerGroup_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="OwenerGroup_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerProduct_Table_Product_Table">
+          <End Type="Tezol_DBModel.Product_Table" Role="Product_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.OwnerProduct_Table" Role="OwnerProduct_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OwnerProduct_Table">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerProduct_Table_Supper_Table">
+          <End Type="Tezol_DBModel.Supper_Table" Role="Supper_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.OwnerProduct_Table" Role="OwnerProduct_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supper_Table">
+              <PropertyRef Name="SupperId" />
+            </Principal>
+            <Dependent Role="OwnerProduct_Table">
+              <PropertyRef Name="SupperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Table_Product_Table">
+          <End Type="Tezol_DBModel.Product_Table" Role="Product_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Review_Table" Role="Review_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Table">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Review_Table">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supper_Table_Region_Table">
+          <End Type="Tezol_DBModel.Region_Table" Role="Region_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Supper_Table" Role="Supper_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region_Table">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="Supper_Table">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Table_User_Table">
+          <End Type="Tezol_DBModel.User_Table" Role="User_Table" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Tezol_DBModel.Review_Table" Role="Review_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Table">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Review_Table">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Tezol_DBModelStoreContainer" CdmEntityContainer="Tezol_DBEntities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Tezol_DBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Tezol_DBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Tezol_DBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Tezol_DBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Tezol_DBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Tezol_DBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Tezol_DBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Tezol_DBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Tezol_DBModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Address_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Address_Table">
+              <MappingFragment StoreEntitySet="Address_Table">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Tele" ColumnName="Tele" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ads_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Ads_Table">
+              <MappingFragment StoreEntitySet="Ads_Table">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="AdsId" ColumnName="AdsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdsShop_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.AdsShop_Table">
+              <MappingFragment StoreEntitySet="AdsShop_Table">
+                <ScalarProperty Name="PartId" ColumnName="PartId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="AdsShopId" ColumnName="AdsShopId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Baner_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Baner_Table">
+              <MappingFragment StoreEntitySet="Baner_Table">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="BanerId" ColumnName="BanerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BanerApp_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.BanerApp_Table">
+              <MappingFragment StoreEntitySet="BanerApp_Table">
+                <ScalarProperty Name="SupeerId" ColumnName="SupeerId" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="BanerId" ColumnName="BanerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Brands_Table">
+              <MappingFragment StoreEntitySet="Brands_Table">
+                <ScalarProperty Name="ShowIndex" ColumnName="ShowIndex" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BrandsId" ColumnName="BrandsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Category_Table">
+              <MappingFragment StoreEntitySet="Category_Table">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Citypost_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Citypost_Table">
+              <MappingFragment StoreEntitySet="Citypost_Table">
+                <ScalarProperty Name="eName" ColumnName="eName" />
+                <ScalarProperty Name="pName" ColumnName="pName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ProvincePostId" ColumnName="ProvincePostId" />
+                <ScalarProperty Name="CityPostId" ColumnName="CityPostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Contact_Table">
+              <MappingFragment StoreEntitySet="Contact_Table">
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Twiter" ColumnName="Twiter" />
+                <ScalarProperty Name="Insta" ColumnName="Insta" />
+                <ScalarProperty Name="Telegram" ColumnName="Telegram" />
+                <ScalarProperty Name="Whustup" ColumnName="Whustup" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Map" ColumnName="Map" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Tele" ColumnName="Tele" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Content_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Content_Table">
+              <MappingFragment StoreEntitySet="Content_Table">
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Country_Table">
+              <MappingFragment StoreEntitySet="Country_Table">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delivery_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Delivery_Table">
+              <MappingFragment StoreEntitySet="Delivery_Table">
+                <ScalarProperty Name="Timeing" ColumnName="Timeing" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faq_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Faq_Table">
+              <MappingFragment StoreEntitySet="Faq_Table">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FaqId" ColumnName="FaqId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Following_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Following_Table">
+              <MappingFragment StoreEntitySet="Following_Table">
+                <ScalarProperty Name="DateFollow" ColumnName="DateFollow" />
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FollowingId" ColumnName="FollowingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Group_Table">
+              <MappingFragment StoreEntitySet="Group_Table">
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="Imageurl" ColumnName="Imageurl" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupShop_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.GroupShop_Table">
+              <MappingFragment StoreEntitySet="GroupShop_Table">
+                <ScalarProperty Name="Imageurl" ColumnName="Imageurl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Like_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Like_Table">
+              <MappingFragment StoreEntitySet="Like_Table">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LikeId" ColumnName="LikeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Location_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Location_Table">
+              <MappingFragment StoreEntitySet="Location_Table">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MyLot" ColumnName="MyLot" />
+                <ScalarProperty Name="MyLat" ColumnName="MyLat" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Menu_Table">
+              <MappingFragment StoreEntitySet="Menu_Table">
+                <ScalarProperty Name="OrderItem" ColumnName="OrderItem" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Order_Table">
+              <MappingFragment StoreEntitySet="Order_Table">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="CopenId" ColumnName="CopenId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="KindOrder" ColumnName="KindOrder" />
+                <ScalarProperty Name="FactorCode" ColumnName="FactorCode" />
+                <ScalarProperty Name="DateSales" ColumnName="DateSales" />
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="RegisterId" ColumnName="RegisterId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.OrderDetail_Table">
+              <MappingFragment StoreEntitySet="OrderDetail_Table">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductShopId" ColumnName="ProductShopId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwenerGroup_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.OwenerGroup_Table">
+              <MappingFragment StoreEntitySet="OwenerGroup_Table">
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="OwnerGroupId" ColumnName="OwnerGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerProduct_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.OwnerProduct_Table">
+              <MappingFragment StoreEntitySet="OwnerProduct_Table">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OwnerProductId" ColumnName="OwnerProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Payment_Table">
+              <MappingFragment StoreEntitySet="Payment_Table">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.People_Table">
+              <MappingFragment StoreEntitySet="People_Table">
+                <ScalarProperty Name="DareRequestLa" ColumnName="DareRequestLa" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Tele" ColumnName="Tele" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PeopleId" ColumnName="PeopleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Product_Table">
+              <MappingFragment StoreEntitySet="Product_Table">
+                <ScalarProperty Name="DisLikePro" ColumnName="DisLikePro" />
+                <ScalarProperty Name="LikePro" ColumnName="LikePro" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="OffPresent" ColumnName="OffPresent" />
+                <ScalarProperty Name="StateOff" ColumnName="StateOff" />
+                <ScalarProperty Name="EndHaraji" ColumnName="EndHaraji" />
+                <ScalarProperty Name="Haraji" ColumnName="Haraji" />
+                <ScalarProperty Name="StateShop" ColumnName="StateShop" />
+                <ScalarProperty Name="EbazaarProductID" ColumnName="EbazaarProductID" />
+                <ScalarProperty Name="attributes" ColumnName="attributes" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="StateIndex" ColumnName="StateIndex" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Imageurl" ColumnName="Imageurl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductShop_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.ProductShop_Table">
+              <MappingFragment StoreEntitySet="ProductShop_Table">
+                <ScalarProperty Name="DisLikePro" ColumnName="DisLikePro" />
+                <ScalarProperty Name="LikePro" ColumnName="LikePro" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="attributes" ColumnName="attributes" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Imageurl" ColumnName="Imageurl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Province_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Province_Table">
+              <MappingFragment StoreEntitySet="Province_Table">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincepost_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Provincepost_Table">
+              <MappingFragment StoreEntitySet="Provincepost_Table">
+                <ScalarProperty Name="eName" ColumnName="eName" />
+                <ScalarProperty Name="pName" ColumnName="pName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ProvincePostId" ColumnName="ProvincePostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rating_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Rating_Table">
+              <MappingFragment StoreEntitySet="Rating_Table">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Region_Table">
+              <MappingFragment StoreEntitySet="Region_Table">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Review_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Review_Table">
+              <MappingFragment StoreEntitySet="Review_Table">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlideMenu_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.SlideMenu_Table">
+              <MappingFragment StoreEntitySet="SlideMenu_Table">
+                <ScalarProperty Name="Imageurl" ColumnName="Imageurl" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="SlideMenuId" ColumnName="SlideMenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slider_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Slider_Table">
+              <MappingFragment StoreEntitySet="Slider_Table">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="SliderId" ColumnName="SliderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Story_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Story_Table">
+              <MappingFragment StoreEntitySet="Story_Table">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="StateShow" ColumnName="StateShow" />
+                <ScalarProperty Name="StateUser" ColumnName="StateUser" />
+                <ScalarProperty Name="PeopleId" ColumnName="PeopleId" />
+                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supper_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Supper_Table">
+              <MappingFragment StoreEntitySet="Supper_Table">
+                <ScalarProperty Name="LikeId" ColumnName="LikeId" />
+                <ScalarProperty Name="MyLot" ColumnName="MyLot" />
+                <ScalarProperty Name="MyLat" ColumnName="MyLat" />
+                <ScalarProperty Name="telegram" ColumnName="telegram" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+                <ScalarProperty Name="whatsup" ColumnName="whatsup" />
+                <ScalarProperty Name="StatusPanel" ColumnName="StatusPanel" />
+                <ScalarProperty Name="StatueActive" ColumnName="StatueActive" />
+                <ScalarProperty Name="NewsPassword" ColumnName="NewsPassword" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="Mojavez6" ColumnName="Mojavez6" />
+                <ScalarProperty Name="Mojavez5" ColumnName="Mojavez5" />
+                <ScalarProperty Name="Mojavez4" ColumnName="Mojavez4" />
+                <ScalarProperty Name="Mojavez3" ColumnName="Mojavez3" />
+                <ScalarProperty Name="Mojavez2" ColumnName="Mojavez2" />
+                <ScalarProperty Name="Mojavez1" ColumnName="Mojavez1" />
+                <ScalarProperty Name="CityKhedmat" ColumnName="CityKhedmat" />
+                <ScalarProperty Name="PlaceKhedmat" ColumnName="PlaceKhedmat" />
+                <ScalarProperty Name="SabeghehDate" ColumnName="SabeghehDate" />
+                <ScalarProperty Name="KhedmatDate" ColumnName="KhedmatDate" />
+                <ScalarProperty Name="JobRotbeh" ColumnName="JobRotbeh" />
+                <ScalarProperty Name="JobTabagheh" ColumnName="JobTabagheh" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="IdentityVahedOrgin" ColumnName="IdentityVahedOrgin" />
+                <ScalarProperty Name="VahedOrgin" ColumnName="VahedOrgin" />
+                <ScalarProperty Name="IdentityPostOrgin" ColumnName="IdentityPostOrgin" />
+                <ScalarProperty Name="PostOrgin" ColumnName="PostOrgin" />
+                <ScalarProperty Name="IsargariStatus" ColumnName="IsargariStatus" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="KarmandNo" ColumnName="KarmandNo" />
+                <ScalarProperty Name="Dastgah" ColumnName="Dastgah" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CountShop" ColumnName="CountShop" />
+                <ScalarProperty Name="SahebanEmza" ColumnName="SahebanEmza" />
+                <ScalarProperty Name="KindFaaliat" ColumnName="KindFaaliat" />
+                <ScalarProperty Name="CompanyKind" ColumnName="CompanyKind" />
+                <ScalarProperty Name="AnbarAddress" ColumnName="AnbarAddress" />
+                <ScalarProperty Name="AnbarTele" ColumnName="AnbarTele" />
+                <ScalarProperty Name="AnbarState" ColumnName="AnbarState" />
+                <ScalarProperty Name="GroupsKanons" ColumnName="GroupsKanons" />
+                <ScalarProperty Name="HandicraftsGroups" ColumnName="HandicraftsGroups" />
+                <ScalarProperty Name="Sheba" ColumnName="Sheba" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="Tele" ColumnName="Tele" />
+                <ScalarProperty Name="MobileCodeHaghighi" ColumnName="MobileCodeHaghighi" />
+                <ScalarProperty Name="CodeEghtesadi" ColumnName="CodeEghtesadi" />
+                <ScalarProperty Name="ShenasehMelli" ColumnName="ShenasehMelli" />
+                <ScalarProperty Name="MahaleSabt" ColumnName="MahaleSabt" />
+                <ScalarProperty Name="SabtDate" ColumnName="SabtDate" />
+                <ScalarProperty Name="SabtNo" ColumnName="SabtNo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="JavazNo" ColumnName="JavazNo" />
+                <ScalarProperty Name="Javaz" ColumnName="Javaz" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="ProvinceFaaliat" ColumnName="ProvinceFaaliat" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="DateRegister" ColumnName="DateRegister" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="IdentyNo" ColumnName="IdentyNo" />
+                <ScalarProperty Name="MelliCode" ColumnName="MelliCode" />
+                <ScalarProperty Name="SodorIdentyNo" ColumnName="SodorIdentyNo" />
+                <ScalarProperty Name="Melliat" ColumnName="Melliat" />
+                <ScalarProperty Name="Married" ColumnName="Married" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="KindHaHo" ColumnName="KindHaHo" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Tezol_DBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Theme_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Theme_Table">
+              <MappingFragment StoreEntitySet="Theme_Table">
+                <ScalarProperty Name="LayoutCat2" ColumnName="LayoutCat2" />
+                <ScalarProperty Name="LayoutCat1" ColumnName="LayoutCat1" />
+                <ScalarProperty Name="BannerGroup2" ColumnName="BannerGroup2" />
+                <ScalarProperty Name="BannerGroup1" ColumnName="BannerGroup1" />
+                <ScalarProperty Name="Banner2" ColumnName="Banner2" />
+                <ScalarProperty Name="Banner1" ColumnName="Banner1" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ThemeId" ColumnName="ThemeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Ticket_Table">
+              <MappingFragment StoreEntitySet="Ticket_Table">
+                <ScalarProperty Name="DateRegister" ColumnName="DateRegister" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timeing_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.Timeing_Table">
+              <MappingFragment StoreEntitySet="Timeing_Table">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="TimeingId" ColumnName="TimeingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Table">
+            <EntityTypeMapping TypeName="Tezol_DBModel.User_Table">
+              <MappingFragment StoreEntitySet="User_Table">
+                <ScalarProperty Name="MelliCode" ColumnName="MelliCode" />
+                <ScalarProperty Name="Tele" ColumnName="Tele" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Group">
+            <EntityTypeMapping TypeName="Tezol_DBModel.View_Group">
+              <MappingFragment StoreEntitySet="View_Group">
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Total">
+            <EntityTypeMapping TypeName="Tezol_DBModel.View_Total">
+              <MappingFragment StoreEntitySet="View_Total">
+                <ScalarProperty Name="SupperId" ColumnName="SupperId" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateSales" ColumnName="DateSales" />
+                <ScalarProperty Name="RegisterId" ColumnName="RegisterId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

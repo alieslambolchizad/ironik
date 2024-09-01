@@ -1,0 +1,92 @@
+﻿<title>ثبت نام</title>
+@{
+    ViewBag.Title = "Register";
+    
+}
+@using Ironika_Theme1.Models;
+@using System.ComponentModel.DataAnnotations;
+@model Ironika_Theme1.Models.Main
+<section id="slider">
+    <div class="tp-banner-container">
+        <div class="tp-banner4" style="background-image: url('../../Content/ImgSite/No_Photo.jpg'); ">
+        </div>
+    </div>
+</section>
+<section class="container">
+    <nav class="breadcrumbs"><a href="../Index">خانه </a> <span class="divider">›</span> ثبت نام </nav>
+</section>
+<section class="container">
+    <div class="row">
+        <section class="col-sm-6 col-md-6 col-lg-6">
+            <section class="container-with-large-icon login-form">
+                <div class="large-icon"><img src="images/large-icon-lock.png" alt=""></div>
+                <div class="wrap">
+                    <h3>سیستم ورود مشتری</h3>
+                    <p>با ایجاد یک حساب کاربری می توانید سریعتر به خرید بپردازید ، از وضعیت سفارش به روز باشید و به سفارشاتی که قبلاً انجام داده اید پیگیری کنید.</p>
+                    <br>
+                    <a style="width:120px !important" class="btn btn-mega" href="../../Signin">ادامه</a>
+                </div>
+            </section>
+        </section>
+        <section class="col-sm-6 col-md-6 col-lg-6">
+            <section class="container-with-large-icon login-form">
+                <div class="large-icon"><img src="images/large-icon-user.png" alt=""></div>
+                <div class="wrap">
+                    <h3>کاربر جدید</h3>
+                    @using (Html.BeginForm("FrmSignup", "Home", new { }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label for="email">نام</label>
+                            @Html.TextBoxFor(m => m.ValidationRegister.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ValidationRegister.Name)
+                        </div>
+                        <div class="form-group">
+                            <label for="email">نام خانوادگی</label>
+                            @Html.TextBoxFor(m => m.ValidationRegister.LastName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ValidationRegister.LastName)
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">نام کاربری</label>
+                            @Html.TextBoxFor(m => m.ValidationRegister.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ValidationRegister.UserName)
+                        </div>
+                        <div class="form-group">
+                            <label for="email">کلمه عبور</label>
+                            @Html.PasswordFor(m => m.ValidationRegister.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ValidationRegister.Password)
+                        </div>
+                        <div class="form-group">
+                            <label for="email">تکرار کلمه عبور </label>
+                            @Html.PasswordFor(m => m.ValidationRegister.ConfirmPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ValidationRegister.ConfirmPassword)
+                        </div>
+
+                        <button style="width:120px !important" class="btn btn-mega" type="submit">ثبت نام</button>
+                        <br />
+                        if (@TempData["StatusFailed"] != null && @TempData["StatusFailed"].ToString() == "آدرس ایمیل تکراری است")
+                        {
+                            <p id="failureMsgCreate" class="failure" style="width:100%;direction:rtl;text-align:right;display:block">
+                                @TempData["StatusFailed"]
+                            </p>
+                        }
+                        else
+                        {
+
+                            <p id="failureMsgCreate" class="failure" style="width:100%;direction:rtl;text-align:right;display:block">
+                                @TempData["StatusFailed"]
+                            </p>
+
+                        }
+                    }
+
+                </div>
+            </section>
+        </section>
+
+    </div>
+</section>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")

@@ -1,0 +1,55 @@
+﻿<title>پرسش و پاسخ</title>
+@{
+    ViewBag.Title = "Faq";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+}
+
+<!-- //end Faq -->
+<!-- Breadcrumbs -->
+<section class="container">
+    <nav class="breadcrumbs"> <a href="/">خانه</a> <span class="divider">›</span> پرسش و پاسخ </nav>
+</section>
+<!-- //end Breadcrumbs -->
+<!-- Faq -->
+<section class="container content-row">
+    <h3>سوالات پر تکرار سامانه ایرونیکا </h3>
+    <div class="panel-group accordion-faq" id="faq-accordion">
+        @{
+            string Address = ""; int Kind = 0;
+            List<Faq_Table> lstfaq = db.Faq_Table.ToList();
+            foreach (var item in lstfaq)
+            {
+                Address = "question" + item.FaqId;
+                if (Kind == 0)
+                {
+                    <div class="panel">
+                        <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#@Address"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span> @item.Title</a> </div>
+                        <div id="@Address" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                @Html.Raw(HttpUtility.HtmlDecode(item.Description))
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="panel">
+                        <div class="panel-heading"> <a data-toggle="collapse" data-parent="#faq-accordion" href="#@Address" class="collapsed"> <span class="arrow-down">+</span> <span class="arrow-up">&#8211;</span>@item.Title</a> </div>
+                        <div id="@Address" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Html.Raw(HttpUtility.HtmlDecode(item.Description))
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                Kind++;
+                
+            }
+        }
+
+
+    </div>
+</section>
+<!-- //end Faq -->
+<!-- Footer -->

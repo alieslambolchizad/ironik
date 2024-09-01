@@ -1,0 +1,74 @@
+﻿<title>فروشگاه های مورد علاقه</title>
+@{
+    ViewBag.Title = "ShopList";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+
+    int SupperId = 0;
+    int UserId = 0;
+    int CountAll = 0;
+    try
+    {
+        if (Session["UserSite"] != null)
+        {
+            UserId = int.Parse(Session["UserSite"].ToString());
+        }
+
+    }
+    catch { UserId = 0; }
+}
+<section class="container">
+    <nav class="breadcrumbs"> <a href="/">خانه</a> <span class="divider">›</span> فروشگاه های مورد علاقه </nav>
+</section>
+<!-- //end Breadcrumbs -->
+<!-- Two column content -->
+<section class="container">
+    <div class="row">
+        <h3>
+            لیست فروشگاه های مورد علاقه
+        </h3>
+      
+            @{
+                List<Like_Table> lst = db.Like_Table.Where(r => r.State == true && r.UserId== UserId).OrderByDescending(r => r.LikeId).ToList();
+                int k = 0;
+                for (int i = 0; i <= lst.Count / 4; i++)
+                {
+                    k++;
+
+                    <section class="services-block-box">
+                        <div class="container">
+                            <div class="row">
+                                @for (int j = 4 * i; j < k * 4 && j < lst.Count; j++)
+                                {
+                                    SupperId = lst[j].SupperId.Value;
+                                    CountAll = db.OwnerProduct_Table.Where(r => r.SupperId == SupperId).Count();
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <a class="item animate scale" href="../../ShopPage/@lst[j].Supper_Table.ShopName.Trim().Replace(" ","-")">
+                                            <span class="icon">
+                                                <img class="img-responsive animate scale" src="~/Content/ImageSite/@lst[j].Supper_Table.Logo" />
+                                            </span>
+
+                                            <div class="price-table-price"> @lst[j].Supper_Table.ShopName </div>
+                                            <div class="price-table-price">تعداد محصولات @CountAll </div>
+                                            <div class="price-table-price"> @lst[j].Supper_Table.Tele </div>
+                                            <div class="price-table-priceNew">@lst[j].Supper_Table.Address </div>
+
+
+                                            <button class="btn btn-mega btn-lg" onclick="location.href='../../ShopPage/@lst[j].Supper_Table.ShopName.Trim().Replace(" ","-")';">مشاهده فروشگاه</button>
+
+
+                                        </a>
+                                    </div>
+                                    <div class="divider-md visible-xs"></div>
+                                }
+                                <br/>
+                            </div>
+                        </div>
+                    </section><br/>
+                }
+            }
+
+
+        
+    </div>
+</section>
+

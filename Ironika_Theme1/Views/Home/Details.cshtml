@@ -1,0 +1,262 @@
+﻿<title>معرفی محصول</title>
+@{
+    ViewBag.Title = "Details";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+    int Name = ViewBag.Name;
+    var Objs = db.OwnerProduct_Table.FirstOrDefault(r => r.OwnerProductId == Name);
+}
+
+@functions
+{
+    public static string NumberFormat(string Text)
+    {
+        int Length = Text.Length;
+        string MyText = "";
+        int i = Length - 3;
+        int j = 3;
+        while (Length > 3)
+        {
+            MyText = Text.Substring(i, j) + "," + MyText;
+            i = i - 3;
+            Length = Length - 3;
+        }
+        if (Length > 0)
+            MyText = Text.Substring(0, Length) + "," + MyText;
+        MyText = MyText.Substring(0, MyText.Length - 1);
+        return MyText;
+    }
+
+}
+
+<!-- //end Social widgets -->
+<!-- Breadcrumbs -->
+<section class="container">
+    <nav class="breadcrumbs"> <a href="/">خانه</a> <span class="divider">›</span> @Objs.Product_Table.Name </nav>
+</section>
+
+<section class="container">
+    @if (Objs != null)
+    {
+        int Parent = Objs.Product_Table.Group_Table.Parent.Value;
+        var ObjsParent = db.Group_Table.FirstOrDefault(r => r.GroupId == Parent);
+        string LinkName = Objs.Supper_Table.ShopName.Trim().Replace(" ", "-") + "_" + Objs.Product_Table.Name.Trim().Replace(" ", "-");
+        <!-- Product view -->
+        <div class="product-view row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+
+                <!-- Product label -->
+                <div class="product-label">
+                    <div class="box-wrap">
+                        <div class="box-wrap-top"></div>
+                        <div class="box-wrap-bot"></div>
+                        <div class="box-wrap-center"></div>
+                        <div class="box">
+                            <div class="box-content">
+                                <h2>@Objs.Product_Table.Name</h2>
+                                <span class="price new">@NumberFormat(Objs.Price.Value.ToString()) ریال</span> <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //end Product label -->
+                <!-- Description -->
+                <div class="product-description">
+                    <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span>
+                    @using (Html.BeginForm("Sales", "Home", new { }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.Hidden("NumberId", 1);
+                        @Html.Hidden("TempId", Objs.ProductId);
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <button class="btn btn-mega btn-lg" type="submit">خرید این محصول</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="option">
+
+                                    <div class="input-group quantity-control">
+                                        <span class="input-group-addon">&minus;</span>
+
+                                        <input type="text" name="txtCount" class="form-control" value="1">
+                                        <span class="input-group-addon">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                <div class="col-sm-8">
+                                    @using (Html.BeginForm("FrmLikeProduct", "Home", new { }, FormMethod.Post))
+                                    {
+                                        @Html.Hidden("ProductId", Objs.ProductId.Value);
+                                        @Html.AntiForgeryToken()
+                                        <button style="background-color:transparent;border:0" type="submit"><h4 style="margin-top:10px;text-align:center;border-bottom:1px solid #e7e7e7">افزودن محصول به علاقه مندی</h4></button>
+                                    }
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="icon-circle  active animate scale animated hidden-xs"><span class="icon icon-heart"></span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+
+                                <div class="col-sm-8">
+                                    <a href="../../../Comment/@LinkName"><h4 style="margin-top:10px;text-align:center;border-bottom:1px solid #e7e7e7">دیدگاه خود را بنویسید</h4></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="icon-circle  active animate scale animated hidden-xs"><span class="icon icon-comments"></span></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                <div class="col-sm-8">
+                                    @using (Html.BeginForm("FrmLikeShop", "Home", new { }, FormMethod.Post))
+                                    {
+                                        @Html.Hidden("SupperId", Objs.SupperId.Value);
+                                        @Html.AntiForgeryToken()
+                                        <button style="background-color:transparent;border:0" type="submit"><h4 style="margin-top:10px;text-align:center;border-bottom:1px solid #e7e7e7">افزودن فروشگاه به علاقه مندی</h4></button>
+                                    }
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="icon-circle  active animate scale animated hidden-xs"><span class="icon icon-heart"></span></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                <!-- //end Description -->
+
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-5">
+
+                <div class="large-image vertical "> <img alt="#" src="~/Content/ImageSite/@Objs.Product_Table.Imageurl" data-cloudzoom="zoomImage: '~/Content/ImageSite/@Objs.Product_Table.Imageurl', autoInside : 991" /> </div>
+
+            </div>
+
+            <section class="col-sm-12 col-md-3 col-lg-3  module">
+                <h3>@Objs.Supper_Table.ShopName</h3>
+
+                <!-- Services -->
+                <section class="services-block single small vertical">
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                        <a href="#" class="item">
+
+                            <div class="text"><span class="title">@Objs.Product_Table.Group_Table.Name</span> <span class="description">@ObjsParent.Name</span> </div>
+                            <span class="icon icon-cog-4"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                        <a href="#" class="item">
+
+                            <div class="text"> <span class="title">@Objs.Supper_Table.Tele</span> </div>
+                            <span class="icon icon-phone-2"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                        <a href="#" class="item">
+                            <div class="text"><span class="title">@Objs.Supper_Table.Address</span> <span class="description">@Objs.Supper_Table.Region_Table.Country_Table.Name</span> </div>
+                            <span class="icon icon-home-2"></span>
+
+                        </a>
+                    </div>
+
+
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+
+                        <a href="../../ShopPage/@Objs.Supper_Table.ShopName.Trim().Replace(" ","-")" class="item">
+
+                            <center>  <button onclick="location.href='../../ShopPage/@Objs.Supper_Table.ShopName.Trim().Replace(" ","-")';" class="btn btn-mega btn-lg" type="submit" >مشاهده فروشگاه</button></center>
+                        </a>
+                    </div>
+                </section>
+                <!-- //end Services -->
+            </section>
+        </div>
+        <!-- //end Product view -->
+        <!-- Tabs -->
+        <section class="producttab">
+            <div class="tabsslider">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#tab-1">توضیحات</a></li>
+                    <li><a data-toggle="tab" href="#tab-2">مزایا</a></li>
+                    <li><a data-toggle="tab" href="#tab-3">نظرات کاربران</a></li>
+
+                </ul>
+                <a href="#" class="carousel-prev"></a><a href="#" class="carousel-next"></a>
+            </div>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade active in">
+                    <p> @Html.Raw(HttpUtility.HtmlDecode(Objs.Product_Table.Description))</p>
+                </div>
+                <div id="tab-2" class="tab-pane fade">
+                    <p>@Html.Raw(HttpUtility.HtmlDecode(Objs.Product_Table.attributes))</p>
+
+                </div>
+                <div id="tab-3" class="tab-pane fade">
+                    @{
+                        List<Review_Table> lst = db.Review_Table.Where(r => r.ProductId == Objs.ProductId).OrderByDescending(r => r.ReviewId).ToList();
+                        <h3>دیدگاه ها (@NumberFormat(lst.Count.ToString()))</h3>
+                    }
+
+                    <section class="comments">
+                        @{
+                            lst = db.Review_Table.Where(r => r.ProductId == Objs.ProductId).OrderByDescending(r => r.ReviewId).ToList();
+                            foreach (var item in lst)
+                            {
+                                <div class="comment">
+                                    <div class="inside">
+                                        <p>
+                                            <strong>@item.User_Table.Name @item.User_Table.Lastname</strong><br>
+                                            @Ironika_Theme1.Models.Date_Manager.ConvertDate(item.RegisterDate.Value)
+
+                                        </p>
+                                        <p> @item.Description</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </section>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- //end Tabs -->
+        <!--  Video Container -->
+        <!-- //end Video Container -->
+        <div class="line-divider"></div>
+        <!-- Upsell products -->
+        <section class="slider-products content-box">
+            <h3>محصولات مرتبط</h3>
+            <!-- Products list -->
+            <div class="products-list-small">
+                <ul class="slides">
+                    @{
+                        List<Product_Table> lstSemilar = db.Product_Table.Where(r => r.GroupId == Objs.Product_Table.GroupId.Value && r.ProductId != Objs.ProductId).ToList();
+                        foreach (var item in lstSemilar)
+                        {
+                            <li>
+                                <div class="product-preview">
+                                    <div class="preview animate scale"><a href="../../ShopList/@item.Name.Trim().Replace(" ","-")"><img src="~/Content/ImageSite/@item.Imageurl" alt="@item.Name"></a>  </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <!-- //end Products list -->
+        </section>
+        <!-- //end Upsell products -->
+    }
+</section>
+<!-- //end Two columns content -->

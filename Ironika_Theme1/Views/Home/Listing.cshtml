@@ -1,0 +1,253 @@
+﻿<title>دسته بندی ها</title>
+@using Ironika_Theme1.Controllers;
+@using Ironika_Theme1.Models;
+@{
+    ViewBag.Title = "Details";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+    string Name = ViewBag.Name;
+    var Objs = db.Group_Table.FirstOrDefault(r => r.Name == Name);
+    int Kind = 0; int CatId = 0;
+    string GroupBig = ""; string GroupParent = ""; string GroupChild = "";
+    string AddressGroupBig = ""; string AddressGroupParent = ""; string AddressGroupChild = "";
+    string NameGroup = ""; string AddressNameGroup = "";
+    int Level0 = 0; int Level1 = 0; int KindSlide = 0;
+    List<Group_Table> lstBig = new List<Group_Table>();
+    List<Group_Table> lstParent = new List<Group_Table>();
+    List<Group_Table> lstChild = new List<Group_Table>();
+    if (Objs != null)
+    {
+        CatId = Objs.GroupId;
+        KindSlide = Objs.Kind.Value;
+        Kind = Objs.Kind.Value;
+        GroupBig = db.Menu_Table.FirstOrDefault(r => r.Kind == Kind).Title;
+        if (Objs.Parent == null)
+        {
+            GroupParent = Objs.Name;
+            lstBig = db.Group_Table.Where(r => r.Parent == Objs.GroupId).ToList();
+            Level0 = 1;
+            Level1 = Objs.Kind.Value;
+            GroupChild = "";
+            AddressGroupBig = "../../Listing/" + GroupBig.Trim().Replace(" ", "-");
+            AddressGroupParent = "../../Listing/" + Objs.Name.Trim().Replace(" ", "-");
+
+            //GroupChild = GroupParent;
+            //AddressGroupChild = AddressGroupParent;
+
+
+            NameGroup = GroupParent;
+            AddressNameGroup = AddressGroupParent;
+        }
+        else
+        {
+            GroupChild = Objs.Name;
+            Level0 = 1;
+            Level1 = Objs.Kind.Value;
+            AddressGroupChild = "../../Listing/" + Objs.Name.Trim().Replace(" ", "-");
+            int Parent = Objs.Parent.Value;
+            var ObjsChild = db.Group_Table.FirstOrDefault(r => r.GroupId == Parent);
+            if (ObjsChild != null)
+            {
+                GroupParent = ObjsChild.Name;
+                lstBig = db.Group_Table.Where(r => r.Parent == ObjsChild.GroupId).ToList();
+                AddressGroupParent = "../../Listing/" + ObjsChild.Name.Trim().Replace(" ", "-");
+
+                NameGroup = GroupParent;
+                AddressNameGroup = AddressGroupParent;
+            }
+        }
+    }
+    else
+    {
+        var ObjMenu = db.Menu_Table.FirstOrDefault(r => r.Title == Name);
+        if (ObjMenu != null)
+        {
+            GroupBig = ObjMenu.Title;
+            Kind = ObjMenu.Kind.Value;
+            GroupParent = ""; GroupChild = "";
+            AddressGroupBig = "../../Listing/" + GroupBig.Trim().Replace(" ", "-");
+            Level0 = ObjMenu.Kind.Value;
+            Level1 = 0;
+            lstBig = db.Group_Table.Where(r => r.Parent == null && r.Kind == Kind).ToList();
+        }
+        else
+        {
+            Kind = 0;
+        }
+    }
+    List<Product> listProducts = ViewBag.list_Pro;
+
+
+}
+
+@functions
+{
+    public static string NumberFormat(string Text)
+    {
+        int Length = Text.Length;
+        string MyText = "";
+        int i = Length - 3;
+        int j = 3;
+        while (Length > 3)
+        {
+            MyText = Text.Substring(i, j) + "," + MyText;
+            i = i - 3;
+            Length = Length - 3;
+        }
+        if (Length > 0)
+            MyText = Text.Substring(0, Length) + "," + MyText;
+        MyText = MyText.Substring(0, MyText.Length - 1);
+        return MyText;
+    }
+
+}
+
+<section class="container">
+    <nav class="breadcrumbs">
+        <a href="/">خانه</a> <span class="divider">›</span><a href="@AddressGroupBig">@GroupBig</a>
+        @if (GroupParent != "")
+        {
+
+            <span class="divider">›</span><a href="@AddressGroupParent">@GroupParent</a>
+        }
+        @if (GroupChild != "")
+        {
+            <span class="divider">›</span><a href="@AddressGroupChild">@GroupChild</a>
+        }
+    </nav>
+</section>
+<!-- //end Breadcrumbs -->
+<!-- Two columns content -->
+<section class="container">
+    <div class="row">
+        <section class="col-sm-8 col-md-9 col-lg-9 content-center">
+
+            <!-- Slider -->
+
+            <section class="owl-slider-outer slider-listing hidden-xs">
+                <a class="owl-slider-prev"></a> <a class="owl-slider-next"></a>
+                <div class="owl-slider">
+                    @{
+                        List<SlideMenu_Table> lst = db.SlideMenu_Table.Where(r => r.MenuId == KindSlide).ToList();
+                        foreach (var item in lst)
+                        {
+                            <div class="item">
+                                <img src="~/Content/ImageSite/@item.Imageurl" alt="@item.Menu_Table.Title">
+
+                            </div>
+                        }
+                    }
+
+
+                </div>
+            </section>
+
+
+
+            <div class="products-list products-list-small row">
+                <table class="mytable">
+                    <tbody>
+                        @Html.Partial("_ProjectData", (ViewBag.All as List<Product>))
+                    </tbody>
+                </table>
+
+                @section scripts{
+                    <script src="~/Scripts/lazyLoading.js"></script>
+                    <script type="text/javascript">
+        $(function () {
+            $("div#loading").hide();
+        });
+
+        var url = '@Url.RouteUrl("Listing")';
+        $(window).scroll(scrollHandler);
+                    </script>
+                }
+
+
+
+
+            </div>
+            <!-- //end Products list -->
+            <!-- Filters -->
+            <!-- //end Filters -->
+
+        </section>
+        <!-- Left column -->
+        <aside class="col-sm-4 col-md-3 col-lg-3 content-aside">
+
+            <!-- Shop by categories -->
+            <section>
+                <h3>دسته بندی ها</h3>
+                <ul class="expander-list">
+                    <li>
+                        @if (Level1 == 0)
+                        {
+                            <span class="name"> <span class="expander">-</span> <a href="@AddressGroupBig">@GroupBig</a> </span>
+                        }
+                        else
+                        {
+                            <span class="name"> <span class="expander">-</span> <a href="@AddressNameGroup">@NameGroup</a> </span>
+                        }
+                        <ul>
+                            @{
+                                foreach (var item in lstBig)
+                                {
+                                    <li>
+                                        <span class="name"> <span class="expander">-</span> <a href="../../Listing/@item.Name.Trim().Replace(" ", "-")">@item.Name</a> </span>
+                                        @{
+                                            lstParent = db.Group_Table.Where(r => r.Parent == item.GroupId).ToList();
+                                            if (lstParent.Count > 0)
+                                            {
+                                                <ul>
+                                                    @foreach (var items in lstParent)
+                                                    {
+
+                                                        <li>
+                                                            @{
+                                                                lstChild = db.Group_Table.Where(r => r.Parent == items.GroupId).ToList();
+                                                                if (lstChild.Count > 0)
+                                                                {
+                                                                    <span class="name"><span class="expander">-</span><a href="../../Listing/@item.Name.Trim().Replace(" ", "-")">@items.Name</a></span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="name"><a href="../../Listing/@item.Name.Trim().Replace(" ", "-")">@items.Name</a></span>
+                                                                }
+                                                                if (lstChild.Count > 0)
+                                                                {
+                                                                    <ul>
+                                                                        @foreach (var itemss in lstChild)
+                                                                        {
+                                                                            <li><span class="name"><a href="../../Listing/@item.Name.Trim().Replace(" ", "-")">@itemss.Name</a></span></li>
+                                                                        }
+                                                                    </ul>
+                                                                }
+
+
+                                                            }
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                            <li><span class="name"><a href="../../Listing/@item.Name.Trim().Replace(" ", "-")">@item.Name</a></span></li>
+                                        }
+                                        }
+                                </li>
+                                }
+                                }
+                            </ul>
+                            </li>
+
+                            </ul>
+                        </section>
+
+                    </aside>
+                    <!-- //end Left column -->
+                    <!-- Right column -->
+                    <!-- //end Right column -->
+
+                </div>
+            </section>
+            <!-- //end Two columns content -->
+            <!-- Footer -->

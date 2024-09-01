@@ -1,0 +1,62 @@
+﻿@model List<Ironika_Theme1.Models.Product>
+
+@if (Model != null)
+{
+    foreach (var cust in Model)
+    {
+
+
+        <div class="product-preview">
+            <div class="preview animate scale">
+                <a href="../../ShopList/@cust.Name.Trim().Replace(" ","-")" class="preview-image"><img class="img-responsive animate scale" src="~/Content/ImageSite/@cust.ImageUrl" width="270" height="328" alt="@cust.Name"></a>
+
+
+            </div>
+            <h3 class="title"><a href="../../ShopList/@cust.Name.Trim().Replace(" ","-")" class="preview-image">@cust.Name</a></h3>
+            <h3>
+                <div class="col-md-12">
+                    <div class="col-md-6"><span class="price new">@cust.PriceNew.ToString()</span></div>
+                    <div class="col-md-6"><span class="price new">@cust.PriceOld.ToString()</span></div>
+                </div>
+            </h3>
+            <h3 class="title"><span style="font-family:pashaBold" class="price old">ریال</span></h3>
+            <!--description-->
+            <!--buttons-->
+            <div class="list_buttons">
+                <div class="col-md-9">
+                    <a class="pull-left" href="#">
+                        <div class="list_rating">
+                            <span class="rating">
+                                @{
+                                    switch (cust.Rating)
+                                    {
+                                        case 5:
+                                            <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i>
+                                            break;
+                                        case 4:
+                                            <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i>
+                                            break;
+                                        case 3:
+                                            <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                            break;
+                                        case 2:
+                                            <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                            break;
+                                        case 1:
+                                            <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                            break;
+                                    }
+                                }
+
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3"><a class="btn btn-mega pull-right" href="#"><span class="icon-basket"></span></a></div>
+
+            </div>
+        </div>
+
+
+    }
+}

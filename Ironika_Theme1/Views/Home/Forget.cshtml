@@ -1,0 +1,78 @@
+﻿<title>بازیابی کلمه عبور</title>
+@{
+    ViewBag.Title = "Register";
+    
+}
+@using Ironika_Theme1.Models;
+@using System.ComponentModel.DataAnnotations;
+@model Ironika_Theme1.Models.Main
+<section id="slider">
+    <div class="tp-banner-container">
+        <div class="tp-banner4" style="background-image: url('../../Content/ImgSite/No_Photo.jpg'); ">
+        </div>
+    </div>
+</section>
+<section class="container">
+    <nav class="breadcrumbs"><a href="../IndexFa">خانه </a> <span class="divider">›</span> بازیابی کلمه عبور </nav>
+</section>
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-12">
+                <div class="panel-group" id="checkOut">
+                    <div class="panel panel-default">
+                        <div class="panel-heading  active">
+                            <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">بازیابی کلمه عبور </a></h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    @using (Html.BeginForm("FrmForget", "Home", new { }, FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-group">
+                                            <label class="light">آدرس ایمیل<span class="required"> </span></label>
+                                            @Html.TextBoxFor(m => m.ValidationRegister.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.ValidationRegister.Email)
+                                        </div>
+
+
+                                        <div class="divider divider-sm visible-xs"></div>
+                                        <div style="direction:rtl;text-align:right;width:100%"><button style="width:120px" class="btn btn-mega btn-md-sm" type="submit">بازیابی کلمه عبور</button></div>
+
+                                        <br />
+                                        if (@TempData["StatusFailed"] != null && @TempData["StatusFailed"].ToString() == "ایمیل با موفقیت ارسال شد . لطفا بررسی کنید")
+                                        {
+                                            <p id="failureMsgCreate" class="failure" style="width:100%;direction:rtl;text-align:right;display:block">
+                                                @TempData["StatusFailed"]
+                                            </p>
+                                        }
+                                        else
+                                        {
+
+                                            <p id="failureMsgCreate" class="failure" style="width:100%;direction:rtl;text-align:right;display:block">
+                                                @TempData["StatusFailed"]
+                                            </p>
+
+                                        }
+                                        <div class="form-group">
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-sm-6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider divider-sm visible-sm  visible-xs"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+

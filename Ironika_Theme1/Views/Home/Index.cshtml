@@ -1,0 +1,448 @@
+﻿<title>ایرونیکا/خانه</title>
+@{
+    ViewBag.Title = "Home Page";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+}
+@using Ironika_Theme1.Models;
+@using System.ComponentModel.DataAnnotations;
+@model Ironika_Theme1.Models.Main
+@functions
+{
+    public static string NumberFormat(string Text)
+    {
+        int Length = Text.Length;
+        string MyText = "";
+        int i = Length - 3;
+        int j = 3;
+        while (Length > 3)
+        {
+            MyText = Text.Substring(i, j) + "," + MyText;
+            i = i - 3;
+            Length = Length - 3;
+        }
+        if (Length > 0)
+            MyText = Text.Substring(0, Length) + "," + MyText;
+        MyText = MyText.Substring(0, MyText.Length - 1);
+        return MyText;
+    }
+
+}
+
+
+<section class="main-slider rw-slider">
+    <ul>
+        @{
+            List<Slider_Table> lstbaner = db.Slider_Table.Where(r => r.State == true).ToList();
+            foreach (var item in lstbaner)
+            {
+                <li>
+                    <a href="@item.Address"><img src="~/Content/ImageSite/@item.ImageUrl" style="background-position:center !important;background-size:contain !important" data-rw-slider="main: true; move: true;" alt="" data-thumb="images/thumbs/2.jpg"></a>
+                </li>
+            }
+
+        }
+
+
+
+    </ul>
+    <a href="#" class="control prev animate-scale"><span class="icon-arrow-left-5"></span></a> <a href="#" class="control next animate-scale"><span class="icon-untitled"></span></a> <a href="#" class="scroll-down animate-move-down"> <span class="icon icon-arrow-down"></span>محصولات و تخفیفات</a>
+</section>
+<!-- //end Slider -->
+<!-- Social widgets -->
+<!-- //end Social widgets -->
+<!-- Services -->
+<section class="services-block hidden-xs">
+    <div class="container">
+        <div class="row">
+            @{
+                List<AdsShop_Table> lstAds = db.AdsShop_Table.Where(r => r.State == true && r.PartId == 1).ToList();
+                foreach (var item in lstAds)
+                {
+                    <div class="member-info col-sm-6 col-md-3 col-lg-3">
+                        <div class="photo"> <img class="img-responsive animate scale" src="~/Content/ImageSite/@item.ImageUrl" alt=""> </div>
+
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+</section>
+<!-- //end Services -->
+<!-- Featured Products -->
+<section class="container content slider-products">
+    <h3 style="direction:rtl;text-align:right !important"><span class="attention"><span class="attention_icon"></span></span>پیشنهادات شگفت انگیز</h3>
+    <!-- Products list -->
+    <div class="row">
+        <div class="product-carousel">
+            @{
+                List<Product_Table> lstProduct = db.Product_Table.Where(r => r.StateShop == 1).ToList();
+                foreach (var item in lstProduct)
+                {
+                    <div class="item">
+                        <div class="product-preview">
+                            <div class="preview">
+                                <a href="../../ShopList/@item.Name.Trim().Replace(" ","-")" class="preview-image"><img class="img-responsive" src="~/Content/ImageSite/@item.Imageurl" alt=""></a>
+
+
+                            </div>
+                            <h3 class="title"><a href="#">@item.Name</a></h3>
+                            <h3>
+                                <div class="col-md-6"><span class="price new">@NumberFormat(item.Price.Value.ToString())</span></div>
+                                <div class="col-md-6"><span class="price new">@NumberFormat(item.Price.Value.ToString())</span></div>
+
+                            </h3>
+                            <h3 class="title"><span style="font-family:pashaBold" class="price old">ریال</span></h3>
+                            <div class="list_buttons">
+                                <div class="col-md-9">
+                                    <div class="list_rating">
+                                        <span class="rating">
+                                            @{
+                                                switch (item.Rating.Value)
+                                                {
+                                                    case 5:
+                                                        <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i>
+                                                        break;
+                                                    case 4:
+                                                        <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i>
+                                                        break;
+                                                    case 3:
+                                                        <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                        break;
+                                                    case 2:
+                                                        <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                        break;
+                                                    case 1:
+                                                        <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                        break;
+                                                }
+                                            }
+
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"><a class="btn btn-mega pull-right" href="#"><span class="icon-basket"></span></a></div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <!-- product view ajax container -->
+        <div class="product-view-ajax-container"> </div>
+        <!-- //end product view ajax container -->
+
+    </div>
+    <!-- //end Products list -->
+    <!-- Product view compact -->
+    <div class="product-view-ajax">
+        <div class="ajax-loader progress progress-striped active">
+            <div class="progress-bar progress-bar-danger" role="progressbar"></div>
+        </div>
+        <div class="layar"></div>
+        <div class="product-view-container"> </div>
+    </div>
+    <!-- //end Product view compact -->
+</section>
+<div class="line-divider divider-xxs"></div>
+<section class="services-block hidden-xs">
+    <div class="container">
+        <div class="row">
+            @{
+                lstAds = db.AdsShop_Table.Where(r => r.State == true && r.PartId == 2).ToList();
+                foreach (var item in lstAds)
+                {
+                    <div class="member-info col-sm-6 col-md-3 col-lg-3">
+                        <div class="photo"> <img class="img-responsive animate scale" src="~/Content/ImageSite/@item.ImageUrl" alt=""> </div>
+
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+</section>
+<div class="line-divider divider-xxs"></div>
+<!-- Products widgets -->
+<div class="grey-container-light">
+    <section class="container content slider-products">
+        <h3 style="direction:rtl;text-align:right !important">منتخب جدیدترین کالاها</h3>
+        <!-- Products list -->
+        <div class="row">
+            <div class="product-carousel">
+                @{
+                    lstProduct = db.Product_Table.Where(r => r.StateShop == 2).ToList();
+                    foreach (var item in lstProduct)
+                    {
+                        <div class="item">
+                            <div class="product-preview">
+                                <div class="preview">
+                                    <a href="../../ShopList/@item.Name.Trim().Replace(" ","-")" class="preview-image"><img class="img-responsive" src="~/Content/ImageSite/@item.Imageurl" alt=""></a>
+
+
+                                </div>
+                                <h3 class="title"><a href="#">@item.Name</a></h3>
+                                <h3>
+                                    <div class="col-md-6"><span class="price new">@NumberFormat(item.Price.Value.ToString())</span></div>
+                                    <div class="col-md-6"><span class="price new">@NumberFormat(item.Price.Value.ToString())</span></div>
+
+                                </h3>
+                                <h3 class="title"><span style="font-family:pashaBold" class="price old">ریال</span></h3>
+                                <div class="list_buttons">
+                                    <div class="col-md-9">
+
+                                        <div class="list_rating">
+                                            <span class="rating">
+                                                @{
+                                                    switch (item.Rating.Value)
+                                                    {
+                                                        case 5:
+                                                            <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i>
+                                                            break;
+                                                        case 4:
+                                                            <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i>
+                                                            break;
+                                                        case 3:
+                                                            <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                            break;
+                                                        case 2:
+                                                            <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                            break;
+                                                        case 1:
+                                                            <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                            break;
+                                                    }
+                                                }
+
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3"><a class="btn btn-mega pull-right" href="#"><span class="icon-basket"></span></a></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                }
+
+
+            </div>
+            <!-- product view ajax container -->
+            <div class="product-view-ajax-container"> </div>
+            <!-- //end product view ajax container -->
+
+        </div>
+        <!-- //end Products list -->
+        <!-- Product view compact -->
+        <div class="product-view-ajax">
+            <div class="ajax-loader progress progress-striped active">
+                <div class="progress-bar progress-bar-danger" role="progressbar"></div>
+            </div>
+            <div class="layar"></div>
+            <div class="product-view-container"> </div>
+        </div>
+    </section>
+</div>
+<div class="line-divider divider-xxs"></div>
+<section class="services-block hidden-xs">
+    <div class="container">
+        <div class="row">
+            @{
+                lstAds = db.AdsShop_Table.Where(r => r.State == true && r.PartId == 3).ToList();
+                foreach (var item in lstAds)
+                {
+                    <div class="member-info col-sm-6 col-md-6 col-lg-6">
+                        <div class="photo"> <img style="border-radius:16px" class="img-responsive animate scale" src="~/Content/ImageSite/@item.ImageUrl" alt=""> </div>
+
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+</section>
+<section class="container content slider-products">
+    <h3 style="direction:rtl;text-align:right !important">محصولات پرفروش اخیر</h3>
+    <!-- Products list -->
+    <div class="row">
+        <div class="product-carousel">
+            @{
+                lstProduct = db.Product_Table.Where(r => r.StateShop == 3).ToList();
+                foreach (var item in lstProduct)
+                {
+                    <div class="item">
+                        <div class="product-preview">
+                            <div class="preview">
+                                <a href="../../ShopList/@item.Name.Trim().Replace(" ","-")" class="preview-image"><img class="img-responsive" src="~/Content/ImageSite/@item.Imageurl" alt=""></a>
+
+
+
+                            </div>
+                            <h3 class="title"><a href="#">@item.Name</a></h3>
+                            <h3>
+                                <div class="col-md-6"><span class="price new">@NumberFormat(item.Price.Value.ToString())</span></div>
+                                <div class="col-md-6"><span class="price new">@NumberFormat(item.Price.Value.ToString())</span></div>
+
+                            </h3>
+                            <h3 class="title"><span style="font-family:pashaBold" class="price old">ریال</span></h3>
+                            <div class="list_buttons">
+                                <div class="col-md-9">
+
+                                    <div class="list_rating">
+                                        <span class="rating">
+                                            @{
+                                                switch (item.Rating.Value)
+                                                {
+                                                    case 5:
+                                                        <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i>
+                                                        break;
+                                                    case 4:
+                                                        <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i>
+                                                        break;
+                                                    case 3:
+                                                        <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                        break;
+                                                    case 2:
+                                                        <i class="icon-star-3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                        break;
+                                                    case 1:
+                                                        <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i>
+                                                        break;
+                                                }
+                                            }
+
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3"><a class="btn btn-mega pull-right" href="#"><span class="icon-basket"></span></a></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+        </div>
+        <!-- product view ajax container -->
+        <div class="product-view-ajax-container"> </div>
+        <!-- //end product view ajax container -->
+
+    </div>
+    <!-- //end Products list -->
+    <!-- Product view compact -->
+    <div class="product-view-ajax">
+        <div class="ajax-loader progress progress-striped active">
+            <div class="progress-bar progress-bar-danger" role="progressbar"></div>
+        </div>
+        <div class="layar"></div>
+        <div class="product-view-container"> </div>
+    </div>
+    <!-- //end Product view compact -->
+</section>
+<div class="line-divider divider-xxs"></div>
+<section class="services-block hidden-xs">
+    <div class="container">
+        <div class="row">
+            @{
+                lstAds = db.AdsShop_Table.Where(r => r.State == true && r.PartId == 4).ToList();
+                foreach (var item in lstAds)
+                {
+                    <div class="member-info col-sm-12 col-md-12 col-lg-12">
+                        <div class="photo"> <img style="border-radius:16px" class="img-responsive animate scale" src="~/Content/ImageSite/@item.ImageUrl" alt=""> </div>
+
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- //end Featured Products -->
+<!-- Brands -->
+<section class="container content slider-products">
+    <h3>برندهای ویژه</h3>
+    <div class="brands carouFredSel row">
+        <div class="carouFredSel-controls">
+            <div class="carouFredSel-buttons"><a id="brands-carousel-prev" class="prev" href="#"></a><a id="brands-carousel-next" class="next" href="#"></a></div>
+        </div>
+        <div class="brands-carousel">
+            <ul class="slides">
+                @{
+                    List<Brands_Table> lstBrand = db.Brands_Table.Where(r => r.ShowIndex == true).ToList();
+                    foreach (var item in lstBrand)
+                    {
+                        <li><a href="#"><img src="~/Content/ImageSite/@item.ImageUrl" alt=""></a></li>
+                    }
+                }
+
+
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //end Brands -->
+<!-- Blog widget -->
+<!-- //end Blog widget -->
+<!-- Filtered Products -->
+<!-- //end Filtered Products -->
+<!-- Social navbar -->
+<section class="content content-border nopad-xs social-widget grey-container-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 collapsed-block">
+                <h3>ما را دنبال کنید<a class="expander visible-xs" href="#TabBlock-2">+</a></h3>
+                <div class="tabBlock" id="TabBlock-2">
+                    <ul class="find-us">
+                        <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-facebook-3"></span></a></li>
+                        <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-twitter-3"></span></a></li>
+                        <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-linkedin-2"></span></a></li>
+                        <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-youtube-3"></span></a></li>
+                        <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-pinterest-2"></span></a></li>
+                        <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-googleplus-2"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6  col-lg-6 newsletter collapsed-block">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-6 tabBlock" id="TabBlock-1">
+                        <p>ایمیل خود را وارد کنید تا از تخفیف های ما با خبر شوید</p>
+                        @using (Html.BeginForm("FrmNewsLetter", "Home", new { }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-inline" role="form">
+                                <div class="form-group input-control">
+                                    <button type="submit" class="button"><span class="icon-envelop"></span></button>
+                                    @Html.TextBoxFor(m => m.ValidationPeople.Email, new { @class = "form-control", placeholder = "آدرس ایمیل ..." })
+                                    @Html.ValidationMessageFor(m => m.ValidationPeople.Email)
+
+                                </div>
+                            </div>
+
+                            <br />
+                            if (@TempData["StatusFailed"] != null)
+                            {
+                                <p id="failureMsgCreate" class="failure" style="width:100%;direction:rtl;text-align:right;display:block">
+                                    @TempData["StatusFailed"].ToString()
+                                </p>
+                            }
+                        }
+                    </div>
+                    <div class="col-lg-5  col-md-12 col-sm-12 ">
+                        <h3>خبرنامه <a class="expander visible-xs" href="#TabBlock-1">+</a></h3>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")

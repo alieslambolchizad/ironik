@@ -1,0 +1,76 @@
+﻿<title>لیست فروشگاه ها</title>
+@{
+    ViewBag.Title = "ShopList";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+    string Name = ViewBag.Name;
+    string LinkName = "";
+}
+@functions
+{
+    public static string NumberFormat(string Text)
+    {
+        int Length = Text.Length;
+        string MyText = "";
+        int i = Length - 3;
+        int j = 3;
+        while (Length > 3)
+        {
+            MyText = Text.Substring(i, j) + "," + MyText;
+            i = i - 3;
+            Length = Length - 3;
+        }
+        if (Length > 0)
+            MyText = Text.Substring(0, Length) + "," + MyText;
+        MyText = MyText.Substring(0, MyText.Length - 1);
+        return MyText;
+    }
+
+}
+<section class="container">
+    <nav class="breadcrumbs"> <a href="/">خانه</a> <span class="divider">›</span> فروشگاه ها </nav>
+</section>
+<div class="container content-row">
+    <h3>لیست فروشگاه های ارائه دهنده «@Name»</h3>
+</div>
+
+<!-- //end Breadcrumbs -->
+<!-- About us -->
+@{
+    List<OwnerProduct_Table> lstbaner = db.OwnerProduct_Table.Where(r => r.Product_Table.Name == Name && r.State == true).ToList();
+    int k = 0;
+    for (int i = 0; i <= lstbaner.Count / 4; i++)
+    {
+        k++;
+        
+        <section class="services-block-box">
+            <div class="container">
+                <div class="row">
+                    @for (int j = 4 * i; j < k * 4 && j < lstbaner.Count; j++)
+                    {
+                        LinkName = lstbaner[j].Supper_Table.ShopName.Trim().Replace(" ","-") + "_" + lstbaner[j].Product_Table.Name.Trim().Replace(" ", "-");
+                        <div class="col-sm-6 col-md-3 col-lg-3">
+                            <a class="item animate scale" href="../../Details/@LinkName">
+                                <span class="icon">
+                                    <img class="img-responsive animate scale" src="~/Content/ImageSite/@lstbaner[j].Supper_Table.Logo" />
+                                </span>
+
+                                <div class="price-table-price"> @NumberFormat(lstbaner[j].Price.Value.ToString()) ریال</div>
+                                <div class="price-table-priceNew">@lstbaner[j].Supper_Table.ShopName (@lstbaner[j].Supper_Table.Region_Table.Name) </div>
+                                
+                                
+                                <button class="btn btn-mega btn-lg" onclick="location.href='../../Details/@LinkName';">خرید</button>
+
+
+                            </a>
+                        </div>
+                        <div class="divider-md visible-xs"></div>
+                    }
+
+                </div>
+            </div>
+        </section>
+    }
+}
+
+
+

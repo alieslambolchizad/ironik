@@ -1,0 +1,251 @@
+﻿<title>پرداخت</title>
+
+
+
+@{
+    ViewBag.Title = "CHECKOUT";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+    int RegisterId = 0;
+    if (Session["UserSite"] != null)
+    {
+        RegisterId = int.Parse(Session["UserSite"].ToString());
+    }
+    else
+    {
+        RegisterId = 0;
+    }
+    int AddressId = 0;
+    var ObjAddress = db.Address_Table.FirstOrDefault(r => r.AddressId == 0);
+    try
+    {
+        AddressId = db.Address_Table.Where(r => r.UserId == RegisterId).Max(r => r.AddressId);
+        ObjAddress = db.Address_Table.FirstOrDefault(r => r.AddressId == AddressId);
+    }
+    catch { AddressId = 0; }
+}
+@functions
+{
+    public static string NumberFormat(string Text)
+    {
+        int Length = Text.Length;
+        string MyText = "";
+        int i = Length - 3;
+        int j = 3;
+        while (Length > 3)
+        {
+            MyText = Text.Substring(i, j) + "," + MyText;
+            i = i - 3;
+            Length = Length - 3;
+        }
+        if (Length > 0)
+            MyText = Text.Substring(0, Length) + "," + MyText;
+        MyText = MyText.Substring(0, MyText.Length - 1);
+        return MyText;
+    }
+
+}
+@using Ironika_Theme1.Models;
+@using System.ComponentModel.DataAnnotations;
+@model Ironika_Theme1.Models.Main
+
+<section class="container">
+    <nav class="breadcrumbs"><a href="/">خانه </a> <span class="divider">›</span>پرداخت </nav>
+</section>
+<section class="content">
+
+    <div class="container">
+        <div class="page-title">
+            <h1>پرداخت</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-lg-9">
+                <div class="panel-group" id="checkOut">
+                    <div class="panel panel-default">
+                        <div class="panel-heading  active">
+                            <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <span>1)</span>آدرس تحویل سفارش را انتخاب کنید</a> </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    @if (ObjAddress != null)
+                                    {
+                                        <div class="col-sm-6">
+
+                                            <h4>@ObjAddress.Title</h4>
+
+                                            <p><b>گیرنده :</b> @ObjAddress.PersonName</p>
+                                            <ul>
+                                                <li> <strong>تلفن :</strong>@ObjAddress.Tele</li>
+                                                <li><strong>  کد پستی :</strong>@ObjAddress.PostalCode</li>
+
+                                                <li><strong> آدرس :</strong>@ObjAddress.Address</li>
+                                            </ul>
+
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-sm-6">
+
+                                            <h4>آدرس های ثبت شده قبلی</h4>
+
+                                            <p><b>گیرنده :</b> </p>
+                                            <ul>
+                                                <li> <strong>تلفن :</strong></li>
+                                                <li><strong> کد پستی :</strong></li>
+
+                                                <li><strong> آدرس :</strong></li>
+                                            </ul>
+
+                                        </div>
+                                    }
+                                    <div class="divider divider-sm visible-xs"></div>
+                                    <div class="col-sm-6">
+                                        <h4>افزودن آدرس</h4>
+                                        @using (Html.BeginForm("FrmCHECKOUT", "Home", new { }, FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-group">
+                                                <label class="light"> عنوان آدرس<span class="required"> *</span></label>
+                                                @Html.TextBoxFor(m => m.ValidationAddress.Title, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ValidationAddress.Title)
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="light">گیرنده<span class="required"> *</span></label>
+                                                @Html.TextBoxFor(m => m.ValidationAddress.PersonName, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ValidationAddress.PersonName)
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="light"> تلفن<span class="required"> *</span></label>
+                                                @Html.TextBoxFor(m => m.ValidationAddress.Tele, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ValidationAddress.Tele)
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="light">کدپستی<span class="required"> *</span></label>
+                                                @Html.TextBoxFor(m => m.ValidationAddress.PostalCode, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ValidationAddress.PostalCode)
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="light">آدرس<span class="required"> *</span></label>
+                                                @Html.TextAreaFor(m => m.ValidationAddress.AddressName, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ValidationAddress.AddressName)
+                                            </div>
+                                            <button class="btn btn-mega" style="width:120px" type="submit">ثبت</button>
+                                            <br />
+                                            if (@TempData["StatusFailed"] != null && @TempData["StatusFailed"].ToString() != "")
+                                            {
+                                                <p id="failureMsgCreate" class="failure" style="width:100%;direction:ltr;text-align:left;display:block">
+                                                    @TempData["StatusFailed"].ToString()
+                                                </p>
+                                            }
+                                        }
+
+                                        <div class="divider divider-sm"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"> <span>2)</span>مشاهده سفارش </a> </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <section class="content-box">
+                                    <div class="shopping_cart">
+                                        <img class="back img-responsive" src="../images/shopping-cart-back.png" alt="">
+                                        <div class="box">
+                                            <h3>رسید خرید</h3>
+                                            <table>
+                                                <thead>
+                                                    <tr class="hidden-xs">
+                                                        <th>جمع کل</th>
+                                                        <th>تعداد</th>
+                                                        <th>قیمت</th>
+                                                        <th>محصول</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="MyTable">
+                                                    @{
+                                                        int TotalPrice = 0;
+                                                        var model = Session["MyClientOrder"] as List<Ironika_Theme1.Models.ClientOrder_Manager>;
+                                                        if (model != null)
+                                                        {
+                                                            if (model.Any())
+                                                            {
+                                                                foreach (var item in model)
+                                                                {
+                                                                    <tr>
+                                                                        <td><span class="td-name visible-xs">Total</span>@item.RowTotal ریال</td>
+
+                                                                        <td><span class="td-name visible-xs">تعداد</span>@item.Number</td>
+
+                                                                        <td><span class="td-name visible-xs">Price</span>@item.Price ریال</td>
+                                                                        <td><span class="td-name visible-xs">محصول</span><a href="#">@item.Name</a></td>
+                                                                        <td><a href="#" class="remove-button visible-xs"><span class="icon-cancel-2 "></span></a><a href=""><img class="preview" src="~/Content/ImageSite/@item.Image"></a></td>
+
+                                                                    </tr>
+                                                                    TotalPrice += int.Parse(item.RowTotal1.ToString());
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            <div class="pull-left"> <b class="title">هزینه حمل:</b> رایگان  </div>
+                                            <div class="pull-right">
+                                                <p>
+                                                    <b class="title">جمع سفارش:</b> <span class="price" id="MyPrice">@NumberFormat(TotalPrice.ToString()) ریال</span>
+                                                </p>
+
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> <span>3)</span>انتخاب روش پرداخت</a> </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p> توسط درگاه زرین پال پرداخت کنید</p> <br />
+                                @using (Html.BeginForm("FrmPeymant", "Home", new { }, FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("MyPrice", TotalPrice);
+                                    <button class="btn btn-mega" style="width:120px" type="submit">پرداخت</button>
+                                    <br />
+                                    if (@TempData["StatusFailed"] != null && @TempData["StatusFailed"].ToString() != "")
+                                    {
+                                        <p id="failureMsgCreate" class="failure" style="width:100%;direction:ltr;text-align:left;display:block">
+                                            @TempData["StatusFailed"].ToString()
+                                        </p>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="divider divider-sm visible-sm  visible-xs"></div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <h5 class="font1 text-uppercase">مراحل پرداخت سفارش</h5>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="#">ثبت  آدرس</a></li>
+                    <li class="list-group-item"><a href="#"> مشاهده  سفارش</a></li>
+                    <li class="list-group-item"><a href="#">انتخاب روش پرداخت</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")

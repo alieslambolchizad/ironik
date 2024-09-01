@@ -1,0 +1,1074 @@
+/*********************************************
+	-	SETTINGS FOR BANNER CONTAINERS	-
+**********************************************/
+
+.tp-banner-container {
+    width: 100%;
+    position: relative;
+    padding: 0;
+}
+.tp-banner {
+    width: 98%;
+    position: relative;
+    /*height: 552px;
+    background-size: cover;*/
+}
+.tp-banner1 {
+    width: 95%;
+    position: relative;
+    margin-top: 30px;
+}
+.tp-banner2 {
+    width: 100%;
+    position: relative;    
+}
+.tp-banner3 {
+    width: 100%;
+    position: relative;
+}
+.tp-banner4 {
+    width: 100%;
+    position: relative;
+}
+.tp-banner5 {
+    width: 100%;
+    position: relative;
+}
+.tp-banner6 {
+    width: 100%;
+    position: relative;
+}
+.tp-banner7 {
+    width: 100%;
+    position: relative;
+}
+.tp-banner8 {
+    width: 100%;
+    position: relative;
+}
+.tp-banner9 {
+    width: 100%;
+    position: relative;
+}
+@media (min-width:3800px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 1400px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 100%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 1400px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 1400px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 1600px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 448px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 448px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 448px;
+        background-size: cover;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 448px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 1400px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 1400px;
+        background-size: cover;
+    }
+}
+@media (min-width:1800px)and (max-width:3800px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 700px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 88%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 869px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 550px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 1046px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 1400px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 626px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 604px;
+        background-size: cover;
+        background-color:#000;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 1132px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 323px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 261px;
+        background-size: cover;
+    }
+}
+
+@media (min-width:1360px) and (max-width:1800px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 552px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 85%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 685px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 410px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 828px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 352px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 494px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 478px;
+        background-size: cover;
+        background-color:#000;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 896px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 256px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 261px;
+        background-size: cover;
+    }
+}
+
+@media (min-width:1200px) and (max-width:1360px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 465px;
+        background-size: cover;
+    }
+    .ImgSite1
+    {
+        width:85%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 604px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 363px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 697px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 306px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 417px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 394px;
+        background-size: cover;
+        background-color:#000;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 754px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 215px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 215px;
+        background-size: cover;
+    }
+}
+@media (min-width:1000px) and (max-width:1200px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 408px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 82%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 530px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 328px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 400px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 279px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 279px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 279px;
+        background-size: cover;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 279px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 279px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 279px;
+        background-size: cover;
+    }
+}
+@media (min-width:901px) and (max-width:1100px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 360px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 75%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 486px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 300px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 300px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 220px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 220px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 220px;
+        background-size: cover;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 279px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 220px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 220px;
+        background-size: cover;
+    }
+}
+@media (min-width:850px) and (max-width:901px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 320px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 70%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 393px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 290px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 250px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 207px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 207px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 207px;
+        background-size: cover;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 207px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 207px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 207px;
+        background-size: cover;
+    }
+}
+@media (min-width:768px) and (max-width:850px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 290px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 60%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 369px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 269px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 454px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 204px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 271px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 256px;
+        background-size: cover;
+        background-color:#000;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 492px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 140px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 204px;
+        background-size: cover;
+    }
+}
+@media (min-width:680px) and (max-width:768px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 270px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 77%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 336px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 257px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 418px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 181px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 249px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 236px;
+        background-size: cover;
+        background-color:#000;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 453px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 129px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 206px;
+        background-size: cover;
+    }
+}
+@media (min-width:600px) and (max-width:680px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 220px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 85%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 294px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 220px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 150px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 155px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 155px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 155px;
+        background-size: cover;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 249px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 155px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 155px;
+        background-size: cover;
+    }
+}
+@media (min-width:495px) and (max-width:600px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 181px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 80%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 259px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 186px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 100px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 130px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 130px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 130px;
+        background-size: cover;
+        background-color:#000;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 249px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 82px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 272px;
+        background-size: cover;
+    }
+}
+@media (min-width:400px) and (max-width:495px) {
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 150px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 79%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 186px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 134px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 225px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 100px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 134px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 131px;
+        background-size: cover;
+        background-color:#000;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 244px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 69px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 230px;
+        background-size: cover;
+    }
+}
+@media (max-width:400px) {
+ 
+    .tp-banner {
+        width: 100%;
+        position: relative;
+        height: 130px;
+        background-size: cover;
+    }
+    .ImgSite1 {
+        width: 75%;
+    }
+    .tp-banner1 {
+        width: 95%;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 3%;
+        margin-right: 5%;
+        height: 163px;
+        background-size: cover;
+    }
+    .tp-banner2 {
+        width: 100%;
+        position: relative;
+        height: 115px;
+        background-size: cover;
+    }
+    .tp-banner3 {
+        width: 100%;
+        position: relative;
+        height: 206px;
+        background-size: cover;
+    }
+    .tp-banner4 {
+        width: 100%;
+        position: relative;
+        height: 85px;
+        background-size: cover;
+    }
+    .tp-banner5 {
+        width: 100%;
+        position: relative;
+        height: 117px;
+        background-size: cover;
+    }
+    .tp-banner6 {
+        width: 100%;
+        position: relative;
+        height: 111px;
+        background-size: cover;
+        background-color:#000;
+    }
+    .tp-banner7 {
+        width: 100%;
+        position: relative;
+        height: 212px;
+        background-size: cover;
+    }
+    .tp-banner8 {
+        width: 100%;
+        position: relative;
+        height: 60px;
+        background-size: cover;
+    }
+    .tp-banner9 {
+        width: 100%;
+        position: relative;
+        height: 197px;
+        background-size: cover;
+    }
+}
+   
+
+   
+
+    .tp-banner-fullscreen-container {
+        width: 100%;
+        position: relative;
+        padding: 0;
+    }
+    /*.tp-leftarrow.default, .tp-rightarrow.default {
+	display:block;
+	cursor:pointer;
+	width:52px;
+	height: 52px;
+	background:#2991d6;
+	color:#fff;
+	text-align:center;
+	border-radius:3px;
+}
+.tp-leftarrow.default:before, .tp-rightarrow.default:before {
+	font-family:icon_cr;
+	font-size:26px;
+	line-height:52px;
+	content:'\e802'
+}
+.tp-rightarrow.default:before {
+	content:'\e805'
+}
+.tp-leftarrow:hover, .tp-rightarrow:hover {
+	background-position:bottom left;
+}
+*/
+    .text1, .text2 {
+        background: #fff;
+        min-width: 200px;
+        min-height: 110px;
+        display: block;
+        padding: 15px;
+        text-align: right;
+        font-family: "Maven Pro", Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        line-height: 1em;
+        color: #82817d;
+        text-transform: uppercase;
+    }
+
+    .text2 {
+        text-align: left;
+    }
+    /*.tparrows, .tparrows.hidearrows {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+}
+.tparrows.showarrows {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+	-webkit-transition: opacity 0.2s ease-out;
+	-moz-transition: opacity 0.2s ease-out;
+	-o-transition: opacity 0.2s ease-out;
+	-ms-transition: opacity 0.2s ease-out;
+	-webkit-transform: translateZ(5000px);
+	-webkit-transform-style: flat;
+	-webkit-backface-visibility: hidden;
+	z-index:600;
+	position: relative;
+}
+*/ .tp-leftarrow.default {
+        z-index: 100;
+        cursor: pointer;
+        position: relative;
+        background: none;
+        width: 15%;
+        height: 100%;
+        left: 0 !important;
+    }
+
+    .tp-rightarrow.default {
+        z-index: 100;
+        cursor: pointer;
+        position: relative;
+        background: none;
+        width: 15%;
+        height: 100%;
+        right: 0 !important;
+    }
+
+        .tp-leftarrow.default:before, .tp-rightarrow.default:before {
+            display: none
+        }
+
+        .tp-rightarrow.default:hover {
+            cursor: pointer;
+            cursor: url(../images/cursor-arrow-right-dark.png) 40 75,url(../images/cursor-arrow-right-dark.cur),pointer;
+        }
+
+    .tp-leftarrow.default:hover {
+        cursor: pointer;
+        cursor: url(../images/cursor-arrow-left-dark.png) 40 75,url(../images/cursor-arrow-left-dark.cur),pointer;
+    }
+
+    .scroll-down {
+        position: absolute;
+        display: block;
+        margin-bottom: 0;
+        z-index: 100000;
+        color: #fff !important;
+        left: 39%;
+        bottom: 3%;
+        width: 22%;
+        text-align: center;
+        text-shadow: 1px 1px rgba(0, 0, 0, .5);
+        font: 1.5em/1em Mavenpro-medium, Arial, Helvetica, sans-serif
+    }
+
+        .scroll-down:hover {
+            text-decoration: none
+        }
+
+        .scroll-down .icon {
+            display: block;
+            font-size: 2.6em
+        }

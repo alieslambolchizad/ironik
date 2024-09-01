@@ -1,0 +1,558 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- CSS preloader -->
+    <link href="~/Content/css/loader.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/megatron-template.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/Content/images/icon.ico" type="image/x-icon">
+    <!-- CSS modules -->
+    <link href="~/Content/css/icomoon.css" rel="stylesheet">
+    <link href="~/Content/css/fontello.css" rel="stylesheet">
+    <link href="~/Content/css/jquery.rw-slider.css" rel="stylesheet">
+    <link href="~/Content/css/flexslider.css" rel="stylesheet">
+    <link href="~/Content/css/jcarousel.css" rel="stylesheet">
+    <link href="~/Content/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/Content/css/owl.theme.css" rel="stylesheet">
+    <link href="~/Content/css/cloudzoom.css" rel="stylesheet">
+    <link href="~/Content/css/sfmenu.css" rel="stylesheet">
+    <link href="~/Content/css/isotope.css" rel="stylesheet">
+    <link href="~/Content/css/smoothness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="~/Content/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="~/Content/css/hoverfold.css" rel="stylesheet">
+    @{
+        Tezol_DBEntities db = new Tezol_DBEntities();
+        int IdMax = db.Contact_Table.Max(r => r.ContactId);
+        var ObjContact = db.Contact_Table.FirstOrDefault(r => r.ContactId == IdMax);
+
+        string UserName = ""; int UserId = 0; string UserCode = "";
+        try
+        {
+            if (Session["UserSite"] != null)
+            {
+                UserId = int.Parse(Session["UserSite"].ToString());
+                var ObjUser = db.User_Table.FirstOrDefault(r => r.UserId == UserId);
+                if (ObjUser != null)
+                {
+                    UserName = ObjUser.Name + " " + ObjUser.Lastname + " خوش آمدید! ";
+                    //UserCode = ObjUser.RegisterCode;
+                }
+                else
+                {
+                    UserName = "مهمان گرامی" + " خوش آمدید! ";
+                }
+            }
+            else
+            {
+                UserName = "مهمان گرامی" + " خوش آمدید! ";
+            }
+        }
+        catch { }
+    }
+    @functions
+{
+        public static string NumberFormat(string Text)
+        {
+            int Length = Text.Length;
+            string MyText = "";
+            int i = Length - 3;
+            int j = 3;
+            while (Length > 3)
+            {
+                MyText = Text.Substring(i, j) + "," + MyText;
+                i = i - 3;
+                Length = Length - 3;
+            }
+            if (Length > 0)
+                MyText = Text.Substring(0, Length) + "," + MyText;
+            MyText = MyText.Substring(0, MyText.Length - 1);
+            return MyText;
+        }
+
+    }
+</head>
+<body class="responsive">
+    <div class="loader">
+        <div class="bubblingG"> <span id="bubblingG_1"> </span> <span id="bubblingG_2"> </span> <span id="bubblingG_3"> </span> </div>
+    </div>
+    <!-- Off Canvas Menu -->
+    <nav id="off-canvas-menu">
+        <div id="off-canvas-menu-title">منوی اصلی<span class="icon icon-cancel-3" id="off-canvas-menu-close"></span></div>
+        <ul class="expander-list">
+            @{
+                List<Menu_Table> lst_Menu = db.Menu_Table.Where(r => r.State == true && r.Parent == null).ToList();
+                foreach (var item in lst_Menu)
+                {
+                    <li>
+                        <span class="name"><span class="expander">-</span> <a href="../../Listing/@item.Title.Trim().Replace(" ", "-")">@item.Title</a></span>
+                        @{
+                            if (item.Kind == 1)
+                            {
+                                List<Group_Table> lst_GroupMenuRes = db.Group_Table.Where(r => r.Kind == 1 && r.Parent == null).OrderByDescending(r => r.GroupId).ToList();
+                                foreach (var items in lst_GroupMenuRes)
+                                {
+                                <li>
+                                    <ul>
+                                        <li>
+                                            <span class="name"> <span class="expander">-</span> <a href="../../Listing/@items.Name.Trim().Replace(" ", "-")">@items.Name</a> </span>
+                                            <ul>
+                                                @{
+                                                    List<Group_Table> lst_ChildMenuRes = db.Group_Table.Where(r => r.Kind == 1 && r.Parent == items.GroupId).OrderBy(r => r.GroupId).ToList();
+
+                                                    foreach (var itemss in lst_ChildMenuRes)
+                                                    {
+                                                        <li><span class="name"><a href="../../Listing/@itemss.Name.Trim().Replace(" ", "-")">@itemss.Name</a></span></li>
+
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+
+
+                            <ul>
+                                <li> <span class="name"><a href="#">آیتم اول </a></span></li>
+                                <li> <span class="name"><a href="#"> آیتم دوم</a> </span></li>
+
+                            </ul>
+
+                        }
+                        }
+                        </li>
+                    }
+            }
+        </ul>
+    </nav>
+    <!-- //end Off Canvas Menu -->
+
+    <div id="outer">
+        <div id="outer-canvas">
+            <!-- Navbar -->
+            <header>
+
+                <!-- Back to top -->
+                <div class="back-to-top"><span class="icon-arrow-up-4"></span></div>
+                <!-- //end Back to top -->
+
+                <section class="navbar">
+                    <div class="background">
+                        <div class="container">
+                            <!-- Logo -->
+                            <div class="navbar-logo pull-right"> <a href="/"><img src="~/Content/ImageSite/@ObjContact.Logo" alt="@ObjContact.Title"></a></div>
+                            <div class="navbar-welcome pull-right compact-hidden hidden-xs">@UserName</div>
+                            <div class="clearfix visible-sm"></div>
+                            <!-- //end Logo -->
+                            <!-- Secondary menu -->بب
+                            <div class="navbar-secondary-menu pull-left hidden-xs">
+                                <div class="btn-group compact-hidden">
+                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon icon-vcard"></span> پنل کاربری  <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+
+                                        @if (UserId == 0)
+                                        {
+                                            <li><a href="../../Signin">پنل من</a></li>
+                                            <li><a href="../../Signin">سفارشات</a></li>
+                                            <li><a href="../../Signin">تغییر پروفایل</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="../../Signin">ورود</a></li>
+                                            <li><a href="../../Signup">ثبت نام</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="../../Admin/Dashboard">پنل من</a></li>
+                                            <li><a href="../../Admin/DeliveryOrder">سفارشات</a></li>
+                                            <li><a href="../../Admin/UserProfile">تغییر پروفایل</a></li>
+
+                                            <li class="divider"></li>
+
+                                            <li><a href="../../Admin/Logout">خروج</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="btn-group compact-hidden">
+                                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon icon-cog"></span> تم پیش فرض  <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="../Home">  تم یک</a></li>
+                                        <li><a href="#">  تم دو</a></li>
+
+                                    </ul>
+                                </div>
+                                <div class="btn-group compact-hidden">
+                                    @if (UserId == 0)
+                                    {
+                                        <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon icon-heart "></span> علاقه مندی ها <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="../../signin">  فروشگاه ها</a></li>
+                                            <li><a href="../../signin">  محصولات </a></li>
+
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon icon-heart "></span> علاقه مندی ها <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="../../LikeShopList">  فروشگاه ها</a></li>
+                                            <li><a href="../../LikeProductList">  محصولات </a></li>
+
+                                        </ul>
+                                    }
+
+                                </div>
+                                @{
+                                    int NumberTotal = 0;
+                                    int Number = 0;
+                                    int TotalPrice = 0;
+                                    try
+                                    {
+                                        if (HttpContext.Current.Session["AllNumber1"] == null)
+                                        {
+                                            NumberTotal = 0;
+                                        }
+                                        else
+                                        {
+                                            NumberTotal = int.Parse(HttpContext.Current.Session["AllNumber1"].ToString());
+                                        }
+                                        if (HttpContext.Current.Session["AllCount"] == null)
+                                        {
+                                            Number = 0;
+                                        }
+                                        else
+                                        {
+                                            Number = int.Parse(HttpContext.Current.Session["AllCount"].ToString());
+                                        }
+                                    }
+                                    catch { NumberTotal = 0; Number = 0; }
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="compact-hidden">سبد خرید - </span> <span class="icon-xcart-animate"><span class="box">@Number</span><span class="handle"></span></span> </a>
+                                        <div class="dropdown-menu pull-right shoppingcart-box" role="menu">
+                                            <p style="direction:rtl;text-align:right">آیتم های اضافه شده اخیر</p>
+                                            <ul class="list">
+                                                @{
+
+                                                    var model = Session["MyClientOrder"] as List<Ironika_Theme1.Models.ClientOrder_Manager>;
+                                                    if (model != null)
+                                                    {
+                                                        if (model.Any())
+                                                        {
+                                                            foreach (var item in model)
+                                                            {
+                                                                <li class="item">
+                                                                    <a href="../../ShopList/@item.Name.Trim().Replace(" ", "-")" class="preview-image"><img class="preview" src="../../Content/ImageSite/@item.Image" alt="@item.Name"></a>
+                                                                    <div class="description"> <a href="#">@item.Name</a> <strong class="price">@item.Price ریال</strong> </div>
+                                                                </li>
+                                                                TotalPrice += int.Parse(item.RowTotal1.ToString());
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
+                                            <div class="total">مبلغ نهایی: <strong>@NumberFormat(TotalPrice.ToString())</strong></div>
+                                            <a href="../../Checkout" class="btn btn-mega">پرداخت</a>
+                                            <div class="view-link"><a href="../../Basket">مشاهده سبد خرید</a></div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <!-- Secondary menu mobile -->
+
+
+                            <dl class="navbar-main-menu hidden-xs">
+                                <dt class="item">
+                                    <ul class="sf-menu">
+                                        <li>
+                                            <a href="/" class="btn-main"><span class="icon icon-home"></span></a>
+                                            <ul>
+                                                @{
+                                                    <li><a href="../../Basket">سبد خرید</a></li>
+                                                    <li><a href="../../LikeProductList">علاقه مندی</a></li>
+                                                    <li><a href="../../Admin/Dashboard">پنل کاربری</a></li>
+                                                    <li><a href="../../Admin/DeliveryOrder">آرشیو سفارشات</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </dt>
+                                <dd></dd>
+                                @{
+                                    lst_Menu = db.Menu_Table.Where(r => r.Parent == null && r.State == true).OrderBy(r => r.OrderItem).ToList();
+                                    foreach (var items in lst_Menu)
+                                    {
+                                        if (items.Kind == 1)
+                                        {
+                                            <dt class="item compact-hidden"><a href="../../Listing/@items.Title.Trim().Replace(" ", "-")" class="btn-main line">@items.Title</a> </dt>
+                                            <dd class="item-content">
+                                                <div class="navbar-main-submenu">
+                                                    <div class="row wrapper">
+                                                        @{List<Group_Table> lstSupper = db.Group_Table.Where(r => r.Parent == null).ToList();
+                                                            int kind = 0;
+                                                            foreach (var item in lstSupper)
+                                                            {
+
+                                                                <div class="col-xs-4 col-md-3 col-lg-2">
+                                                                    <div class="submenu-block submenu-block-other">
+                                                                        <img src="~/Content/ImageSite/@item.Imageurl" class="img-responsive" alt="">
+                                                                        <div class="title"><a class="name" href="../../Listing/@item.Name.Trim().Replace(" ", "-")">@item.Name</a> </div>
+                                                                        <ul>
+                                                                            @{
+                                                                                List<Group_Table> lstchild = db.Group_Table.Where(r => r.Parent == item.GroupId).ToList();
+                                                                                foreach (var _item in lstchild)
+                                                                                {
+                                                                                    <li><a style="direction:rtl;text-align:center;width:100%" href="../../Listing/@_item.Name.Trim().Replace(" ", "-")">@_item.Name</a></li>
+                                                                                }
+                                                                            }
+
+
+                                                                        </ul>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                if (kind % 3 == 0)
+                                                                {
+                                                                    <div class=" clearfix visible-sm"></div>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </dd>
+                                        }
+                                        else
+                                        {
+                                            <dt class="item">
+                                                <ul class="sf-menu">
+                                                    <li>
+                                                        <a href="#"> @items.Title </a>
+                                                        <ul>
+                                                            <li><a href="#">مورد اول</a></li>
+                                                            <li><a href="#">مورد دوم</a></li>
+
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </dt>
+                                        }
+                                    }
+                                }
+
+                            </dl>
+                            <!-- //end Main menu -->
+
+                        </div>
+                    </div>
+                    <!-- Mobile menu -->
+                    <div class="container visible-xs">
+                        <div class="mobile-nav row">
+                            <div class="nav-item item-01"><a href="#" id="off-canvas-menu-toggle"><span class="icon icon-list-4"></span></a></div>
+                            <div class="nav-item item-02">
+                                <a href="#"><span class="icon icon-vcard"></span></a>
+                                <div class="tab-content">
+                                    <ul class="menu-list">
+                                        @if (UserId == 0)
+                                        {
+                                            <li><a href="../../Signin">ورود</a></li>
+                                            <li><a href="../../Signup">ثبت نام</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="../../Admin/Dashboard">پنل کاربری</a></li>
+                                            <li><a href="../../LikeProductList">علاقه مندی</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="nav-item item-03">
+                                <a href="#"><span class="icon icon-search-2"></span></a>
+                                <div class="tab-content">
+                                    <!-- Search -->
+                                    <form class="navbar-search form-inline" role="form">
+                                        <div class="form-group">
+                                            <button type="submit" class="button"><span class="icon-search-2"></span></button>
+                                            <input type="text" class="form-control" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if(this.value == 'Search') {this.value = '';}">
+                                        </div>
+                                    </form>
+                                    <!-- //end Search -->
+                                </div>
+                            </div>
+                            <div class="nav-item item-04">
+                                <a href="#"><span class="icon-xcart-white">@Number</span></a>
+                                <div class="tab-content">
+                                    <div class="shoppingcart-box">
+                                        <div class="title">آیتم های اضافه شده اخیر</div>
+                                        <ul class="list">
+                                            @{
+
+                                                model = Session["MyClientOrder"] as List<Ironika_Theme1.Models.ClientOrder_Manager>;
+                                                if (model != null)
+                                                {
+                                                    if (model.Any())
+                                                    {
+                                                        foreach (var item in model)
+                                                        {
+                                                            <li class="item">
+
+                                                                <a href="../../ShopList/@item.Name.Trim().Replace(" ", "-")" class="preview-image"><img class="preview" src="../../Content/ImageSite/@item.Image" alt="@item.Name"></a>
+                                                                <div class="description"> <a href="#">@item.Name</a> <strong class="price">@NumberFormat(item.Price) ریال</strong> </div>
+                                                            </li>
+
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </ul>
+                                        <div class="total">مبلغ نهایی: <strong>@NumberFormat(TotalPrice.ToString())</strong></div>
+                                        <a href="../../Checkout" class="btn btn-mega">پرداخت</a>
+                                        <div class="view-link"><a href="../../Basket">مشاهده سبد خرید</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- //end Mobile menu -->
+                    <!-- Navbar switcher -->
+                    <div class="navbar-switcher-container">
+                        <div class="navbar-switcher"> <span class="i-inactive"><img src="~/Content/ImageSite/logo-down.png" width="35" height="35" alt=""></span> <span class="i-active icon-cancel-3"></span> </div>
+                    </div>
+                    <!-- //end Navbar switcher -->
+
+                </section>
+
+                <!-- Navbar height -->
+                <div class="navbar-height-inner"></div>
+                <!-- Navbar height -->
+                <!-- Navbar height -->
+                <div class="navbar-height"></div>
+                <!-- Navbar height -->
+
+            </header>
+
+            @RenderBody()
+            <footer>
+                <section class="footer-navbar dark">
+                    <div class="container content nopad-xs">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                <h3>تماس با ما<a class="expander visible-xs" href="#TabBlock-6">+</a></h3>
+                                <div class="tabBlock" id="TabBlock-6">
+                                    <ul class="menu">
+                                        @{
+
+                                            <li><span class="icon icon-house"></span><span style="margin-right:15px">@ObjContact.Address</span></li>
+                                            <li><span class="icon icon-phone-4"></span><span style="margin-right:15px"><a href="tele:@ObjContact.Tele">@ObjContact.Tele</a> </span></li>
+                                            <li><span class="icon icon-envelop"></span><span style="margin-right:15px"> <a href="mailto:@ObjContact.Email">@ObjContact.Email</a></span></li>
+                                            <li><span class="icon icon-mobile"></span><span style="margin-right:15px"> <a href="#">@ObjContact.Mobile</a></span></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                <h3>اطلاعات <a class="expander visible-xs" href="#TabBlock-3">+</a></h3>
+                                <div class="tabBlock" id="TabBlock-3">
+                                    <ul class="menu">
+                                        <li><a href="../../About">درباره ما</a></li>
+                                        <li><a href="../../Contact">تماس با ما</a></li>
+                                        <li><a href="../../Privacy">حفظ حریم خصوصی</a></li>
+                                        <li><a href="../../Terms">قوانین و مقررات</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix visible-sm"></div>
+                            <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                <h3>پنل من<a class="expander visible-xs" href="#TabBlock-5">+</a></h3>
+                                <div class="tabBlock" id="TabBlock-5">
+                                    <ul class="menu">
+                                        <li><a href="../../Admin/Dashboard">پنل من</a></li>
+                                        <li><a href="../../Admin/DeliveryOrder">آرشیو سفارشات</a></li>
+                                        <li><a href="../../Basket">سبد خرید</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                <h3><span class="attention"><span class="attention_icon"></span></span>خدمات مشتریان<a class="expander visible-xs" href="#TabBlock-4">+</a></h3>
+                                <div class="tabBlock" id="TabBlock-4">
+                                    <ul class="menu">
+                                        <li><a href="../../Faq">پرسش و پاسخ</a></li>
+                                        <li><a href="../../Admin/Ticket">پشتیبانی</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <section class="footer-bottom-block container">
+                    <div class="row">
+                        <div class="col-sm-5 col-md-4 copyright-text"> &copy; 2021<a href="#">Ironika</a>. All Rights Reserved. </div>
+                        <div class="col-sm-3 col-md-8">
+
+                        </div>
+
+                    </div>
+                </section>
+            </footer>
+            <div id="outer-overlay"></div>
+            <!-- //end Footer -->
+        </div>
+    </div>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Scripts/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Scripts/jquery.mousewheel.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.rw-preloader.js"></script>
+    <script src="~/Scripts/hammer.min.js"></script>
+    <script src="~/Scripts/jquery.rw-slider.js"></script>
+    <script src="~/Scripts/jquery.flexslider.js"></script>
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script src="~/Scripts/jquery.jcarousel.min.js"></script>
+    <script src="~/Scripts/cloudzoom.js"></script>
+    <script src="~/Scripts/jquery.isotope.min.js"></script>
+    <script src="~/Scripts/jquery.parallax.js"></script>
+    <script src="~/Scripts/jquery.fancybox.js?v=2.1.5"></script>
+    <script src="~/Scripts/jquery.inview.js"></script>
+    <script src="~/Scripts/hoverIntent.js"></script>
+    <script src="~/Scripts/superfish.js"></script>
+    <script src="~/Scripts/supersubs.js"></script>
+    <script src="~/Scripts/jquery.plugin.js"></script>
+    <script src="~/Scripts/jquery.countdown.js"></script>
+    <script src="~/Scripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script src="~/Scripts/megatron.js"></script>
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @*@RenderSection("scripts", required: false)*@
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

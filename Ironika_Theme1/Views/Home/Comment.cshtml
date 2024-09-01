@@ -1,0 +1,215 @@
+﻿<title>نظرات مشتری</title>
+@{
+    ViewBag.Title = "Details";
+    Tezol_DBEntities db = new Tezol_DBEntities();
+    int Name = ViewBag.Name;
+    //var n = ViewBag.Rating;
+    var Objs = db.OwnerProduct_Table.FirstOrDefault(r => r.OwnerProductId == Name);
+}
+@using Ironika_Theme1.Models;
+@using System.ComponentModel.DataAnnotations;
+@model Ironika_Theme1.Models.Main
+@functions
+{
+    public static string NumberFormat(string Text)
+    {
+        int Length = Text.Length;
+        string MyText = "";
+        int i = Length - 3;
+        int j = 3;
+        while (Length > 3)
+        {
+            MyText = Text.Substring(i, j) + "," + MyText;
+            i = i - 3;
+            Length = Length - 3;
+        }
+        if (Length > 0)
+            MyText = Text.Substring(0, Length) + "," + MyText;
+        MyText = MyText.Substring(0, MyText.Length - 1);
+        return MyText;
+    }
+
+}
+
+<!-- //end Social widgets -->
+<!-- Breadcrumbs -->
+<section class="container">
+    <nav class="breadcrumbs"> <a href="/">خانه</a> <span class="divider">›</span> @Objs.Product_Table.Name </nav>
+</section>
+
+<section class="container">
+    @if (Objs != null)
+    {
+        int Parent = Objs.Product_Table.Group_Table.Parent.Value;
+        var ObjsParent = db.Group_Table.FirstOrDefault(r => r.GroupId == Parent);
+        <!-- Product view -->
+        <div class="product-view row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+
+                <!-- Product label -->
+                <div class="product-label">
+                    <div class="box-wrap">
+                        <div class="box-wrap-top"></div>
+                        <div class="box-wrap-bot"></div>
+                        <div class="box-wrap-center"></div>
+                        <div class="box">
+                            <div class="box-content">
+                                <h2>@Objs.Product_Table.Name</h2>
+                                <span class="price new">@NumberFormat(Objs.Price.Value.ToString()) ریال</span> <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //end Product label -->
+                <!-- Description -->
+                <div class="product-description">
+                    <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span>
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <button class="btn btn-mega btn-lg" type="submit">خرید این محصول</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="option">
+
+                                <div class="input-group quantity-control">
+                                    <span class="input-group-addon">&minus;</span>
+                                    <input type="text" class="form-control" value="1">
+                                    <span class="input-group-addon">+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+                </div>
+                <!-- //end Description -->
+
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-5">
+
+                <div class="large-image vertical "> <img alt="#" src="~/Content/ImageSite/@Objs.Product_Table.Imageurl" data-cloudzoom="zoomImage: '~/Content/ImageSite/@Objs.Product_Table.Imageurl', autoInside : 991" /> </div>
+
+            </div>
+
+            <section class="col-sm-12 col-md-3 col-lg-3  module">
+                <h3>@Objs.Supper_Table.ShopName</h3>
+
+                <!-- Services -->
+                <section class="services-block single small vertical">
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                        <a href="#" class="item">
+
+                            <div class="text"><span class="title">@Objs.Product_Table.Group_Table.Name</span> <span class="description">@ObjsParent.Name</span> </div>
+                            <span class="icon icon-cog-4"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                        <a href="#" class="item">
+
+                            <div class="text"> <span class="title">@Objs.Supper_Table.Tele</span> </div>
+                            <span class="icon icon-phone-2"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                        <a href="#" class="item">
+                            <div class="text"><span class="title">@Objs.Supper_Table.Address</span> <span class="description">@Objs.Supper_Table.Region_Table.Country_Table.Name</span> </div>
+                            <span class="icon icon-home-2"></span>
+
+                        </a>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                        <a href="#" class="item">
+
+                            <center>  <button class="btn btn-mega btn-lg" type="submit">مشاهده فروشگاه</button></center>
+                        </a>
+                    </div>
+                </section>
+                <!-- //end Services -->
+            </section>
+        </div>
+        <!-- //end Product view -->
+        <!-- Tabs -->
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="c-comments-add__col c-comments-add__col--content">
+                    <h3>دیگران را با نوشتن نظرات خود، برای انتخاب این محصول راهنمایی کنید.</h3>
+                    <p>
+                        <span style="color:#2980b9">
+                            <strong>لطفا پیش از ارسال نظر، خلاصه قوانین زیر را مطالعه کنید:</strong>
+                        </span>
+                    </p>
+                    <ul>
+                        <li>لازم است محتوای ارسالی منطبق برعرف و شئونات جامعه و با بیانی رسمی و عاری از لحن تند، تمسخرو توهین باشد.</li>
+                        <li>از ارسال لینک‌های سایت‌های دیگر و ارایه‌ی اطلاعات شخصی خودتان مثل شماره تماس، ایمیل و آی‌دی شبکه‌های اجتماعی پرهیز کنید.</li>
+                        <li><strong>در نظر داشته باشید هدف نهایی از ارائه‌ی نظر درباره‌ی کالا ارائه‌ی اطلاعات مشخص و دقیق برای راهنمایی سایر کاربران در فرآیند خرید یک محصول توسط ایشان است.</strong></li>
+                        <li>با توجه به ساختار بخش نظرات، از پرسیدن سوال یا درخواست راهنمایی در این بخش خودداری کرده و سوالات خود را در بخش «پرسش و پاسخ» مطرح کنید.</li>
+                    </ul>
+                    <p><span style="color:#2980b9"><strong>نکته مهم :</strong></span></p>
+                    <ul>
+                        <li><strong>ثبت یا مشخص بودن شماره تلفن، ‌آدرس، مشخصات شبکه‌های اجتماعی غیرمجاز است.</strong></li>
+                        <li>هرگونه نقد و نظر در خصوص سایت ایرونیکا،&nbsp;مشکلات&nbsp;دریافت خدمات و درخواست کالا&nbsp;و نیز گزارش تخلف فروش (نظیر گزارش کالای غیراصل یا مغایر)&nbsp;را با ایمیل&nbsp;&nbsp;<a href="mailto:info@ironika.ir">info@ironika.ir&nbsp;</a>&nbsp;یا با شماره‌ی&nbsp;&nbsp;<a href="tel: +982161930000">۶۱۹۳۰۰۰۰ - ۰۲۱&nbsp;</a>&nbsp;در میان بگذارید و از نوشتن آن‌ها در بخش نظرات خودداری کنید.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <section class="producttab">
+                    <div class="tabsslider">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1">ثبت کامنت</a></li>
+
+
+                        </ul>
+                        <a href="#" class="carousel-prev"></a><a href="#" class="carousel-next"></a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade active in">
+                            @using (Html.BeginForm("FrmNewComment", "Home", new { }, FormMethod.Post))
+                            {
+                                @Html.Hidden("ProductId", Objs.ProductId.Value);
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+
+                                    @Html.DropDownListFor(model => model.ValidationReview.RatingId, new SelectList(db.Rating_Table.ToList(), "RatingId", "Title"), "«تعداد ستاره»", new { @class = "form-control", @id = "DrpProvince" })
+                                    @Html.ValidationMessageFor(m => m.ValidationReview.RatingId)
+                                </div>
+                                <div class="form-group">
+
+                                    @Html.TextAreaFor(m => m.ValidationReview.Message, new { @class = "form-control", @rows = 10, placeholder = "دیدگاه شما" })
+                                </div>
+                                <div style="direction:rtl;text-align:right;width:100%">
+                                    <button type="submit" class="btn btn-mega" style="width:120px">
+                                        ارسال پیام
+                                    </button>
+                                </div>
+                                <br />
+                                if (@TempData["StatusFailed"] != null)
+                                {
+                                    <p id="failureMsgCreate" class="failure" style="width:100%;direction:rtl;text-align:right;display:block">
+                                        @TempData["StatusFailed"].ToString()
+                                    </p>
+                                }
+                                <br />
+                                if (@TempData["StatusFailed"] != null)
+                                {
+                                    <p id="failureMsgCreate" class="failure" style="width:100%;direction:rtl;text-align:right;display:block">
+                                        @TempData["StatusFailed"].ToString()
+                                    </p>
+                                }
+                            }
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+    }
+</section>
+<!-- //end Two columns content -->
